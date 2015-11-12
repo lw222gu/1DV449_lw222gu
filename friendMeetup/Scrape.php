@@ -44,4 +44,18 @@ class Scrape{
 
         return $links;
     }
+
+    public function getCalendar($data){
+        $DOMTableDatas = $this->getXPath($data)->query('//td');
+        $tableData = array();
+        foreach($DOMTableDatas as $DOMTableData){
+            if(strcasecmp($DOMTableData->nodeValue, "ok") == 0){
+                array_push($tableData, true);
+            }
+            else {
+                array_push($tableData, false);
+            }
+        }
+        return $tableData;
+    }
 }
