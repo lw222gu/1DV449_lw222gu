@@ -35,8 +35,9 @@ class LayoutView {
     private function renderResult(){
         if(isset($_POST["url"])){
             $url = $_POST["url"];
-            $result = new ScrapeResult($url);
-            return $result->getResult();
+            $meetup = new Meetup($url);
+            //$result = new Scrape($url);
+            return $meetup->getResult();
         }
         return "";
     }
