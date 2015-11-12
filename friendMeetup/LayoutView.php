@@ -36,7 +36,7 @@ class LayoutView {
         if(isset($_POST["url"])){
             $url = $_POST["url"];
             $result = new ScrapeResult($url);
-            return $result->curlRequest();
+            return $result->getResult();
         }
         return "";
     }
