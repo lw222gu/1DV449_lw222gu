@@ -2,8 +2,6 @@
 
 class Scrape{
 
-    private $data;
-
     public function __construct(){
         //$this->curlRequest($url);
         //$this->getLinks();
@@ -50,12 +48,23 @@ class Scrape{
         $tableData = array();
         foreach($DOMTableDatas as $DOMTableData){
             if(strcasecmp($DOMTableData->nodeValue, "ok") == 0){
-                array_push($tableData, true);
+                array_push($tableData, 1);
             }
             else {
-                array_push($tableData, false);
+                array_push($tableData, 0);
             }
         }
         return $tableData;
+    }
+
+    public function getMovieDays($data){
+        $DOMMovieDays = $this->getXPath($data)->query('//select[@id="day"]//option');
+        $days = array();
+        foreach($DOMMovieDays as $DOMMovieDay){
+            if($DOMMovieDay->nodeValue != "--- Välj dag ---"){
+                array_push($days, $DOMMovieDay->nodeValue);
+            }
+        }
+        return $days;
     }
 }
