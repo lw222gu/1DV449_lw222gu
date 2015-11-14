@@ -75,4 +75,14 @@ class Scrape{
         }
         return $movies;
     }
+
+    public function getDinnerOccasions($data){
+        libxml_use_internal_errors(TRUE);
+        $DOMDinnerOccasions = $this->getXPath($data)->query('//input[@type = "radio"]');
+        $dinnerOccasions = array();
+        foreach($DOMDinnerOccasions as $DOMDinnerOccasion){
+            array_push($dinnerOccasions, $DOMDinnerOccasion->getAttribute("value"));
+        }
+        return @$dinnerOccasions;
+    }
 }

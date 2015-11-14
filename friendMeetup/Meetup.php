@@ -2,12 +2,13 @@
 
 class Meetup {
 
-    private $result;
     private $url;
     private $scrape;
     private $startPageLinks;
     private $days = array("01" => "fredag", "02" => "lördag", "03" => "söndag");
     private $movies = array("01" => "Söderkåkar", "02" => "Fabian Bom", "03" => "Pensionat Paradiset");
+
+    private $availableMeetups;
 
     public function __construct($url){
         $this->url = $url;
@@ -18,6 +19,7 @@ class Meetup {
 
         $availableDays = $this->getAvailableCalendarDays();
         $availableMovieOccasions = $this->getAvailableMovies($availableDays);
+        $this->availableMeetups = $this->getAvaliableTables($availableMovieOccasions, $availableDays);
     }
 
     private function getAvailableCalendarDays(){
@@ -42,15 +44,12 @@ class Meetup {
         $availableDays = array();
 
         if($days[0] == count($allCalendars)){
-            //array_push($availableDays, "Fredag");
             array_push($availableDays, "01");
         }
         if($days[1] == count($allCalendars)){
-            //array_push($availableDays, "Lördag");
             array_push($availableDays, "02");
         }
         if($days[2] == count($allCalendars)){
-            //array_push($availableDays, "Söndag");
             array_push($availableDays, "03");
         }
 
@@ -66,7 +65,6 @@ class Meetup {
 
         foreach($movieDays as $day){
             if(in_array($day, $days)){
-                echo "<br/>";
                 foreach($movies as $movie){
                     $json = $this->scrape->curlRequest($cinemaUrl . '/check?day=' . $day . '&movie=' . $movie);
                     $movieOccasions = json_decode($json, true);
@@ -80,21 +78,51 @@ class Meetup {
             }
         }
 
-        /*
-        foreach($availableMovieOccasions as $occasion){
-            echo "Dag " . $this->days[$occasion['day']] . ": Filmen " . $this->movies[$occasion['movie']] . " klockan " . $occasion['time'] . "<br />";
-        }
-        */
-
         return $availableMovieOccasions;
     }
 
-    private function getAvaliableTables(){
+    private function getAvaliableTables($availableMovieOccasions, $availableDays){
+        $dinnerUrl = $this->url . substr($this->startPageLinks["Zekes restaurang!"], 1) . "/";
+        $dinnerOccasions = $this->scrape->getDinnerOccasions($this->scrape->curlRequest($dinnerUrl));
 
+        $dinners = array("01" => array(), "02" => array(), "03" => array());
+
+        foreach($dinnerOccasions as $dinnerOccasion){
+            if(strpos($dinnerOccasion, "fre") === 0 && in_array("01", $availableDays)){
+                array_push($dinners["01"], str_replace("fre", "", $dinnerOccasion));
+            }
+            if(strpos($dinnerOccasion, "lor") === 0 && in_array("02", $availableDays)){
+                array_push($dinners["02"], str_replace("lor", "", $dinnerOccasion));
+            }
+            if(strpos($dinnerOccasion, "son") === 0 && in_array("03", $availableDays)){
+                array_push($dinners["03"], str_replace("son", "", $dinnerOccasion));
+            }
+        }
+
+        $resultArray = array();
+
+        foreach($availableMovieOccasions as $availableMovieOccasion){
+            foreach($dinners as $dinner){
+                foreach($dinner as $time){
+                    $formattedTime = $time[0] . $time[1] . "-" . $time[2] . $time[3];
+                    if(str_replace(":", "", $availableMovieOccasion["time"]) + 200 <= $time){
+                        array_push($resultArray, "Ni kan se filmen " . $this->movies[$availableMovieOccasion["movie"]]. " på " . $this->days[$availableMovieOccasion["day"]] . " kl " . $availableMovieOccasion["time"] . " och äta middag kl " . $formattedTime . ".");
+                    }
+                }
+            }
+        }
+
+        $resultList = "<ul>";
+
+        foreach($resultArray as $result){
+            $resultList .= "<li>" . $result . "</li>";
+        }
+        $resultList .= "</ul>";
+
+        return $resultList;
     }
 
     public function getResult(){
-        return $this->result;
+        return $this->availableMeetups;
     }
-
 }
