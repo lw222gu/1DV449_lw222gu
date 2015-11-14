@@ -58,13 +58,21 @@ class Scrape{
     }
 
     public function getMovieDays($data){
-        $DOMMovieDays = $this->getXPath($data)->query('//select[@id="day"]//option');
+        $DOMMovieDays = $this->getXPath($data)->query('//select[@id="day"]//option[not(@disabled)]');
         $days = array();
         foreach($DOMMovieDays as $DOMMovieDay){
-            if($DOMMovieDay->nodeValue != "--- Välj dag ---"){
-                array_push($days, $DOMMovieDay->nodeValue);
-            }
+            array_push($days, $DOMMovieDay->getAttribute("value"));
         }
         return $days;
+    }
+
+    public function getMovies($data){
+        $DOMMovies = $this->getXPath($data)->query('//select[@id = "movie"]/option[not(@disabled)]');
+        $movies = array();
+
+        foreach($DOMMovies as $DOMMovie){
+            array_push($movies, $DOMMovie->getAttribute("value"));
+        }
+        return $movies;
     }
 }
