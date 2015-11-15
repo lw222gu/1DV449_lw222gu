@@ -8,11 +8,12 @@ class LayoutView {
                 <head>
                     <meta charset="utf-8">
                     <title>Friend Meetup</title>
-                    <!-- <link rel="stylesheet" href="content/css/style.css" /> -->
+                    <link rel="stylesheet" href="css/style.css" />
                 </head>
                 <body>
                     <div id="content">
                         <main>
+                            <h1>Meetup!</h1>
                             ' . $this->renderForm() . '
                             ' . $this->renderResult() . '
                         </main>
@@ -26,8 +27,8 @@ class LayoutView {
         return '
             <form method = "post">
                 <label for="url">Ange url: </label>
-                <input type="text" name="url" />
-                <input type="submit" value="Starta" />
+                <input type="text" name="url" id="url" />
+                <input type="submit" value="Starta" id="startButton" />
             </form>
             ';
     }
