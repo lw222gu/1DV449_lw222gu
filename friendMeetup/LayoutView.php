@@ -29,16 +29,20 @@ class LayoutView {
     }
 
     private function renderForm(){
-        return '
-            <form method = "post">
-                <label for="url">Ange url: </label>
-                <input type="text" name="url" id="url" />
-                <input type="submit" value="Starta" id="startButton" />
-            </form>
-            ';
+        if(!isset($_GET["day"])){
+            return '
+                <form method = "post">
+                    <label for="url">Ange url: </label>
+                    <input type="text" name="url" id="url" />
+                    <input type="submit" value="Starta" id="startButton" />
+                </form>
+                ';
+        }
+        return "";
     }
 
     private function renderResult(){
+
         if(isset($_POST["url"])){
             $_SESSION["url"] = $_POST["url"];
             $this->meetup = new Meetup($_SESSION["url"]);
@@ -50,10 +54,11 @@ class LayoutView {
             return $this->renderTablesList();
         }
 
+        /*
         if(isset($_SESSION["result"])){
             return $_SESSION["result"];
         }
-
+        */
         return "";
     }
 
@@ -66,7 +71,7 @@ class LayoutView {
             $ret .= "<ul>";
             foreach($movieOccasions as $movieOccasion){
                 $ret .= "<li>Ni kan se filmen " . $movieOccasion["movie"] . " på " . $movieOccasion["day"] . " kl. " . $movieOccasion["time"] . ".
-                 <br /><a href='?day=" . $movieOccasion['dayCode'] . "&time=" . $movieOccasion['time'] . "&movie=" . $movieOccasion['movie'] . "'>Välj denna och boka bord</a></li>";
+                <br /><a href='?day=" . $movieOccasion['dayCode'] . "&time=" . $movieOccasion['time'] . "&movie=" . $movieOccasion['movie'] . "'>Välj denna och boka bord</a></li>";
             }
             $ret .= "</ul>";
         }
@@ -74,8 +79,7 @@ class LayoutView {
         else {
             $ret .= "<p>Inga lediga filmer hittades.</p>";
         }
-
-        $_SESSION["result"] = $ret;
+        //$_SESSION["result"] = $ret;
 
         return $ret;
     }
