@@ -8,22 +8,23 @@ class Meetup {
     private $days = array("01" => "fredag", "02" => "lördag", "03" => "söndag");
     private $movies = array("01" => "Söderkåkar", "02" => "Fabian Bom", "03" => "Pensionat Paradiset");
 
-    private $availableMeetups;
+    private $availableDays;
+    private $availableMovieOccasions;
 
     public function __construct($url){
         $this->url = $url;
+
         $this->scrape = new Scrape();
 
-        //Get cURL request data and send it into getLinks
-        $this->startPageLinks = $this->scrape->getLinks($this->scrape->curlRequest($url));
-
-        $availableDays = $this->getAvailableCalendarDays();
-        $availableMovieOccasions = $this->getAvailableMovies($availableDays);
-        $this->availableMeetups = $this->getAvaliableTables($availableMovieOccasions, $availableDays);
+        if($this->url != null){
+            //Get cURL request data and send it into getLinks
+            $this->startPageLinks = $this->scrape->getLinks($this->scrape->curlRequest($url));
+            $_SESSION['startPageLinks'] = $this->startPageLinks;
+        }
     }
 
     private function getAvailableCalendarDays(){
-        $calendarUrl = $this->url . substr($this->startPageLinks["Kalendrar"], 1) . "/";
+        $calendarUrl = $this->url . $this->startPageLinks["Kalendrar"] . "/";
         $calendarLinks = $this->scrape->getLinks($this->scrape->curlRequest($calendarUrl));
 
         $allCalendars = array();
@@ -56,73 +57,55 @@ class Meetup {
         return $availableDays;
     }
 
-    private function getAvailableMovies($days){
-        $cinemaUrl = $this->url . substr($this->startPageLinks["Stadens biograf!"], 1);
+    public function getAvailableMovies(){
+
+        $this->availableDays = $this->getAvailableCalendarDays();
+
+        $cinemaUrl = $this->url . $this->startPageLinks["Stadens biograf!"];
         $movieDays = $this->scrape->getMovieDays($this->scrape->curlRequest($cinemaUrl));
         $movies = $this->scrape->getMovies($this->scrape->curlRequest($cinemaUrl));
 
-        $availableMovieOccasions = array();
+        $this->availableMovieOccasions = array();
 
         foreach($movieDays as $day){
-            if(in_array($day, $days)){
+            if(in_array($day, $this->availableDays)){
                 foreach($movies as $movie){
                     $json = $this->scrape->curlRequest($cinemaUrl . '/check?day=' . $day . '&movie=' . $movie);
                     $movieOccasions = json_decode($json, true);
 
                     foreach($movieOccasions as $movieOccasion){
                         if($movieOccasion['status'] == 1){
-                            array_push($availableMovieOccasions, array('day' => $day, 'time' => $movieOccasion['time'], 'movie' => $movieOccasion['movie']));
+                            array_push($this->availableMovieOccasions, array('dayCode' => $day, 'day' => $this->days[$day], 'time' => $movieOccasion['time'], 'movie' => $this->movies[(string)$movieOccasion['movie']]));
                         }
                     }
                 }
             }
         }
 
-        return $availableMovieOccasions;
+        return $this->availableMovieOccasions;
     }
 
-    private function getAvaliableTables($availableMovieOccasions, $availableDays){
-        $dinnerUrl = $this->url . substr($this->startPageLinks["Zekes restaurang!"], 1) . "/";
+    public function getAvaliableTables($availableDays, $movieTime){
+
+        $movieTime = str_replace(":", "", $movieTime);
+        $dinnerUrl = $this->url . $_SESSION['startPageLinks']["Zekes restaurang!"] . "/";
+
         $dinnerOccasions = $this->scrape->getDinnerOccasions($this->scrape->curlRequest($dinnerUrl));
 
-        $dinners = array("01" => array(), "02" => array(), "03" => array());
+        $dinners = array();
 
         foreach($dinnerOccasions as $dinnerOccasion){
-            if(strpos($dinnerOccasion, "fre") === 0 && in_array("01", $availableDays)){
-                array_push($dinners["01"], str_replace("fre", "", $dinnerOccasion));
+            if(strpos($dinnerOccasion, "fre") === 0 && $availableDays == "01" && str_replace("fre", "", $dinnerOccasion) - 200 >= $movieTime){
+                array_push($dinners, str_replace("fre", "", $dinnerOccasion));
             }
-            if(strpos($dinnerOccasion, "lor") === 0 && in_array("02", $availableDays)){
-                array_push($dinners["02"], str_replace("lor", "", $dinnerOccasion));
+            if(strpos($dinnerOccasion, "lor") === 0 && $availableDays == "02" && str_replace("lor", "", $dinnerOccasion) - 200 >= $movieTime){
+                array_push($dinners, str_replace("lor", "", $dinnerOccasion));
             }
-            if(strpos($dinnerOccasion, "son") === 0 && in_array("03", $availableDays)){
-                array_push($dinners["03"], str_replace("son", "", $dinnerOccasion));
-            }
-        }
-
-        $resultArray = array();
-
-        foreach($availableMovieOccasions as $availableMovieOccasion){
-            foreach($dinners as $dinner){
-                foreach($dinner as $time){
-                    $formattedTime = $time[0] . $time[1] . "-" . $time[2] . $time[3];
-                    if(str_replace(":", "", $availableMovieOccasion["time"]) + 200 <= $time){
-                        array_push($resultArray, "Ni kan se filmen " . $this->movies[$availableMovieOccasion["movie"]]. " på " . $this->days[$availableMovieOccasion["day"]] . " kl " . $availableMovieOccasion["time"] . " och äta middag kl " . $formattedTime . ".");
-                    }
-                }
+            if(strpos($dinnerOccasion, "son") === 0 && $availableDays == "03" && str_replace("son", "", $dinnerOccasion) - 200 >= $movieTime){
+                array_push($dinners, str_replace("son", "", $dinnerOccasion));
             }
         }
 
-        $resultList = "<ul>";
-
-        foreach($resultArray as $result){
-            $resultList .= "<li>" . $result . "</li>";
-        }
-        $resultList .= "</ul>";
-
-        return $resultList;
-    }
-
-    public function getResult(){
-        return $this->availableMeetups;
+        return $dinners;
     }
 }

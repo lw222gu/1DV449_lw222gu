@@ -2,11 +2,6 @@
 
 class Scrape{
 
-    public function __construct(){
-        //$this->curlRequest($url);
-        //$this->getLinks();
-    }
-
     public function curlRequest($url){
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
