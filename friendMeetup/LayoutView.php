@@ -2,8 +2,6 @@
 
 class LayoutView {
 
-    private $meetup;
-
     public function renderHtmlOutput(){
         echo'<!DOCTYPE html>
             <html>
@@ -42,21 +40,21 @@ class LayoutView {
 
         if(isset($_POST["url"])){
             $_SESSION["url"] = $_POST["url"];
-            $this->meetup = new Meetup($_SESSION["url"]);
-            return $this->renderMovieList();
+            $meetup = new Meetup($_SESSION["url"]);
+            return $this->renderMovieList($meetup);
         }
 
         if(isset($_GET["day"])){
-            $this->meetup = new Meetup($_SESSION["url"]);
-            return $this->renderTablesList();
+            $dinner = new Dinner($_SESSION["url"]);
+            return $this->renderTablesList($dinner);
         }
 
         return "";
     }
 
-    private function renderMovieList(){
+    private function renderMovieList($meetup){
 
-        $movieOccasions = $this->meetup->getAvailableMovies();
+        $movieOccasions = $meetup->getAvailableMovies();
 
         $ret = "<h2>Följande filmer hittades</h2>";
 
@@ -64,7 +62,7 @@ class LayoutView {
             $ret .= "<ul>";
             foreach($movieOccasions as $movieOccasion){
                 $ret .= "<li>Ni kan se filmen " . $movieOccasion["movie"] . " på " . $movieOccasion["day"] . " kl. " . $movieOccasion["time"] . ".
-                <br /><a href='?day=" . $movieOccasion['dayCode'] . "&time=" . $movieOccasion['time'] . "&movie=" . $movieOccasion['movie'] . "'>Välj denna och boka bord</a></li>";
+                <br /><a href='?day=" . $movieOccasion['dayCode'] . "&time=" . $movieOccasion['time'] . "&movie=" . $movieOccasion['movie'] . "&url=" . $_POST["url"] . "'>Välj denna och boka bord</a></li>";
             }
             $ret .= "</ul>";
         }
@@ -76,8 +74,8 @@ class LayoutView {
         return $ret;
     }
 
-    private function renderTablesList(){
-        $tables = $this->meetup->getAvaliableTables($_GET["day"], $_GET["time"]);
+    private function renderTablesList($dinner){
+        $tables = $dinner->getAvaliableTables($_GET["day"], $_GET["time"], $_GET["url"]);
 
         $ret = "<h2>Följande lediga bord finns</h2>";
 

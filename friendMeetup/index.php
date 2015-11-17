@@ -2,6 +2,7 @@
 
 require_once('LayoutView.php');
 require_once('Meetup.php');
+require_once('Dinner.php');
 require_once('Scrape.php');
 
 session_start();

@@ -85,28 +85,4 @@ class Meetup {
 
         return $this->availableMovieOccasions;
     }
-
-    public function getAvaliableTables($availableDays, $movieTime){
-
-        $movieTime = str_replace(":", "", $movieTime);
-        $dinnerUrl = $this->url . $_SESSION['startPageLinks']["Zekes restaurang!"] . "/";
-
-        $dinnerOccasions = $this->scrape->getDinnerOccasions($this->scrape->curlRequest($dinnerUrl));
-
-        $dinners = array();
-
-        foreach($dinnerOccasions as $dinnerOccasion){
-            if(strpos($dinnerOccasion, "fre") === 0 && $availableDays == "01" && str_replace("fre", "", $dinnerOccasion) - 200 >= $movieTime){
-                array_push($dinners, str_replace("fre", "", $dinnerOccasion));
-            }
-            if(strpos($dinnerOccasion, "lor") === 0 && $availableDays == "02" && str_replace("lor", "", $dinnerOccasion) - 200 >= $movieTime){
-                array_push($dinners, str_replace("lor", "", $dinnerOccasion));
-            }
-            if(strpos($dinnerOccasion, "son") === 0 && $availableDays == "03" && str_replace("son", "", $dinnerOccasion) - 200 >= $movieTime){
-                array_push($dinners, str_replace("son", "", $dinnerOccasion));
-            }
-        }
-
-        return $dinners;
-    }
 }
