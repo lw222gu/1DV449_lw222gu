@@ -68,7 +68,7 @@ class Meetup {
         }
 
         else {
-            $cinemaUrl = $this->url . $this->startPageLinks["Stadens biograf!"];
+            $cinemaUrl = $this->url . $this->startPageLinks["Stadens biograf!"]  . "/";
             $movieDays = $this->scrape->getMovieDays($this->scrape->curlRequest($cinemaUrl));
             $movies = $this->scrape->getMovies($this->scrape->curlRequest($cinemaUrl));
 
