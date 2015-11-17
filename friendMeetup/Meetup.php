@@ -8,7 +8,6 @@ class Meetup {
     private $days = array("01" => "fredag", "02" => "lördag", "03" => "söndag");
 
     private $availableDays;
-    private $availableMovieOccasions;
 
     public function __construct($url){
         $this->url = $url;
@@ -25,6 +24,7 @@ class Meetup {
 
         $allCalendars = array();
 
+        //Adds every persons calendar link to one common array ($allCalendars).
         foreach($calendarLinks as $link){
             $personalCalendar = $this->scrape->getCalendar($this->scrape->curlRequest($calendarUrl . "/" . $link));
             array_push($allCalendars, $personalCalendar);
@@ -32,6 +32,7 @@ class Meetup {
 
         $days = array(0, 0, 0);
 
+        //Adds 1 to each day in $days array, for every person that is available that day.
         foreach($allCalendars as $calendar){
             for($i = 0; $i < count($calendar); $i = $i+1){
                 $days[$i] += $calendar[$i];
@@ -40,6 +41,10 @@ class Meetup {
 
         $availableDays = array();
 
+        /*
+         * Checks if the total number of available persons for each day is equal to each other,
+         * and if that´s the case, adds that day to $availableDays array.
+         */
         if($days[0] == count($allCalendars)){
             array_push($availableDays, "01");
         }
@@ -56,33 +61,38 @@ class Meetup {
     public function getAvailableMovies(){
 
         $this->availableDays = $this->getAvailableCalendarDays();
+        $availableMovieOccasions = array();
 
-        $cinemaUrl = $this->url . $this->startPageLinks["Stadens biograf!"];
-        $movieDays = $this->scrape->getMovieDays($this->scrape->curlRequest($cinemaUrl));
-        $movies = $this->scrape->getMovies($this->scrape->curlRequest($cinemaUrl));
+        if(count($this->availableDays) == 0){
+            $availableMovieOccasions["error"] = "Ingen dag finns där alla är lediga.";
+        }
 
-        $this->availableMovieOccasions = array();
+        else {
+            $cinemaUrl = $this->url . $this->startPageLinks["Stadens biograf!"];
+            $movieDays = $this->scrape->getMovieDays($this->scrape->curlRequest($cinemaUrl));
+            $movies = $this->scrape->getMovies($this->scrape->curlRequest($cinemaUrl));
 
-        foreach($movieDays as $day){
-            if(in_array($day, $this->availableDays)){
-                foreach($movies as $movie){
-                    $json = $this->scrape->curlRequest($cinemaUrl . '/check?day=' . $day . '&movie=' . $movie);
-                    $movieOccasions = json_decode($json, true);
+            foreach($movieDays as $day){
+                if(in_array($day, $this->availableDays)){
+                    foreach($movies as $movie){
+                        $json = $this->scrape->curlRequest($cinemaUrl . '/check?day=' . $day . '&movie=' . $movie);
+                        $movieOccasions = json_decode($json, true);
 
-                    foreach($movieOccasions as $movieOccasion){
-                        if($movieOccasion['status'] == 1){
-                            array_push($this->availableMovieOccasions, array(
-                                'dayCode' => $day,
-                                'day' => $this->days[$day],
-                                'time' => $movieOccasion['time'],
-                                'movie' => array_search((string)$movieOccasion['movie'], $movies)
-                            ));
+                        foreach($movieOccasions as $movieOccasion){
+                            if($movieOccasion['status'] == 1){
+                                array_push($availableMovieOccasions, array(
+                                    'dayCode' => $day,
+                                    'day' => $this->days[$day],
+                                    'time' => $movieOccasion['time'],
+                                    'movie' => array_search((string)$movieOccasion['movie'], $movies)
+                                ));
+                            }
                         }
                     }
                 }
             }
         }
 
-        return $this->availableMovieOccasions;
+        return $availableMovieOccasions;
     }
 }

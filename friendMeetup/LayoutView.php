@@ -7,6 +7,8 @@ class LayoutView {
             <html>
                 <head>
                     <meta charset="utf-8">
+                    <!-- Tell browser not to cache data -->
+                    <meta http-equiv="Cache-control" content="no-store">
                     <title>Friend Meetup</title>
                     <link rel="stylesheet" href="css/style.css" />
                 </head>
@@ -18,8 +20,8 @@ class LayoutView {
                             ' . $this->renderResult() . '
                         </main>
                     </div>
-                 </body>
-              </html>
+                </body>
+            </html>
             ';
     }
 
@@ -39,14 +41,13 @@ class LayoutView {
     private function renderResult(){
 
         if(isset($_POST["url"])){
-            $_SESSION["url"] = $_POST["url"];
-            $meetup = new Meetup($_SESSION["url"]);
+            $meetup = new Meetup($_POST["url"]);
             return $this->renderMovieList($meetup);
         }
 
         if(isset($_GET["day"])){
-            $dinner = new Dinner($_SESSION["url"]);
-            return $this->renderTablesList($dinner);
+            $dinner = new Dinner();
+            return $this->renderDinnerTablesList($dinner);
         }
 
         return "";
@@ -56,33 +57,49 @@ class LayoutView {
 
         $movieOccasions = $meetup->getAvailableMovies();
 
-        $ret = "<h2>Följande filmer hittades</h2>";
+        $ret = "<h2>Följande möjligheter till att träffas hittades</h2>";
 
-        if(count($movieOccasions) != 0){
-            $ret .= "<ul>";
-            foreach($movieOccasions as $movieOccasion){
-                $ret .= "<li>Ni kan se filmen " . $movieOccasion["movie"] . " på " . $movieOccasion["day"] . " kl. " . $movieOccasion["time"] . ".
-                <br /><a href='?day=" . $movieOccasion['dayCode'] . "&time=" . $movieOccasion['time'] . "&movie=" . $movieOccasion['movie'] . "&url=" . $_POST["url"] . "'>Välj denna och boka bord</a></li>";
-            }
-            $ret .= "</ul>";
+        if(array_key_exists("error", $movieOccasions)){
+            $ret .= "<p>" . $movieOccasions["error"] . "</p>";
         }
 
         else {
-            $ret .= "<p>Inga lediga filmer hittades.</p>";
+            if(count($movieOccasions) != 0){
+                $ret .= "<ul>";
+                foreach($movieOccasions as $movieOccasion){
+                    $ret .= "
+                        <li>
+                            Ni kan se filmen " . $movieOccasion["movie"] .
+                            " på " . $movieOccasion["day"] . " kl. " . $movieOccasion["time"] .
+                            ".<br /><a href='?day=" . $movieOccasion['dayCode'] . "&time=" .
+                            $movieOccasion['time'] . "&movie=" . $movieOccasion['movie'] .
+                            "&url=" . $_POST["url"] . "'>Välj denna och boka bord</a>
+                        </li>";
+                }
+                $ret .= "</ul>";
+            }
+
+            else {
+                $ret .= "<p>Inga lediga filmer hittades.</p>";
+            }
         }
 
         return $ret;
     }
 
-    private function renderTablesList($dinner){
+    private function renderDinnerTablesList($dinner){
         $tables = $dinner->getAvaliableTables($_GET["day"], $_GET["time"], $_GET["url"]);
-
         $ret = "<h2>Följande lediga bord finns</h2>";
 
         if(count($tables) != 0){
             $ret .= "<ul>";
             foreach($tables as $table){
-                $ret .= "<li>Ni kan se filmen " . $_GET["movie"] . " kl " . $_GET["time"] . " och äta på Zekes Restaurang kl " . $table[0] . $table[1] . "-" . $table[2] . $table[3] . ".</li>";
+                $ret .= "
+                        <li>
+                            Ni kan se filmen " . $_GET["movie"] . " kl " . $_GET["time"] .
+                            " och äta på Zekes Restaurang kl " . $table[0] . $table[1] .
+                            "-" . $table[2] . $table[3] . ".
+                        </li>";
             }
             $ret .= "</ul>";
         }
@@ -93,5 +110,4 @@ class LayoutView {
 
         return $ret;
     }
-
 }

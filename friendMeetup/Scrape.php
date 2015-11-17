@@ -30,7 +30,7 @@ class Scrape{
         /*
          * Push links to links array as key-value pairs,
          * where nodeValue = key, and href attribute = value.
-        */
+         */
         foreach ($DOMLinks as $DOMLink){
             $links[$DOMLink->nodeValue] = $DOMLink->getAttribute("href");
         }
@@ -41,6 +41,10 @@ class Scrape{
     public function getCalendar($data){
         $DOMTableDatas = $this->getXPath($data)->query('//td');
         $tableData = array();
+
+        /*
+         * Push 1 or 0 to array, depending on if person is available that day or not.
+         */
         foreach($DOMTableDatas as $DOMTableData){
             if(strcasecmp($DOMTableData->nodeValue, "ok") == 0){
                 array_push($tableData, 1);
@@ -67,7 +71,6 @@ class Scrape{
 
         foreach($DOMMovies as $DOMMovie){
             $movies[$DOMMovie->nodeValue] = $DOMMovie->getAttribute("value");
-            //array_push($movies, $DOMMovie->getAttribute("value"));
         }
         return $movies;
     }
