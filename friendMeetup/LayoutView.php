@@ -4,9 +4,6 @@ class LayoutView {
 
     private $meetup;
 
-    public function __construct(){
-    }
-
     public function renderHtmlOutput(){
         echo'<!DOCTYPE html>
             <html>
@@ -54,17 +51,13 @@ class LayoutView {
             return $this->renderTablesList();
         }
 
-        /*
-        if(isset($_SESSION["result"])){
-            return $_SESSION["result"];
-        }
-        */
         return "";
     }
 
     private function renderMovieList(){
 
         $movieOccasions = $this->meetup->getAvailableMovies();
+
         $ret = "<h2>Följande filmer hittades</h2>";
 
         if(count($movieOccasions) != 0){
@@ -79,7 +72,6 @@ class LayoutView {
         else {
             $ret .= "<p>Inga lediga filmer hittades.</p>";
         }
-        //$_SESSION["result"] = $ret;
 
         return $ret;
     }

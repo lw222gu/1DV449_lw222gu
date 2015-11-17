@@ -6,21 +6,17 @@ class Meetup {
     private $scrape;
     private $startPageLinks;
     private $days = array("01" => "fredag", "02" => "lördag", "03" => "söndag");
-    private $movies = array("01" => "Söderkåkar", "02" => "Fabian Bom", "03" => "Pensionat Paradiset");
 
     private $availableDays;
     private $availableMovieOccasions;
 
     public function __construct($url){
         $this->url = $url;
-
         $this->scrape = new Scrape();
 
-        if($this->url != null){
-            //Get cURL request data and send it into getLinks
-            $this->startPageLinks = $this->scrape->getLinks($this->scrape->curlRequest($url));
-            $_SESSION['startPageLinks'] = $this->startPageLinks;
-        }
+        //Get cURL request data and send it into getLinks
+        $this->startPageLinks = $this->scrape->getLinks($this->scrape->curlRequest($url));
+        $_SESSION['startPageLinks'] = $this->startPageLinks;
     }
 
     private function getAvailableCalendarDays(){
@@ -75,7 +71,12 @@ class Meetup {
 
                     foreach($movieOccasions as $movieOccasion){
                         if($movieOccasion['status'] == 1){
-                            array_push($this->availableMovieOccasions, array('dayCode' => $day, 'day' => $this->days[$day], 'time' => $movieOccasion['time'], 'movie' => $this->movies[(string)$movieOccasion['movie']]));
+                            array_push($this->availableMovieOccasions, array(
+                                'dayCode' => $day,
+                                'day' => $this->days[$day],
+                                'time' => $movieOccasion['time'],
+                                'movie' => array_search((string)$movieOccasion['movie'], $movies)
+                            ));
                         }
                     }
                 }

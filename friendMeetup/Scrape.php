@@ -66,7 +66,8 @@ class Scrape{
         $movies = array();
 
         foreach($DOMMovies as $DOMMovie){
-            array_push($movies, $DOMMovie->getAttribute("value"));
+            $movies[$DOMMovie->nodeValue] = $DOMMovie->getAttribute("value");
+            //array_push($movies, $DOMMovie->getAttribute("value"));
         }
         return $movies;
     }
