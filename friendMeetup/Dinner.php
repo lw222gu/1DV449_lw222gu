@@ -10,7 +10,8 @@ class Dinner {
 
     public function getAvaliableTables($day, $movieTime, $url){
 
-        $movieTime = str_replace(":", "", $movieTime);
+        $movieTime = $movieTime[0] . $movieTime[1];
+
         $dinnerUrl = $url . $_SESSION['startPageLinks']["Zekes restaurang!"] . "/";
         session_unset("startPageLinks");
 
@@ -19,13 +20,16 @@ class Dinner {
         $dinners = array();
 
         foreach($dinnerOccasions as $dinnerOccasion){
-            if(strpos($dinnerOccasion, "fre") === 0 && $day == "01" && str_replace("fre", "", $dinnerOccasion) - 200 >= $movieTime){
+
+            $dinnerTime = $dinnerOccasion[3] . $dinnerOccasion[4];
+
+            if(strpos($dinnerOccasion, "fre") === 0 && $day == "01" && $dinnerTime - 2 >= $movieTime){
                 array_push($dinners, str_replace("fre", "", $dinnerOccasion));
             }
-            if(strpos($dinnerOccasion, "lor") === 0 && $day == "02" && str_replace("lor", "", $dinnerOccasion) - 200 >= $movieTime){
+            if(strpos($dinnerOccasion, "lor") === 0 && $day == "02" && $dinnerTime - 2 >= $movieTime){
                 array_push($dinners, str_replace("lor", "", $dinnerOccasion));
             }
-            if(strpos($dinnerOccasion, "son") === 0 && $day == "03" && str_replace("son", "", $dinnerOccasion) - 200 >= $movieTime){
+            if(strpos($dinnerOccasion, "son") === 0 && $day == "03" && $dinnerTime - 2 >= $movieTime){
                 array_push($dinners, str_replace("son", "", $dinnerOccasion));
             }
         }

@@ -8,7 +8,7 @@ class LayoutView {
                 <head>
                     <meta charset="utf-8">
                     <!-- Tell browser not to cache data -->
-                    <meta http-equiv="Cache-control" content="no-store">
+                    <meta http-equiv="Cache-Control" content="no-store">
                     <title>Friend Meetup</title>
                     <link rel="stylesheet" href="css/style.css" />
                 </head>
@@ -41,7 +41,8 @@ class LayoutView {
     private function renderResult(){
 
         if(isset($_POST["url"])){
-            $meetup = new Meetup($_POST["url"]);
+            $url = strip_tags($_POST["url"]);
+            $meetup = new Meetup($url);
             return $this->renderMovieList($meetup);
         }
 
