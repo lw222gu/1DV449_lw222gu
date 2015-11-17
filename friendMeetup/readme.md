@@ -28,7 +28,7 @@ använde sig av den information och data som var Facebooks och som fanns "runtom
 ## Finns det några riktlinjer för utvecklare att tänka på om man vill vara "en god skrapare" mot serverägarna?
 * Undersök alltid om sidan du tänker skrapa har några Terms of Use som sätter upp riktlinjer kring skrapning, och se även
 vad som anges i robots.txt.
-* Tala alltid om vem du är som skrapar sidan och att du gör det, samt hur sidägaren kan nå dig.
+* Tala alltid om vem du är som skrapar sidan och hur sidägaren kan nå dig.
 * Tänk till när det kommer till upphovsrättsskyddat material - en sidägare som publicerat ett foto kanske inte ger dig rätten
 att publicera det vidare.
 * Tänk till kring de etiska aspekterna nämnda ovan.
