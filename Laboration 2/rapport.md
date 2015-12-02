@@ -64,7 +64,31 @@ I många fall kommer man långt på att använda redan existerande funktioner f�
 * Applikationen bör skicka känslig information via krypterade anslutningar, och då använda https istället för http.
 
 
-### Problem 3:
+### Problem 3: Cross-Site Scripting - XSS
+Det är möjligt att skjuta in JavaScript i meddelanderutan. Ett exempel är att ange texten `>'>"><img src=x onerror=alert(0)>` som meddelande. I det fallet dyker en alertruta med texten `0` upp i samband med postningen av meddelandet. Byter jag ut 0 mot `document.cookie`, så att meddelandet blir `>'>"><img src=x onerror=alert(document.cookie)>` visar istället alertrutan sessions-id:t. Det betyder att det är möjligt att komma åt sessions-id:t, t.ex. genom att istället för att visa en alertruta redirecta användaren till en annan webbplats och skicka med sessions-id:t. På den webbsajten är det sedan möjligt att logga detta, och då till slut använda den inloggade användarens sessiona-id för att utföra egna requests.
+
+#### Om Cross-Site Scripting
+XSS är ett säkershetsfel som gör att det är möjligt att skjuta in skadlig JavaScript till applikationen. När JavaScripten sedan exekveras i användares webbläsare är det möjligt att stjäla data, utföra aktioner i användarens namn, etc. [Referens: https://www.google.com/about/appsecurity/learning/xss/#WhatIsIt, och OWASP 2013]
+
+Säkerhetshål för XSS-attacker uppstår när applikationen lägger till användargenererad data till webbplatsen utan att först validera input-datan och ersätta eventuellt skadligt innehåll med något annat, t.ex. en tomsträng [Referens OWASP 2013].
+
+#### Förhindra XXS-attacker
+Ett sätt att minska risken för XXS-attacker är att escapea all input [Referens: https://www.google.com/about/appsecurity/learning/xss/#PreventingXSS och OWASP 2013]. Att escapea innebär att varje del av en inmatad sträng tolkas som en sträng i sig, inte som kod. Att skriva egen kod för att manuellt escapea inputs är väldigt svårt. Därför rekommenderar [Referens: https://www.google.com/about/appsecurity/learning/xss/#PreventingXSS] att man istället använder t.ex. ett ramverk som tillhandahåller innehållsmedveten auto-escape för detta.
+
+Ytterligare ett sätt att motverka XSS-attacker är att validera inputs mot en whitelist - alltså, tillåt bara inputs bestående av vissa tecken. I vissa fall kan det dock vara svårt, då applikationer kan kräva att det är möjligt att använda specialtecken av olika slag. Om så är fallet är det extra viktigt att validera längd, tecken, etc. innan input-datan accepteras [OWASP 2013].
+
+Det kan vara svårt att testa för XSS. Även om [OWASP 2013] anger att det är relativt enkelt att hitta de flesta XSS-säkerhetshålen, menar [Referens: https://www.google.com/about/appsecurity/learning/xss/#TestingXSS] att det inte alls finns något helgjutet sätt att hitta möjliga attackvägar. De menar att det bästa är att testa i form av en kombination av
+* manuella tester (testa att skjuta in JavaScript på alla input-fält som finns i applikationen),
+* unit-tester (för att kontrollera korrekt escaping av viktiga delar),
+* och att använda automatiskt testverktyg.
+
+#### Förändringar i applikationen
+Applikationen måste se till att escapea all input-data, och validera den mot en whitelist för att se till att det inte är möjligt att skjuta in skadlig JavaScript någonstans i applikationen.
+
+
+
+
+
 
 
 
