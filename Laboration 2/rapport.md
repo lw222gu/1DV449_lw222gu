@@ -1,4 +1,11 @@
-# Laboration 2, Webbteknik II
+# Analys och förbättringsförslag ur säkerhets- och prestandasynpunkt på applikationen Labby Message
+
+Rapport skriven av Lisa Westlund (lw222gu).
+
+Laboration 2 i kursen Webbteknik II, vid Linnéuniversitetet.
+
+Rapporten är indelad i tre delar:
+
 ---
 ## Säkerhetsproblem
 
@@ -27,15 +34,21 @@ Det är också av största vikt att alltid validera all användargenererad data.
 Applikationen bör förändras genom att använda sig av parameteriserade frågor till databasen via lagrade procedurer, i stället för att som i login-fallet konkatenera ihop strängar av SQL-frågor och användarinput. Applikationen bör också validera den data som användare kan posta.
 
 
-### Problem 2: Broken Authentication & Session Management
+### Problem 2: Hijacking p.g.a. dålig autentiserings- och sessionshantering
 När en användare valt att logga ut är det möjligt att t.ex. genom webbläsarens bakåtknapp, eller genom att känna till url:en som används i inloggat läge, hamna i inloggat läge igen. I de fall en användare t.ex. använder sig av en publik dator, tror att den loggat ut korrekt, och sedan lämnar datorn igång utan att stänga webbläsaren korrekt, och på så sätt döda sessionen, är det möjligt för nästa person att enbart klicka på tillbakaknappen, eller ange url:en http://localhost:3000/message för att åter vara inloggad i den första användarens namn. Så länge sessionen är i liv är detta möjligt.
 
 Förutom att sessionen inte avslutas korrekt när en användare loggar ut, så har jag en stark anledning att tro att lösenord lagras i klartext. Detta antagande baseras på att när inloggningen sker görs en kontroll mot databasen med den input som användaren själv anger. Det sker ingen verifiering mot hur det angivna lösenordet skulle se ut om det var hashat (eller krypterat).
 
-#### Om Broken Authentication & Session Management
+Lösenordshanteringen och hanteringen av sessioner är starka orsaker till att applikationen är känslig för hijacking. [OWASP 2013] benämner problemet som Broken Authentication and Session Management, vilket också anges vara den näst vanligaste säkerhetsbristen i webbapplikationer.
 
+#### Om hijacking
+Hijacking innebär att en person kan komma över en användares konto, och utföra aktioner i dennes namn. En stark anledning till att detta är så vanligt förekommande är att många utvecklare väljer att skriva egna autentiseringsfunktioner, och då missar viktiga delar kring lösenordshantering, utloggning, sessionshantering m.m. Om en person kommer över en användares konto kan den utföra allt som användaren kan utföra, vilket gör att användare med mycket rättigheter i applikationen ofta är mer utsatta för denna typ av attack. [OWASP 2013] 
 
+#### Förhindra problem kring hijacking, med avseende på autentiserings- och sessionshantering
+Text.
 
+#### Ändringar i applikationen beträffande autentisering och sessioner
+Text.
 
 
 
@@ -52,6 +65,8 @@ Varför inkludera ett ramverk som Bootstrap när det ändå inte används?
 
 ### Css i html-filen
 Lägg css i externa filer istället. Då kan de cacheas över sidor.
+
+---
 
 ## Personliga reflektioner
 I flera fall i rapporten har jag angett att jag spekulerar i frågan. Jag är ovan att läsa kod i node-projekt (detta är första gången), så det kan hända att jag missat något uppenbart. Jag väljer dock att reflektera kring problemen jag misstänker kan finnas i de fall jag inte är hundraprocentigt säker på att jag förstått koden rätt.
