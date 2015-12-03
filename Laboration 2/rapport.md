@@ -10,7 +10,7 @@ Rapporten är indelad i tre delar: Säkerhetsproblem, Prestandaproblem och Perso
 ## Säkerhetsproblem
 
 ### Problem 1: SQL Injections
-Applikationen möjliggör för SQL Injections. T.ex. är det möjligt att logga in genom att ange ett existerande användarnamn, och som lösenord ange "' OR '1'='1". Du behöver alltså inte vara en autentiserad användare, utan du kan komma åt innehållet via en annan användares användarnamn, och då utföra aktioner i dennes namn.
+Applikationen möjliggör för SQL Injections. T.ex. är det möjligt att logga in genom att ange ett existerande användarnamn, och som lösenord ange "' OR '1'='1". Du behöver alltså inte vara en auktoriserad användare, utan du kan komma åt innehållet genom att autentisera dig som en annan användare, och då utföra aktioner i dennes namn.
 
 Utan att veta vad applikationen har för rättigheter i databasen spekulerar jag i att det är möjligt att i kombination med ovanstående skicka in skadlig kod i databasen, t.ex. att radera den. Detta är fullt möjligt om användarens rättigheter inte är begränsade, så som applikationen är byggd i nuläget.
 
@@ -39,7 +39,7 @@ När en användare valt att logga ut är det möjligt att t.ex. genom webbläsar
 
 All information skickas okrypterad via http istället för via https.
 
-Förutom ovanstående, så har jag en stark anledning att tro att lösenord lagras i klartext. Detta antagande baseras på att när inloggningen sker görs en kontroll mot databasen med den input som användaren själv anger. Det sker ingen verifiering mot hur det angivna lösenordet skulle se ut om det var hashat (eller krypterat).
+Förutom ovanstående, så lagras lösenorden i klartext.
 
 Lösenordshanteringen och hanteringen av sessioner är starka orsaker till att applikationen är känslig för hijacking. [OWASP 2013] benämner problemet som Broken Authentication and Session Management, vilket också anges vara den näst vanligaste säkerhetsbristen i webbapplikationer.
 
@@ -77,25 +77,43 @@ Ett sätt att minska risken för XXS-attacker är att escapea all input [Referen
 
 Ytterligare ett sätt att motverka XSS-attacker är att validera inputs mot en whitelist - alltså, tillåt bara inputs bestående av vissa tecken. I vissa fall kan det dock vara svårt, då applikationer kan kräva att det är möjligt att använda specialtecken av olika slag. Om så är fallet är det extra viktigt att validera längd, tecken, etc. innan input-datan accepteras [OWASP 2013].
 
-Det kan vara svårt att testa för XSS. Även om [OWASP 2013] anger att det är relativt enkelt att hitta de flesta XSS-säkerhetshålen, menar [Referens: https://www.google.com/about/appsecurity/learning/xss/#TestingXSS] att det inte alls finns något helgjutet sätt att hitta möjliga attackvägar. De menar att det bästa är att testa i form av en kombination av
+Det kan vara svårt att testa för XSS. Även om [OWASP 2013] anger att det är relativt enkelt att hitta de flesta XSS-säkerhetshålen, menar [Referens: https://www.google.com/about/appsecurity/learning/xss/#TestingXSS] att det inte alls finns något helgjutet sätt att hitta möjliga attackvägar. De menar att det bästa är att utföra tester i form av en kombination av
 * manuella tester (testa att skjuta in JavaScript på alla input-fält som finns i applikationen),
 * unit-tester (för att kontrollera korrekt escaping av viktiga delar),
-* och att använda automatiskt testverktyg.
+* och att använda automatiska testverktyg för XXS.
 
 #### Förändringar i applikationen
 Applikationen måste se till att escapea all input-data, och validera den mot en whitelist för att se till att det inte är möjligt att skjuta in skadlig JavaScript någonstans i applikationen.
 
 
+### Problem 4: Osäkra direkta objektreferenser
+Applikationen har problem med osäkra direkt objektreferenser, genom att den visar meddelandens id-nummer i gömda fält i koden. Dessa id-nummer är dessutom exakt samma id som används i databasen. I min installation av applikationen fungerar det inte att radera meddelanden alls, men genom att studera koden tror jag att det är möjligt för en användare att genom att manipulera värdet för det dolda inputfältet radera ett annat meddelande än det meddelande som egentligen är knutet till raderalänken. Detta skulle då kunna leda till att en användare kan radera andra användares meddelanden, eftersom det inte, vad jag kan se, sker någon kontroll på att det verkligen är rätt användare som försöker radera ett meddelande.
+
+#### Om osäkra direkta objektreferenser
+En direkt objektreferens är en exponerad referens till ett internt objekt. Det kan t.ex. röra sig om databasnycklar [OWASP, T10]. Detta, i kombination med att åtkomstkontroller saknas på funktionsnivå (se problem 5), gör det möjligt för en användare att komma åt funktioner som den eventuellt inte är autkoriserad för.
+
+#### Förhindra problem med osäkra direkta objektreferenser
+Ett sätt att förhindra problem kring objektreferenser är att använda indirekta referenser på användar- eller sessionsnivå. Applikationen får sedan till uppgift att mappa de indirekta referenserna mot de verkliga referenserna i databasen. Dessutom måste åtkomstkontroll alltid ske för att säkerställa att användaren verkligen är auktoriserad för objektet som efterfrågas [OWASP A4].
+
+### Problem 5: Saknad åtkomstkontroll på funktionsnivå
+I applikationen är det möjligt att komma åt meddelanden i json-format utan att vara inloggad på sidan. Datan finns fritt tillgänglig om användaren besöker sidan `/message/data`. Det är dessutom fritt fram att ladda ner hela databasen genom att besöka sidan `/message/appModules/siteViews/static/message.db`.
+
+#### Om saknad åtkomstkontroll på funktionsnivå
+Saknad åtkomstkontroll på funktionsnivå innebär att anonyma användare kan komma åt privat funktionalitet, eller att vanliga användare kan komma åt funktioner som enbart ska vara tillgängliga för användare med högre behörigheter. Att detta möjliggörs beror på att det inte sker några åtkomstkontroller för dessa funktioner på servern. [OWASP 2013]
+
+#### Förhindra problem kring åtkomstkontroll
+För att förhindra problem kring att användare kan komma åt funktionalitet de inte är autoriserade för bör systemet bygga på att åtkomst i grund alltid nekas, men att för varje funktion ge explicit åtkomst för de roller som ska kunna använda funktionen [OWASP A7].
 
 
+### Problem 6: Cross-Site Request Forgery - CSRF
+Applikationen skyddas inte mot CSRF-attacker. Som tidigare nämnts finns det möjligheter att på olika vis skjuta in skadlig kod i applikationen. Detta tillsammans med att ingen unik token skickas med vid requests gör applikationen mycket känslig för denna typ av attacker.
 
+#### Om Cross-Site Request Forgery - CSRF
+CSRF är en typ av attack där t.ex. en opålitlig webbsida orsakar en användares webbläsare att utföra requests på den webbapplikation användaren är autentiserad, utan att användaren vet om det. Vad detta kan leda till beror mycket på vad den autentiserade användaren är auktoriserad att göra i applikationen. För den enskilda användaren som drabbas kan t.ex. en attack som lyckas ändra lösenordet leda till att man förlorar åtkomsten till sitt konto, och för en administratör kan en attack vara förödande för hela applikationen. [Referens: https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet  ]_
 
+#### Förhindra CSRF
+Den generella rekommendationen för att förhindra CSRF-attacker är att använda sig av det som kallas Synchronizer Token Pattern. Detta bygger på att inkludera en unik och oförutsägbar token i ett dolt fält i ett formulär. [OWASP A8, och https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet ]_ Denna skickas sedan med i HTTP-requesten och det är därefter upp till servern att verifiera denna token, och på så vis kunna anta med betydligt större säkerhet att användaren verkligen menade att utföra denna request. [https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet ]_
 
-
-
-
-### Kan skicka in html-taggar
-Det är möjligt att som användare skriva html-kod i meddelanderutan.
 
 ---
 
