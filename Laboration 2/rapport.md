@@ -16,7 +16,7 @@ Utan att veta vad applikationen har för rättigheter i databasen spekulerar jag
 SQL Injections i stort innebär skjuta in skadlig kod via input-fält i en applikation [1]. Detta kan göras för att få ta del av databasen, autentisera sig som en annan användare, radera databasen, manipulera innehållet i databasen, etc. [2]. Injections anses av OWASP vara den vanligaste säkerhetsbristen i webbapplikationer [3, s. 4]. OWASP pekar också på att ett resultat av injections som leder till förlust av data, manipulation av data, nekad åtkomst till applikationen, etc. kan påverka applikationens och applikationsägarens rykte. Detta är givetvis delvis beroende av datans värde i sig [3, s. 7].
 
 #### Förhindra SQL Injections
-SQL Injections förhindras enklast genom att använda parameteriserade frågor med validerad data vid kontakt med databasen, i stället för att låta användarinput användas direkt i SQL-satserna [2]. Det är också möjligt att använda sig av en teknik som benämns som "escaping". Escaping innebär att tecken som kan ha en särskild betydelse i SQL-frågor översätts till något annat [2]. Genom att ta reda på vilka tecken som kan anses ha en särskild betydelse för just den databas som används är det möjligt att svartlista dessa tecken, och på så vis skydda sig mot SQL Injections. Att svartlista något innebär dock en betydande risk för att missa något viktigt, och på så vis ändå öppna för attacker [2].
+SQL Injections förhindras enklast genom att använda parameteriserade frågor med validerad data vid kontakt med databasen, i stället för att låta användarinput användas direkt i SQL-satserna [2]. Genom att ta reda på vilka tecken som kan anses ha en särskild betydelse för just den databas som används är det möjligt att svartlista dessa tecken, och på så vis skydda sig mot SQL Injections. Att svartlista något innebär dock en betydande risk för att missa något viktigt, och på så vis ändå öppna för attacker [2].
 
 Applikationer bör också ha begränsade rättigheter till databasen i fråga, och då enbart ha rättighet att utföra det som krävs för applikationen. På så vis kan man undvika att t.ex. göra det möjligt att vid en attack radera hela databasen [2].
 
@@ -125,7 +125,7 @@ När applikationen laddas in görs ingen cachening. Expires-headern är satt til
 #### Om cachening och hur svarstiden kan förkortas
 Om ingen cachening görs av resurser som t.ex. JavaScript-filer, css och bilder måste dessa hämtas på nytt via nya Http-requests för varje sida som besöks på applikationen, vilket försämrar svarstiden. För att cacha resurser, och på så vis minska svarstiden, ska Expires-headern sättas till en tidpunkt som talar om hur länge resurserna kan anses vara up-to-date [7, s. 22], och Cache-Control-headern ska ha ett värde för max-age [7, s. 23]. Expires-headern används i webbläsare som inte stödjer HTTP/1.1, och skrivs över om webbläsaren stödjer nyare versioner av HTTP i samband med att Cache-Control-headern har ett värde för max-age [7, s. 23].
 
-Idealt skulle alla komponenter på en webbapplikation cachas, men vanligtvis cachas inte HTML-dokument då de ofta består av dynamiskt innehåll som kan ändras från varje gång en användare besöker en sida [7, s. 26].
+Idealt skulle alla komponenter på en webbapplikation cachas, men vanligtvis cachas inte HTML-dokument då de ofta består av dynamiskt innehåll som kan ändras mellan varje gång en användare besöker en sida [7, s. 26].
 
 Om komponenter uppdateras under tiden Expires-headern eller Cache-Control-headern fortfarande är giltig kommer inte användare som tidigare besökt sidan få ta del av ändringarna, eftersom filerna redan finns i deras cache. Ett sätt att komma runt detta är att döpa om filerna vid nya versioner, och därmed också förändra sökvägarna till dem - då kommer applikationen genomföra nya Http-requests nästa gång användaren besöker sidan [7, s. 27].
 
@@ -169,7 +169,7 @@ En favicon som är 691 x 257 px är onödigt stor, och dessutom inte kvadratisk.
 Ramverket Bootstrap läses in som en resurs i applikationen, men så vitt jag kan se används det inte särskilt mycket. Att läsa in så mycket kod, som faktiskt genereras med ramverket, till en så liten applikation kan ifrågasättas. Om vissa delar av Bootstrap ska användas bör filerna också optimeras som så att oanvänd kod raderas [7, s. 75].
 
 #### Paginering
-Det är alltid värt att fundera på om inte paginering vore ett bra alternativ. Just nu visas alla poster i en lång lista, istället för att visas sidvis, och på så sätt göra det möjligt att enbart läsa ut de poster från databasen som faktiskt ska visas - i stället för att hämta alla. I det här fallet, när det gäller en todo-applikation går jag inte in på det djupare, då jag tror att det går att förutsätta att det aldrig rör sig om så många meddelanden att det blir ett större prestandaproblem.
+Det är alltid värt att fundera på om inte paginering vore ett bra alternativ. Just nu visas alla poster i en lång lista, i stället för att visas sidvis, och på så sätt göra det möjligt att enbart läsa ut de poster från databasen som faktiskt ska visas - i stället för att hämta alla. I det här fallet, när det gäller en todo-applikation går jag inte in på det djupare, då jag tror att det går att förutsätta att det aldrig rör sig om så många meddelanden att det blir ett större prestandaproblem.
 
 ---
 
