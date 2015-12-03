@@ -4,13 +4,11 @@ Rapport skriven av Lisa Westlund (lw222gu).
 
 Laboration 2 i kursen Webbteknik II, vid Linnéuniversitetet.
 
-Rapporten är indelad i tre delar: Säkerhetsproblem, Prestandaproblem och Personliga reflektioner
-
 ---
 ## Säkerhetsproblem
 
 ### Problem 1: SQL Injections
-Applikationen möjliggör för SQL Injections. T.ex. är det möjligt att logga in genom att ange ett existerande användarnamn, och som lösenord ange "' OR '1'='1". Du behöver alltså inte vara en auktoriserad användare, utan du kan komma åt innehållet genom att autentisera dig som en annan användare, och då utföra aktioner i dennes namn.
+Applikationen möjliggör för SQL Injections. T.ex. är det möjligt att logga in genom att ange ett existerande användarnamn, och som lösenord ange `"' OR '1'='1"`. Du behöver alltså inte vara en auktoriserad användare, utan du kan komma åt innehållet genom att autentisera dig som en annan användare, och då utföra aktioner i dennes namn.
 
 Utan att veta vad applikationen har för rättigheter i databasen spekulerar jag i att det är möjligt att i kombination med ovanstående skicka in skadlig kod i databasen, t.ex. att radera den. Detta är fullt möjligt om användarens rättigheter inte är begränsade, så som applikationen är byggd i nuläget.
 
@@ -22,33 +20,31 @@ SQL Injections förhindras enklast genom att använda parameteriserade frågor m
 
 Applikationer bör också ha begränsade rättigheter till databasen i fråga, och då enbart ha rättighet att utföra det som krävs för applikationen. På så vis kan man undvika att t.ex. göra det möjligt att vid en attack radera hela databasen. [Referens till https://en.wikipedia.org/wiki/SQL_injection]
 
-Det är också av största vikt att alltid validera all användargenererad data. Några punkter att kontrollera listas nedan:
+Det är av största vikt att alltid validera all användargenererad data. [REFERENS] lista några punkter att kontrollera enligt nedan:
 [Referens: https://technet.microsoft.com/en-us/library/ms161953(v=SQL.105).aspx]
 * Validera alltid datatyp och storlek på input-data, mot begränsningar som är rimliga för din applikation.
 * Validera innehållet i strängar, och neka användaren att ange tecken du inte anser vara ok. Detta kan t.ex. vara tecken som `;`, `'`, `--`, `/*...*/`, etc.
 * Validera användarinputs även i lagrade procedurer.
 * Validering ska ske i alla lager av applikationen, såväl på klienten som på servern och i datalagret.
 
-
-#### Ändringar i applikationen beträffande SQL Injections
+##### Förändringar i applikationen
 Applikationen bör förändras genom att använda sig av parameteriserade frågor till databasen via lagrade procedurer, i stället för att som i login-fallet konkatenera ihop strängar av SQL-frågor och användarinput. Applikationen bör också validera den data som användare kan posta.
 
-
 ### Problem 2: Hijacking p.g.a. dålig autentiserings- och sessionshantering
-När en användare valt att logga ut är det möjligt att t.ex. genom webbläsarens bakåtknapp, eller genom att känna till url:en som används i inloggat läge, hamna i inloggat läge igen. I de fall en användare t.ex. använder sig av en publik dator, tror att den loggat ut korrekt, och sedan lämnar datorn igång utan att stänga webbläsaren korrekt (och på så sätt döda sessionen), är det möjligt för nästa person att enbart klicka på tillbakaknappen, eller ange url:en http://localhost:3000/message för att åter vara inloggad i den första användarens namn. Så länge sessionen är i liv är detta möjligt. Detta beror på att sessions-id:n inte ändras efter inlogg och att sessionen inte avslutas vid utlogg. Sessions-id:t är dessutom inställt på att överleva ett år.
+När en användare valt att logga ut är det möjligt att t.ex. genom webbläsarens bakåtknapp, eller genom att känna till url:en som används i inloggat läge, hamna i inloggat läge igen. I de fall en användare t.ex. använder sig av en publik dator, tror att den loggat ut korrekt, och sedan lämnar datorn igång utan att stänga webbläsaren korrekt (och på så sätt döda sessionen), är det möjligt för nästa person att enbart klicka på tillbakaknappen, eller ange url:en `/message` för att åter vara inloggad i den första användarens namn. Så länge sessionen är i liv är detta möjligt. Detta beror på att sessions-id:n inte förstörs vid utlogg. Sessions-id:t är dessutom inställt på att överleva ett år om det inte förstörs.
 
 All information skickas okrypterad via http istället för via https.
 
 Förutom ovanstående, så lagras lösenorden i klartext.
 
-Lösenordshanteringen och hanteringen av sessioner är starka orsaker till att applikationen är känslig för hijacking. [OWASP 2013] benämner problemet som Broken Authentication and Session Management, vilket också anges vara den näst vanligaste säkerhetsbristen i webbapplikationer.
+Lösenordshanteringen och hanteringen av sessioner är starka orsaker till att applikationen är känslig för hijacking. [OWASP 2013] benämner problemet som Broken Authentication and Session Management, vilket anses vara den näst vanligaste säkerhetsbristen i webbapplikationer.
 
 #### Om hijacking
-Hijacking innebär att en person kan komma över en användares konto, och utföra aktioner i dennes namn. En stark anledning till att detta är så vanligt förekommande är att många utvecklare väljer att skriva egna autentiseringsfunktioner, och då missar viktiga delar kring lösenordshantering, utloggning, sessionshantering m.m. Om en person kommer över en användares konto kan den utföra allt som användaren kan utföra, vilket gör att användare med mycket rättigheter i applikationen ofta är mer utsatta för denna typ av attack. [OWASP 2013]
+Hijacking innebär att en person kan komma över en användares konto, och utföra aktioner i dennes namn. En stark anledning till att detta är så vanligt förekommande är att många utvecklare väljer att skriva egna autentiseringsfunktioner, och då missar viktiga delar kring lösenordshantering, utloggning, sessionshantering m.m. Om en person kommer över en användares konto kan den utföra allt som användaren kan utföra, vilket gör att användare med hög auktoriseringsgrad i applikationen ofta är mer utsatta för denna typ av attack. [OWASP 2013]
 
 #### Förhindra hijacking
-För att undvika att användares konton hijackas finns några viktiga punkter att följa [OWASP 2013]:
-* Se till att hasha användaruppgifter när de lagras persistent.
+För att undvika att användares konton hijackas finns några viktiga punkter att följa enligt [REFERENS] [OWASP 2013]:
+* Se till att hasha lösenord när de lagras persistent. Det är bättre att hasha lösenord än att kryptera dem, då krypterade lösenord kan dekrypteras, vilket hashade lösenord inte kan [Referens: https://gcn.com/articles/2013/12/02/hashing-vs-encryption.aspx].
 * Användaruppgifter ska inte vara lätta att gissa.
 * Funktioner som att ändra lösenord, beställa nytt lösenord etc. måste även de vara implementerade med fokus på säkerhet.
 * Sessions-id:n ska inte skickas med i url:er.
@@ -58,39 +54,37 @@ För att undvika att användares konton hijackas finns några viktiga punkter at
 
 I många fall kommer man långt på att använda redan existerande funktioner för att logga in, som t.ex. OAuth2, istället för att skriva egna autentiseringsfunktioner. Dessa är väl testade och har högre säkerhet än vad många utvecklare klarar att implementera på egen hand.
 
-#### Ändringar i applikationen beträffande hijacking
+##### Förändringar i applikationen
 * Applikationen bör hasha lösenord.
 * Applikationen bör rotera sessions-id:n vid lyckad login och förstöra dem vid logout.
 * Applikationen bör skicka känslig information via krypterade anslutningar, och då använda https istället för http.
 
-
 ### Problem 3: Cross-Site Scripting - XSS
-Det är möjligt att skjuta in JavaScript i meddelanderutan. Ett exempel är att ange texten `>'>"><img src=x onerror=alert(0)>` som meddelande. I det fallet dyker en alertruta med texten `0` upp i samband med postningen av meddelandet. Byter jag ut 0 mot `document.cookie`, så att meddelandet blir `>'>"><img src=x onerror=alert(document.cookie)>` visar istället alertrutan sessions-id:t. Det betyder att det är möjligt att komma åt sessions-id:t, t.ex. genom att istället för att visa en alertruta redirecta användaren till en annan webbplats och skicka med sessions-id:t. På den webbsajten är det sedan möjligt att logga detta, och då till slut använda den inloggade användarens sessiona-id för att utföra egna requests.
+Det är möjligt att skjuta in JavaScript i meddelanderutan. Ett exempel är att ange texten `>'>"><img src=x onerror=alert(0)>` som meddelande. I det fallet dyker en alertruta med texten `0` upp i samband med postningen av meddelandet. Byter jag ut `0` mot `document.cookie`, så att meddelandet blir `>'>"><img src=x onerror=alert(document.cookie)>` visar istället alertrutan sessions-id:t. Det betyder att det är möjligt att komma åt sessions-id:t, t.ex. genom att i stället för att visa en alertruta redirecta användaren till en annan webbplats och skicka med sessions-id:t. På den webbsajten är det sedan möjligt att logga detta, och då till slut använda den inloggade användarens sessions-id för att utföra egna requests.
 
-#### Om Cross-Site Scripting
-XSS är ett säkershetsfel som gör att det är möjligt att skjuta in skadlig JavaScript till applikationen. När JavaScripten sedan exekveras i användares webbläsare är det möjligt att stjäla data, utföra aktioner i användarens namn, etc. [Referens: https://www.google.com/about/appsecurity/learning/xss/#WhatIsIt, och OWASP 2013]
+#### Om Cross-Site Scripting - XSS
+XSS är ett säkerhetsfel som gör att det är möjligt att skjuta in skadlig JavaScript till applikationen. När JavaScripten sedan exekveras i användares webbläsare är det möjligt att stjäla data, utföra aktioner i användarens namn, etc. [Referens: https://www.google.com/about/appsecurity/learning/xss/#WhatIsIt, och OWASP 2013]
 
 Säkerhetshål för XSS-attacker uppstår när applikationen lägger till användargenererad data till webbplatsen utan att först validera input-datan och ersätta eventuellt skadligt innehåll med något annat, t.ex. en tomsträng [Referens OWASP 2013].
 
 #### Förhindra XXS-attacker
-Ett sätt att minska risken för XXS-attacker är att escapea all input [Referens: https://www.google.com/about/appsecurity/learning/xss/#PreventingXSS och OWASP 2013]. Att escapea innebär att varje del av en inmatad sträng tolkas som en sträng i sig, inte som kod. Att skriva egen kod för att manuellt escapea inputs är väldigt svårt. Därför rekommenderar [Referens: https://www.google.com/about/appsecurity/learning/xss/#PreventingXSS] att man istället använder t.ex. ett ramverk som tillhandahåller innehållsmedveten auto-escape för detta.
+Ett sätt att minska risken för XXS-attacker är att escapea all input [Referens: https://www.google.com/about/appsecurity/learning/xss/#PreventingXSS och OWASP 2013]. Att escapea innebär att varje del av en inmatad sträng tolkas som en sträng i sig, inte som kod. Att skriva egen kod för att manuellt escapea inputs är väldigt svårt. Därför rekommenderar [Referens: https://www.google.com/about/appsecurity/learning/xss/#PreventingXSS] att man i stället använder ett ramverk för detta.
 
-Ytterligare ett sätt att motverka XSS-attacker är att validera inputs mot en whitelist - alltså, tillåt bara inputs bestående av vissa tecken. I vissa fall kan det dock vara svårt, då applikationer kan kräva att det är möjligt att använda specialtecken av olika slag. Om så är fallet är det extra viktigt att validera längd, tecken, etc. innan input-datan accepteras [OWASP 2013].
+Ytterligare ett sätt att motverka XSS-attacker är att validera inputs mot en whitelist - alltså, tillåt bara inputs bestående av vissa tecken. I vissa fall kan det dock vara svårt, då applikationer kan kräva att det är möjligt att använda specialtecken av olika slag. Om specialtecken är nödvändiga är det extra viktigt att validera längd, tecken, etc. innan input-datan accepteras och används vidare [OWASP 2013].
 
-Det kan vara svårt att testa för XSS. Även om [OWASP 2013] anger att det är relativt enkelt att hitta de flesta XSS-säkerhetshålen, menar [Referens: https://www.google.com/about/appsecurity/learning/xss/#TestingXSS] att det inte alls finns något helgjutet sätt att hitta möjliga attackvägar. De menar att det bästa är att utföra tester i form av en kombination av
-* manuella tester (testa att skjuta in JavaScript på alla input-fält som finns i applikationen),
-* unit-tester (för att kontrollera korrekt escaping av viktiga delar),
+Det kan vara svårt att testa för XSS. Även om [OWASP 2013] anger att det är relativt enkelt att hitta de flesta XSS-säkerhetshålen, menar [Referens: https://www.google.com/about/appsecurity/learning/xss/#TestingXSS] att det inte alls finns något helgjutet sätt att hitta möjliga attackvägar. De anger att det bästa är att utföra tester i form av en kombination av
+* manuella tester (testa att skjuta in JavaScript via alla input-fält som finns i applikationen),
+* unit-tester (för att kontrollera korrekt escaping av kritiska delar),
 * och att använda automatiska testverktyg för XXS.
 
-#### Förändringar i applikationen
+##### Förändringar i applikationen
 Applikationen måste se till att escapea all input-data, och validera den mot en whitelist för att se till att det inte är möjligt att skjuta in skadlig JavaScript någonstans i applikationen.
 
-
 ### Problem 4: Osäkra direkta objektreferenser
-Applikationen har problem med osäkra direkt objektreferenser, genom att den visar meddelandens id-nummer i gömda fält i koden. Dessa id-nummer är dessutom exakt samma id som används i databasen. I min installation av applikationen fungerar det inte att radera meddelanden alls, men genom att studera koden tror jag att det är möjligt för en användare att genom att manipulera värdet för det dolda inputfältet radera ett annat meddelande än det meddelande som egentligen är knutet till raderalänken. Detta skulle då kunna leda till att en användare kan radera andra användares meddelanden, eftersom det inte, vad jag kan se, sker någon kontroll på att det verkligen är rätt användare som försöker radera ett meddelande.
+Applikationen har problem med osäkra direkta objektreferenser, genom att den visar meddelandens id-nummer i dolda fält i koden. Dessa id-nummer är dessutom exakt samma id-nummer som används i databasen. I min installation av applikationen fungerar det inte att radera meddelanden alls, men genom att studera koden tror jag att det är möjligt för en användare att genom att manipulera värdet för det dolda inputfältet radera ett annat meddelande än det meddelande som egentligen är knutet till raderalänken. Detta skulle då kunna leda till att en användare kan radera andra användares meddelanden, eftersom det inte, vad jag kan se, sker någon kontroll på att det verkligen är rätt användare som försöker radera ett meddelande.
 
 #### Om osäkra direkta objektreferenser
-En direkt objektreferens är en exponerad referens till ett internt objekt. Det kan t.ex. röra sig om databasnycklar [OWASP, T10]. Detta, i kombination med att åtkomstkontroller saknas på funktionsnivå (se problem 5), gör det möjligt för en användare att komma åt funktioner som den eventuellt inte är autkoriserad för.
+En direkt objektreferens är en exponerad referens till ett internt objekt. Det kan t.ex. röra sig om databasnycklar [OWASP, T10]. Detta, i kombination med att åtkomstkontroller saknas på funktionsnivå (se problem 5), gör det möjligt för en användare att komma åt funktioner som den eventuellt inte är auktoriserad för.
 
 #### Förhindra problem med osäkra direkta objektreferenser
 Ett sätt att förhindra problem kring objektreferenser är att använda indirekta referenser på användar- eller sessionsnivå. Applikationen får sedan till uppgift att mappa de indirekta referenserna mot de verkliga referenserna i databasen. Dessutom måste åtkomstkontroll alltid ske för att säkerställa att användaren verkligen är auktoriserad för objektet som efterfrågas [OWASP A4].
@@ -99,11 +93,10 @@ Ett sätt att förhindra problem kring objektreferenser är att använda indirek
 I applikationen är det möjligt att komma åt meddelanden i json-format utan att vara inloggad på sidan. Datan finns fritt tillgänglig om användaren besöker sidan `/message/data`. Det är dessutom fritt fram att ladda ner hela databasen genom att besöka sidan `/message/appModules/siteViews/static/message.db`.
 
 #### Om saknad åtkomstkontroll på funktionsnivå
-Saknad åtkomstkontroll på funktionsnivå innebär att anonyma användare kan komma åt privat funktionalitet, eller att vanliga användare kan komma åt funktioner som enbart ska vara tillgängliga för användare med högre behörigheter. Att detta möjliggörs beror på att det inte sker några åtkomstkontroller för dessa funktioner på servern. [OWASP 2013]
+Saknad åtkomstkontroll på funktionsnivå innebär att anonyma användare kan komma åt privat funktionalitet, eller att vanliga användare kan komma åt funktioner som de inte ska ha behörighet till. Att detta möjliggörs beror på att det inte sker några åtkomstkontroller för dessa funktioner på servern. [OWASP 2013]
 
 #### Förhindra problem kring åtkomstkontroll
-För att förhindra problem kring att användare kan komma åt funktionalitet de inte är autoriserade för bör systemet bygga på att åtkomst i grund alltid nekas, men att för varje funktion ge explicit åtkomst för de roller som ska kunna använda funktionen [OWASP A7].
-
+För att förhindra problem kring att användare kan komma åt funktionalitet de inte är auktoriserade för bör åtkomstkontrollen bygga på att åtkomst i grund alltid nekas, men att för varje funktion ge explicit åtkomst för de roller som ska kunna använda funktionen [OWASP A7].
 
 ### Problem 6: Cross-Site Request Forgery - CSRF
 Applikationen skyddas inte mot CSRF-attacker. Som tidigare nämnts finns det möjligheter att på olika vis skjuta in skadlig kod i applikationen. Detta tillsammans med att ingen unik token skickas med vid requests gör applikationen mycket känslig för denna typ av attacker.
@@ -112,40 +105,37 @@ Applikationen skyddas inte mot CSRF-attacker. Som tidigare nämnts finns det mö
 CSRF är en typ av attack där t.ex. en opålitlig webbsida orsakar en användares webbläsare att utföra requests på den webbapplikation användaren är autentiserad, utan att användaren vet om det. Vad detta kan leda till beror mycket på vad den autentiserade användaren är auktoriserad att göra i applikationen. För den enskilda användaren som drabbas kan t.ex. en attack som lyckas ändra lösenordet leda till att man förlorar åtkomsten till sitt konto, och för en administratör kan en attack vara förödande för hela applikationen. [Referens: https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet  ]_
 
 #### Förhindra CSRF
-Den generella rekommendationen för att förhindra CSRF-attacker är att använda sig av det som kallas Synchronizer Token Pattern. Detta bygger på att inkludera en unik och oförutsägbar token i ett dolt fält i ett formulär. [OWASP A8, och https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet ]_ Denna skickas sedan med i HTTP-requesten och det är därefter upp till servern att verifiera denna token, och på så vis kunna anta med betydligt större säkerhet att användaren verkligen menade att utföra denna request. [https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet ]_
-
+Den generella rekommendationen för att förhindra CSRF-attacker är att använda sig av det som kallas Synchronizer Token Pattern. Detta bygger på att inkludera en unik och oförutsägbar token i ett dolt fält i ett formulär. [OWASP A8, och https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet ]_ Denna skickas sedan med i HTTP-requesten och det är därefter upp till servern att verifiera denna token, och på så vis kunna anta att användaren verkligen menade att utföra denna request. [https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet ]_
 
 ---
 
 ## Prestandaproblem
 
-### Problem 8: Många Http requests ökar laddningstiden
+### Problem 8: Många Http-requests ökar svarstiden
 När applikationen laddas görs en rad olika Http-requests. Det görs åtta requests direkt i head-elementet, vilka läser in fonter, css, och JavaScript.
 
-#### Problem med många Http-requests, och hur det förbättras
-Enbart 10-20 procent av svarstiden för att ladda en applikation utgörs av att läsa in det efterfrågade HTML-dokumentet. Resten av tiden ägnas åt att läsa in övriga komponenter, så som css, JavaScript, etc.  Genom att minska antalet anrop kan också svarstiden minskas.[High Performance, s 10].
+#### Problem med många Http-requests, och hur det kan förbättras
+Enbart 10-20 procent av svarstiden för att ladda en applikation utgörs av att läsa in det efterfrågade HTML-dokumentet. Resten av tiden ägnas åt att läsa in övriga resurser, så som css, JavaScript, etc.  Genom att minska antalet anrop kan också svarstiden minskas.[High Performance, s 10].
 
-Trots att extern JavaScript och css ökar antalet requests är de bättre ut prestandasynpunkt än vad inbäddad eller rentav inline JavaScript och css är. Men, väljer man att följa de rekommendationer som finns om att dela in olika moduler i olika filer så ökar det antalat anrop och försämrar svarstiden [High Performance, s 15]. Idealt bör inte mer än en JavaScript-fil och en css-fil anropas [High Performance, s 16].
+Trots att extern JavaScript och css ökar antalet requests är de bättre ur prestandasynpunkt än vad inbäddad eller rentav inline JavaScript och css är. Men, väljer man att följa de rekommendationer som finns om att dela in olika moduler i olika filer så ökar antalet anrop och svarstiden försämras [High Performance, s 15]. Idealt bör inte mer än en JavaScript-fil och en css-fil anropas [High Performance, s 16]. Detta kan dock ifrågasattas i och med HTTP/2 där multiplexing introduceras. Multiplexing innebär att klienten ska kunna använda samma TCP-anslutning för att hantera parallella förfrågningar och svar [REFERENS: https://en.wikipedia.org/wiki/HTTP/2].
 
-
-### Problem 9: Komponenter cacheas inte
-När applikationen laddas in görs ingen cachening. Expiresheadern är satt till -1, och Cache-Control är satt till private, no-cache, no-store, must-revalidate.
+### Problem 9: Komponenter cachas inte
+När applikationen laddas in görs ingen cachening. Expires-headern är satt till -1, och Cache-Control är satt till private, no-cache, no-store, must-revalidate.
 
 #### Om cachening och hur svarstiden kan förkortas
-Om ingen cachening görs av komponenter som t.ex. JavaScript-filer, css och bilder måste dessa hämtas på nytt via nya Http requests för varje sida som besöks på applikationen, vilket försämrar svarstiden. För att cachea komponenter, och på så vis minska svarstiden, ska Expiresheadern sättas till en tidpunkt som talar om hur länge komponenterna kan anses vara up-to-date [High Performance, s 22].
-Idealt skulle alla komponenter på en webbapplikaiton cacheas, men vanligtvis cacheas inte HTML-dokument då de ofta består av dynamiskt innehåll som kan ändras från varje gång en användare besöker en sida [High Performance, s 26].
+Om ingen cachening görs av resurser som t.ex. JavaScript-filer, css och bilder måste dessa hämtas på nytt via nya Http-requests för varje sida som besöks på applikationen, vilket försämrar svarstiden. För att cacha resurser, och på så vis minska svarstiden, ska Expires-headern sättas till en tidpunkt som talar om hur länge resurserna kan anses vara up-to-date [High Performance, s 22], och Cache-Control-headern ska ha ett värde för max-age [High Performance, s 23]. Expires-headern används i webbläsare som inte stödjer HTTP/1.1, och skrivs över om webbläsaren stödjer nyare versioner av HTTP i samband med att Cache-Control-headern har ett värde för max-age [High Performance, s 23].
 
-Om komponenter uppdateras under tiden Expiresheadern fortfarande är giltig kommer inte användare som tidigare besökt sidan att ta del av ändringarna, eftersom filerna redan finns i deras cache. Ett sätt att komma runt detta är att döpa om filerna vid nya versioner, och därmed också förändra sökvägarna till dem - då kommer applikationen genomföra nya Http-requests nästa gång användaren besöker sidan [High Performance, s 27].
+Idealt skulle alla komponenter på en webbapplikation cachas, men vanligtvis cachas inte HTML-dokument då de ofta består av dynamiskt innehåll som kan ändras från varje gång en användare besöker en sida [High Performance, s 26].
 
+Om komponenter uppdateras under tiden Expires-headern eller Cache-Control-headern fortfarande är giltig kommer inte användare som tidigare besökt sidan få ta del av ändringarna, eftersom filerna redan finns i deras cache. Ett sätt att komma runt detta är att döpa om filerna vid nya versioner, och därmed också förändra sökvägarna till dem - då kommer applikationen genomföra nya Http-requests nästa gång användaren besöker sidan [High Performance, s 27].
 
 ### Problem 10: Ingen komprimering sker
-Inget i applikationen komprimeras i samband med att den skickas till webbläsaren. Detta kan ses genom att Http-requesten saknar en header i stil med Content-Encoding: gzip. Flera av text-filerna är så pass stora att en komprimering är värdefull ur prestandasynpunkt.
+Inget i applikationen komprimeras i samband med att den skickas till webbläsaren. Detta kan ses genom att Http-requesten saknar en header i stil med Content-Encoding: gzip. Flera av textfilerna är så pass stora att en komprimering är värdefull ur prestandasynpunkt.
 
 #### Om att komprimera och hur det påverkar prestandan
-Den vanligaste metoden för att komprimera är gzip. Med gzip är det möjligt att komprimera textfiler. Bildfiler, pdf:er, etc  är redan komprimerade format, och att försöka komprimera dessa slösar bara kraft och kan ibland resultera i större filer. Att komprimera textfiler kostar det också, så även om man tjänar på att filstorlekar minskas, måste det tas i beaktning om det är värt att komprimera filerna. Filer som understiger 1-2 kb finns det sällan någon anledning att komprimera [High Performance s 30].
+Den vanligaste metoden för att komprimera är gzip. Med gzip är det möjligt att komprimera textfiler. Bildfiler, pdf:er, etc.  är redan komprimerade format, och att försöka komprimera dessa slösar bara kraft och kan ibland resultera i större filer. Att komprimera textfiler kostar det också, så även om man tjänar på att filstorlekar minskas, måste det tas i beaktning om det är värt att komprimera filerna. Filer som understiger 1-2 kb finns det sällan någon anledning att komprimera [High Performance s 30].
 
-I den här applikationen finns det dock flertalet textfiler som applikationen skulle tjäna på att de komprimeras. Att gzipa filer reducerar nämligen oftast storleken med omkring 70 procent [High Performance, s31].
-
+I den här applikationen finns det dock flertalet textfiler som applikationen skulle tjäna på att de komprimerades. Att gzip:a filer reducerar nämligen oftast storleken med omkring 70 procent [High Performance, s31].
 
 ### Problem 11: Dålig placering, hantering och inläsning av statiska resurser
 Applikationen läser in resurser på alla möjliga olika sätt. Ibland finns css och JavaScript inbäddat i html-dokumenten, och ibland läses de in från externa filer via Http-requests. JavaScript läses flertalet gånger in i head-elementet, utan attribut som talar om att filerna ska laddas först när sidan är laddad, vilket gör att sidan tar onödigt lång tid att ladda.
@@ -153,35 +143,33 @@ Applikationen läser in resurser på alla möjliga olika sätt. Ibland finns css
 #### Om att placera, hantera och läsa in statiska resurser - hur det bör göras
 Stilmallar ska placeras i toppen av dokument, närmare bestämt i head-elementet. Genom att göra så kan sidan laddas progressivt, och på så vis ge feedback till användaren och undvika tomma vita skärmar. [High Performance, s 41].
 
-När det gäller scripter är det tvärtom. Dessa ska laddas så sent som möjligt i ett dokument. Scripter gör nämligen så att de förhindrar inläsning av allt innehåll nedanför scriptet, tills det att scriptet har laddat klart. [High Performance s 45]. Det är också fullt möjligt att läsa in scripter redan i head-elementet, men då är det viktigt att ange attribut som talar om att det ska laddas först när sidan laddat klart.
+När det gäller scripter är det tvärtom. Dessa ska laddas så sent som möjligt i ett dokument. Scripter gör nämligen så att de förhindrar inläsning av allt innehåll nedanför scriptet, tills det att scriptet har laddat klart. [High Performance s 45]. Det är också fullt möjligt att läsa in scripter redan i head-elementet, men då är det viktigt att ange attribut som talar om att de ska laddas först när sidan laddat klart.
 
 Css och JavaScript bör dessutom placeras i externa filer, då det innebär att de kan cachas och därmed inte behöva laddas in för varje sida användaren besöker. [High Performance, s57].
-
 
 ### Problem 12: Ominifierade filer
 JavaScript-filerna är inte minifierade i applikationen, vilket gör att de är onödigt stora. Onödigt stora filer tar onödigt lång tid att ladda.
 
 #### Om minifiering
-Minifiering handlar om att ta bort onödvändiga tecken från en fil. Dessa tecken är t.ex. kommentarer, onödvändiga whitespaces så som mellanslag, ny rad och tabbar. Eftersom ingen kompilering görs i JavaScript tas inte dessa bort automatiskt, utan det är upp till utvecklaren att göra detta [High Performance s 69].
+Minifiering handlar om att ta bort icke nödvändiga tecken från en fil. Dessa tecken är t.ex. kommentarer och whitespaces så som mellanslag, ny rad och tabbar. Eftersom ingen kompilering görs i JavaScript tas inte dessa bort automatiskt, utan det är upp till utvecklaren att göra detta [High Performance s 69].
 
-Att minifiera css tjänar en applikation sällan lika mycket på som att minifiera JavaScript. Detta beror på att css oftast har färre kommentarer och whitespaces än vad JavaScript-kod har. För att tjäna i filstorlek på stilmallar är det därför viktigare att ooptimera css:en, genom att slå ihop identiska klasser, ta bort dubletter och oanvända klasser. Det finns också optimeringsmöjligheter när det kommer till css som att korta ner onödigt långa strängar som t.ex. `0px`, som lika gärna kan skrivas som `0`.[High Performance s 75]
-
+Att minifiera css tjänar en applikation sällan lika mycket på som att minifiera JavaScript. Detta beror på att css oftast har färre kommentarer och whitespaces än vad JavaScript-kod har. För att tjäna i filstorlek på stilmallar är det därför viktigare att optimera css:en, genom att slå ihop identiska klasser, ta bort dubbletter och oanvända klasser. Det finns också optimeringsmöjligheter när det kommer till css som att korta ner onödigt långa strängar som t.ex. `0px`, som lika gärna kan skrivas som `0`.[High Performance s 75]
 
 ### Problem 13: Övrigt
 Överlag finns ytterligare en del att önska av applikationen, vilket listas i korthet under rubrikerna nedan.
 
 #### Hantering av bilder
-Bilden `b.jpg` visas såvitt jag kan se enbart för användaren om det finns väldigt många skrivna meddelanden, då den syns som en bakgrund. Detta hör ihop med att bodyns höjd är satt till 4000px (vilket i sig saknar mening). När den blir högre än 4000px visas bilden som bakgrund istället för den blå färgen. Bilden repeteras dock hela tiden i bakgrunden, men syns inte för användaren. Detta är slöseri med resurser. Den bör plockas bort. Om den ska synas i vissa fall har den ett sådant mönster att det skulle vara möjligt att använda en mindre fil och repetera den istället.
+Bilden `b.jpg` visas såvitt jag kan se enbart för användaren om det finns väldigt många skrivna meddelanden, då den syns som en bakgrund. Detta hör ihop med att bodyns höjd är satt till 4000px (vilket i sig saknar mening). När den blir högre än 4000px visas bilden som bakgrund istället för den blå färgen. Bilden repeteras dock hela tiden i bakgrunden, men syns inte för användaren. Detta är slöseri med resurser och den bör plockas bort. Om den ska synas i vissa fall har den ett sådant mönster att det skulle vara möjligt att använda en mindre fil och repetera den istället.
 
-En favicon som är 691 x 257 px är väldigt onödigt stor, och dessutom inte kvadratisk. I en webbläsare räcker det att en favicon är 32 x 32 px. För att visas så bra som möjligt på högupplösta läsplattor är den största storleken som behövs 192 x 192 px [referens:https://en.wikipedia.org/wiki/Favicon ].
+En favicon som är 691 x 257 px är onödigt stor, och dessutom inte kvadratisk. I en webbläsare räcker det att en favicon är 32 x 32 px. För att visas så bra som möjligt på högupplösta läsplattor är den största storleken som behövs 192 x 192 px [referens:https://en.wikipedia.org/wiki/Favicon ].
 
-`delete.png` och `clock.png` skulle kunna kombineras till en bild, för att sedan använda tekniker som Image maps, eller Css sprites. Dessa skulle minska Http-anropen från två till ett, och på så vis påverka svarstiden för sidan [High Performance s 10]. Dock är det inte troligt att denna justering i sig skulle innebära något större för just denna applikation, men skulle applikationen växa i framtiden och innefatta fler ikoner är detta bra tekniker att ha tillhands.
+`delete.png` och `clock.png` skulle kunna kombineras till en bild, för att sedan använda tekniker som Image maps, eller Css sprites. Detta skulle minska Http-anropen från två till ett, och på så vis påverka svarstiden för sidan [High Performance s 10]. Dock är det inte troligt att denna justering i sig skulle innebära något större för just denna applikation, men skulle applikationen växa i framtiden och innefatta fler ikoner är detta bra tekniker att ha tillhands.
 
 #### Användandet av Bootstrap
-Ramverket Bootstrap läses in som en resurs i applikationen, men så vitt jag kan se används det inte särskilt mycket. Att läsa in så mycket kod, som faktiskt genereras med ramverket, till en så lite applikation kan ifrågasättas. Om vissa delar av Bootstrap ska användas bör filerna också optimeras som så att oanvänd kod raderas [High Performance s 75].
+Ramverket Bootstrap läses in som en resurs i applikationen, men så vitt jag kan se används det inte särskilt mycket. Att läsa in så mycket kod, som faktiskt genereras med ramverket, till en så liten applikation kan ifrågasättas. Om vissa delar av Bootstrap ska användas bör filerna också optimeras som så att oanvänd kod raderas [High Performance s 75].
 
 #### Paginering
-Det är alltid värt att fundera på om inte paginering vore ett bra alterntiv. Just nu visas alla poster i en lång lista, istället för att visas sidvis, och på så sätt göra det möjligt att enbart läsa ut de poster från databasen som faktiskt ska visas - istället för att hämta alla. I det här fallet, när det gäller en todo-applikation går jag inte in på det djupare, då jag tror att det går att förutsätta att det aldrig rör sig om så många meddelanden att det blir ett större prestandaproblem.
+Det är alltid värt att fundera på om inte paginering vore ett bra alternativ. Just nu visas alla poster i en lång lista, istället för att visas sidvis, och på så sätt göra det möjligt att enbart läsa ut de poster från databasen som faktiskt ska visas - i stället för att hämta alla. I det här fallet, när det gäller en todo-applikation går jag inte in på det djupare, då jag tror att det går att förutsätta att det aldrig rör sig om så många meddelanden att det blir ett större prestandaproblem.
 
 ---
 
@@ -192,4 +180,4 @@ När det gäller prestandan blir många av förändringarna som föreslås i den
 
 Att gå igenom en applikation på det här viset är väldigt givande. Jag är hundra procent säker på att jag missat flera viktiga säkerhets- och prestandaproblem, men jag vet också att nästa gång jag skriver en applikation kommer jag ha betydligt fler saker i åtanke ur dessa perspektiv. En del av problemen ovan är sådant jag känt till sedan tidigare, och ibland valt att strunta i eftersom "det är ju ändå bara ett så litet projekt", men när jag radat upp problemen så här så inser jag hur småfel kan ge stora konsekvenser, både gällande säkerhet och prestanda.
 
-Som utvecklare bär man ett stort ansvar gentemot användaren av en applikation, allt i från att se till att användaruppgifter inte läcker ut, till att det inte är möjligt att stjäla identiteter och utföra saker i användarens namn. Då fungerar det inte att se mellan fingrarna när det gäller säkerhetsproblem. Man bär också detta ansvar gentemot webbplatsägaren (kunden), som självklart ska kunna känna sig lugn i att t.ex. känslig data behålls privat. Mot kunden har man som utvecklare också ett ansvar i att se till att optimera webbapplikationen så mycket som möjligt ur prestandasynpunkt - kunden vill ju att användare av tjänsten ska vara nöjda, inte uppleva applikationen som seg och vilja komma tillbaka. Uppgiften har verkligen fått mig att tänka till på dessa punkter.
+Som utvecklare bär man ett stort ansvar gentemot användaren av en applikation. Allt från att se till att användaruppgifter inte läcker ut, till att det inte är möjligt att stjäla identiteter och utföra saker i användares namn. Då fungerar det inte att se mellan fingrarna när det gäller säkerhetsproblem. Man bär också detta ansvar gentemot webbplatsägaren (kunden), som självklart ska kunna känna sig lugn i att t.ex. känslig data behålls privat. Mot kunden har man som utvecklare också ett ansvar i att se till att optimera webbapplikationen så mycket som möjligt ur prestandasynpunkt - kunden vill ju att användare av tjänsten ska vara nöjda, inte uppleva applikationen som seg och vilja komma tillbaka. Uppgiften har verkligen fått mig att tänka till på dessa punkter.
