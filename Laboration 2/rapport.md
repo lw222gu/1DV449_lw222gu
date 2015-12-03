@@ -35,7 +35,7 @@ Applikationen bör förändras genom att använda sig av parameteriserade frågo
 
 
 ### Problem 2: Hijacking p.g.a. dålig autentiserings- och sessionshantering
-När en användare valt att logga ut är det möjligt att t.ex. genom webbläsarens bakåtknapp, eller genom att känna till url:en som används i inloggat läge, hamna i inloggat läge igen. I de fall en användare t.ex. använder sig av en publik dator, tror att den loggat ut korrekt, och sedan lämnar datorn igång utan att stänga webbläsaren korrekt (och på så sätt döda sessionen), är det möjligt för nästa person att enbart klicka på tillbakaknappen, eller ange url:en http://localhost:3000/message för att åter vara inloggad i den första användarens namn. Så länge sessionen är i liv är detta möjligt. Detta beror på att sessions-id:n inte ändras efter inlogg och att sessionen inte avslutas vid utlogg.
+När en användare valt att logga ut är det möjligt att t.ex. genom webbläsarens bakåtknapp, eller genom att känna till url:en som används i inloggat läge, hamna i inloggat läge igen. I de fall en användare t.ex. använder sig av en publik dator, tror att den loggat ut korrekt, och sedan lämnar datorn igång utan att stänga webbläsaren korrekt (och på så sätt döda sessionen), är det möjligt för nästa person att enbart klicka på tillbakaknappen, eller ange url:en http://localhost:3000/message för att åter vara inloggad i den första användarens namn. Så länge sessionen är i liv är detta möjligt. Detta beror på att sessions-id:n inte ändras efter inlogg och att sessionen inte avslutas vid utlogg. Sessions-id:t är dessutom inställt på att överleva ett år.
 
 All information skickas okrypterad via http istället för via https.
 
@@ -120,42 +120,72 @@ Den generella rekommendationen för att förhindra CSRF-attacker är att använd
 ## Prestandaproblem
 
 ### Problem 8: Många Http requests ökar laddningstiden
-När applikationen laddas görs en rad olika Http requests. Det görs åtta requests direkt i head-elementet, vilka läser in fonter, css, och JavaScript.
+När applikationen laddas görs en rad olika Http-requests. Det görs åtta requests direkt i head-elementet, vilka läser in fonter, css, och JavaScript.
 
-#### Problem med många Http requests, och hur det förbättras
+#### Problem med många Http-requests, och hur det förbättras
 Enbart 10-20 procent av svarstiden för att ladda en applikation utgörs av att läsa in det efterfrågade HTML-dokumentet. Resten av tiden ägnas åt att läsa in övriga komponenter, så som css, JavaScript, etc.  Genom att minska antalet anrop kan också svarstiden minskas.[High Performance, s 10].
 
 Trots att extern JavaScript och css ökar antalet requests är de bättre ut prestandasynpunkt än vad inbäddad eller rentav inline JavaScript och css är. Men, väljer man att följa de rekommendationer som finns om att dela in olika moduler i olika filer så ökar det antalat anrop och försämrar svarstiden [High Performance, s 15]. Idealt bör inte mer än en JavaScript-fil och en css-fil anropas [High Performance, s 16].
 
 
 ### Problem 9: Komponenter cacheas inte
-När applikationen laddas in görs ingen cachening. Expiresheadern är satt till -1.
+När applikationen laddas in görs ingen cachening. Expiresheadern är satt till -1, och Cache-Control är satt till private, no-cache, no-store, must-revalidate.
 
 #### Om cachening och hur svarstiden kan förkortas
 Om ingen cachening görs av komponenter som t.ex. JavaScript-filer, css och bilder måste dessa hämtas på nytt via nya Http requests för varje sida som besöks på applikationen, vilket försämrar svarstiden. För att cachea komponenter, och på så vis minska svarstiden, ska Expiresheadern sättas till en tidpunkt som talar om hur länge komponenterna kan anses vara up-to-date [High Performance, s 22].
 Idealt skulle alla komponenter på en webbapplikaiton cacheas, men vanligtvis cacheas inte HTML-dokument då de ofta består av dynamiskt innehåll som kan ändras från varje gång en användare besöker en sida [High Performance, s 26].
 
-Om komponenter uppdateras under tiden Expiresheadern fortfarande är giltig kommer inte användare som tidigare besökt sidan att ta del av ändringarna, eftersom filerna redan finns i deras cache. Ett sätt att komma runt detta är att döpa om filerna vid nya versioner, och därmed också förändra sökvägarna till dem - då kommer applikationen genomföra nya Http requests nästa gång användaren besöker sidan [High Performance, s 27].
+Om komponenter uppdateras under tiden Expiresheadern fortfarande är giltig kommer inte användare som tidigare besökt sidan att ta del av ändringarna, eftersom filerna redan finns i deras cache. Ett sätt att komma runt detta är att döpa om filerna vid nya versioner, och därmed också förändra sökvägarna till dem - då kommer applikationen genomföra nya Http-requests nästa gång användaren besöker sidan [High Performance, s 27].
 
 
+### Problem 10: Ingen komprimering sker
+Inget i applikationen komprimeras i samband med att den skickas till webbläsaren. Detta kan ses genom att Http-requesten saknar en header i stil med Content-Encoding: gzip. Flera av text-filerna är så pass stora att en komprimering är värdefull ur prestandasynpunkt.
+
+#### Om att komprimera och hur det påverkar prestandan
+Den vanligaste metoden för att komprimera är gzip. Med gzip är det möjligt att komprimera textfiler. Bildfiler, pdf:er, etc  är redan komprimerade format, och att försöka komprimera dessa slösar bara kraft och kan ibland resultera i större filer. Att komprimera textfiler kostar det också, så även om man tjänar på att filstorlekar minskas, måste det tas i beaktning om det är värt att komprimera filerna. Filer som understiger 1-2 kb finns det sällan någon anledning att komprimera [High Performance s 30].
+
+I den här applikationen finns det dock flertalet textfiler som applikationen skulle tjäna på att de komprimeras. Att gzipa filer reducerar nämligen oftast storleken med omkring 70 procent [High Performance, s31].
 
 
-### Onödiga resurser laddas in
-Bilden...
+### Problem 11: Dålig placering, hantering och inläsning av statiska resurser
+Applikationen läser in resurser på alla möjliga olika sätt. Ibland finns css och JavaScript inbäddat i html-dokumenten, och ibland läses de in från externa filer via Http-requests. JavaScript läses flertalet gånger in i head-elementet, utan attribut som talar om att filerna ska laddas först när sidan är laddad, vilket gör att sidan tar onödigt lång tid att ladda.
+
+#### Om att placera, hantera och läsa in statiska resurser - hur det bör göras
+Stilmallar ska placeras i toppen av dokument, närmare bestämt i head-elementet. Genom att göra så kan sidan laddas progressivt, och på så vis ge feedback till användaren och undvika tomma vita skärmar. [High Performance, s 41].
+
+När det gäller scripter är det tvärtom. Dessa ska laddas så sent som möjligt i ett dokument. Scripter gör nämligen så att de förhindrar inläsning av allt innehåll nedanför scriptet, tills det att scriptet har laddat klart. [High Performance s 45]. Det är också fullt möjligt att läsa in scripter redan i head-elementet, men då är det viktigt att ange attribut som talar om att det ska laddas först när sidan laddat klart.
+
+Css och JavaScript bör dessutom placeras i externa filer, då det innebär att de kan cachas och därmed inte behöva laddas in för varje sida användaren besöker. [High Performance, s57].
 
 
+### Problem 12: Ominifierade filer
+JavaScript-filerna är inte minifierade i applikationen, vilket gör att de är onödigt stora. Onödigt stora filer tar onödigt lång tid att ladda.
+
+#### Om minifiering
+Minifiering handlar om att ta bort onödvändiga tecken från en fil. Dessa tecken är t.ex. kommentarer, onödvändiga whitespaces så som mellanslag, ny rad och tabbar. Eftersom ingen kompilering görs i JavaScript tas inte dessa bort automatiskt, utan det är upp till utvecklaren att göra detta [High Performance s 69].
+
+Att minifiera css tjänar en applikation sällan lika mycket på som att minifiera JavaScript. Detta beror på att css oftast har färre kommentarer och whitespaces än vad JavaScript-kod har. För att tjäna i filstorlek på stilmallar är det därför viktigare att ooptimera css:en, genom att slå ihop identiska klasser, ta bort dubletter och oanvända klasser. Det finns också optimeringsmöjligheter när det kommer till css som att korta ner onödigt långa strängar som t.ex. `0px`, som lika gärna kan skrivas som `0`.[High Performance s 75]
 
 
+### Problem 13: Övrigt
+Överlag finns ytterligare en del att önska av applikationen, vilket listas i korthet under rubrikerna nedan.
 
+#### Hantering av bilder
+Bilden `b.jpg` visas såvitt jag kan se enbart för användaren om det finns väldigt många skrivna meddelanden, då den syns som en bakgrund. Detta hör ihop med att bodyns höjd är satt till 4000px (vilket i sig saknar mening). När den blir högre än 4000px visas bilden som bakgrund istället för den blå färgen. Bilden repeteras dock hela tiden i bakgrunden, men syns inte för användaren. Detta är slöseri med resurser. Den bör plockas bort. Om den ska synas i vissa fall har den ett sådant mönster att det skulle vara möjligt att använda en mindre fil och repetera den istället.
 
+En favicon som är 691 x 257 px är väldigt onödigt stor, och dessutom inte kvadratisk. I en webbläsare räcker det att en favicon är 32 x 32 px. För att visas så bra som möjligt på högupplösta läsplattor är den största storleken som behövs 192 x 192 px [referens:https://en.wikipedia.org/wiki/Favicon ].
 
-### Onödig kod
-Varför inkludera ett ramverk som Bootstrap när det ändå inte används?
+`delete.png` och `clock.png` skulle kunna kombineras till en bild, för att sedan använda tekniker som Image maps, eller Css sprites. Dessa skulle minska Http-anropen från två till ett, och på så vis påverka svarstiden för sidan [High Performance s 10]. Dock är det inte troligt att denna justering i sig skulle innebära något större för just denna applikation, men skulle applikationen växa i framtiden och innefatta fler ikoner är detta bra tekniker att ha tillhands.
 
-### Css i html-filen
-Lägg css i externa filer istället. Då kan de cacheas över sidor.
+#### Användandet av Bootstrap
+Ramverket Bootstrap läses in som en resurs i applikationen, men så vitt jag kan se används det inte särskilt mycket. Att läsa in så mycket kod, som faktiskt genereras med ramverket, till en så lite applikation kan ifrågasättas. Om vissa delar av Bootstrap ska användas bör filerna också optimeras som så att oanvänd kod raderas [High Performance s 75].
+
+#### Paginering
+Det är alltid värt att fundera på om inte paginering vore ett bra alterntiv. Just nu visas alla poster i en lång lista, istället för att visas sidvis, och på så sätt göra det möjligt att enbart läsa ut de poster från databasen som faktiskt ska visas - istället för att hämta alla. I det här fallet, när det gäller en todo-applikation går jag inte in på det djupare, då jag tror att det går att förutsätta att det aldrig rör sig om så många meddelanden att det blir ett större prestandaproblem.
 
 ---
 
 ## Personliga reflektioner
 I flera fall i rapporten har jag angett att jag spekulerar i frågan. Jag är ovan att läsa kod i node-projekt (detta är första gången), så det kan hända att jag missat något uppenbart. Jag väljer dock att reflektera kring problemen jag misstänker kan finnas i de fall jag inte är hundraprocentigt säker på att jag förstått koden rätt.
+
+När det gäller prestandan blir många av förändringarna som föreslås i denna rapport utan märkbar effekt. Då webbplatsen inte använder sig av många olika ikoner eller liknande har jag valt att inte ta upp t.ex. image maps som ett sätt att förbättra prestantan.
