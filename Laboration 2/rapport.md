@@ -181,3 +181,25 @@ När det gäller prestandan blir många av förändringarna som föreslås i den
 Att gå igenom en applikation på det här viset är väldigt givande. Jag är hundra procent säker på att jag missat flera viktiga säkerhets- och prestandaproblem, men jag vet också att nästa gång jag skriver en applikation kommer jag ha betydligt fler saker i åtanke ur dessa perspektiv. En del av problemen ovan är sådant jag känt till sedan tidigare, och ibland valt att strunta i eftersom "det är ju ändå bara ett så litet projekt", men när jag radat upp problemen så här så inser jag hur småfel kan ge stora konsekvenser, både gällande säkerhet och prestanda.
 
 Som utvecklare bär man ett stort ansvar gentemot användaren av en applikation. Allt från att se till att användaruppgifter inte läcker ut, till att det inte är möjligt att stjäla identiteter och utföra saker i användares namn. Då fungerar det inte att se mellan fingrarna när det gäller säkerhetsproblem. Man bär också detta ansvar gentemot webbplatsägaren (kunden), som självklart ska kunna känna sig lugn i att t.ex. känslig data behålls privat. Mot kunden har man som utvecklare också ett ansvar i att se till att optimera webbapplikationen så mycket som möjligt ur prestandasynpunkt - kunden vill ju att användare av tjänsten ska vara nöjda, inte uppleva applikationen som seg och vilja komma tillbaka. Uppgiften har verkligen fått mig att tänka till på dessa punkter.
+
+---
+
+## Referenser
+
+[#] S. Souders, _High Performance Web Sites_. Sebastopol: O’Reilly Media, Inc., 2007.
+
+[#] "SQL Injection," _Microsoft_, november 2015 [Online] Tillgänglig: https://technet.microsoft.com/en-us/library/ms161953(v=SQL.105).aspx. [Hämtad: 2 december, 2015].
+
+[#] "SQL Injection," _Wikipedia_, december 2015 [Online] Tillgänglig: https://en.wikipedia.org/wiki/SQL_injection. [Hämtad: 2 december, 2015].
+
+[#] "OWASP Top 10 - 2013: The Ten Most Critical Web Application Security Risks," _OWASP The Open Web Application Security Project_, juni 2013 [Pdf] Tillgänglig: http://owasptop10.googlecode.com/files/OWASP%20Top%2010%20-%202013.pdf. [Hämtad: 23 november, 2015].
+
+[#] W. Jackson, "Why salted hash is as good for passwords as for breakfast," _GCN_, december 2013 [Online] Tillgänglig: https://gcn.com/articles/2013/12/02/hashing-vs-encryption.aspx. [Hämtad: 2 december, 2015].
+
+[#] "Cross-site scripting," _Google_ [Online] Tillgänglig:  https://www.google.com/about/appsecurity/learning/xss/. [Hämtad: 2 december, 2015].
+
+[#] "Cross-Site Request Forgery (CSRF) Prevention Cheat Sheet," _OWASP The Open Web Application Security Project_, november 2015 [Online] Tillgänglig: https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet. [Hämtad: 3 december, 2015].
+
+[#] "HTTP/2," _Wikipedia_, december 2015 [Online] Tillgänglig: https://en.wikipedia.org/wiki/HTTP/2. [Hämtad: 3 december, 2015].
+
+[#] "Favicon," _Wikipedia_, november 2015 [Online] Tillgänglig: https://en.wikipedia.org/wiki/Favicon. [Hämtad: 3 december, 2015].
