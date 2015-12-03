@@ -2,7 +2,7 @@
 
 Rapport skriven av Lisa Westlund (lw222gu).
 
-Laboration 2 i kursen Webbteknik II, vid Linnéuniversitetet.
+Laboration 2 i kursen Webbteknik II vid Linnéuniversitetet.
 
 ---
 ## Säkerhetsproblem
