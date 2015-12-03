@@ -118,6 +118,37 @@ Den generella rekommendationen för att förhindra CSRF-attacker är att använd
 ---
 
 ## Prestandaproblem
+
+### Problem 8: Många Http requests ökar laddningstiden
+När applikationen laddas görs en rad olika Http requests. Det görs åtta requests direkt i head-elementet, vilka läser in fonter, css, och JavaScript.
+
+#### Problem med många Http requests, och hur det förbättras
+Enbart 10-20 procent av svarstiden för att ladda en applikation utgörs av att läsa in det efterfrågade HTML-dokumentet. Resten av tiden ägnas åt att läsa in övriga komponenter, så som css, JavaScript, etc.  Genom att minska antalet anrop kan också svarstiden minskas.[High Performance, s 10].
+
+Trots att extern JavaScript och css ökar antalet requests är de bättre ut prestandasynpunkt än vad inbäddad eller rentav inline JavaScript och css är. Men, väljer man att följa de rekommendationer som finns om att dela in olika moduler i olika filer så ökar det antalat anrop och försämrar svarstiden [High Performance, s 15]. Idealt bör inte mer än en JavaScript-fil och en css-fil anropas [High Performance, s 16].
+
+
+### Problem 9: Komponenter cacheas inte
+När applikationen laddas in görs ingen cachening. Expiresheadern är satt till -1.
+
+#### Om cachening och hur svarstiden kan förkortas
+Om ingen cachening görs av komponenter som t.ex. JavaScript-filer, css och bilder måste dessa hämtas på nytt via nya Http requests för varje sida som besöks på applikationen, vilket försämrar svarstiden. För att cachea komponenter, och på så vis minska svarstiden, ska Expiresheadern sättas till en tidpunkt som talar om hur länge komponenterna kan anses vara up-to-date [High Performance, s 22].
+Idealt skulle alla komponenter på en webbapplikaiton cacheas, men vanligtvis cacheas inte HTML-dokument då de ofta består av dynamiskt innehåll som kan ändras från varje gång en användare besöker en sida [High Performance, s 26].
+
+Om komponenter uppdateras under tiden Expiresheadern fortfarande är giltig kommer inte användare som tidigare besökt sidan att ta del av ändringarna, eftersom filerna redan finns i deras cache. Ett sätt att komma runt detta är att döpa om filerna vid nya versioner, och därmed också förändra sökvägarna till dem - då kommer applikationen genomföra nya Http requests nästa gång användaren besöker sidan [High Performance, s 27].
+
+
+
+
+### Onödiga resurser laddas in
+Bilden...
+
+
+
+
+
+
+
 ### Onödig kod
 Varför inkludera ett ramverk som Bootstrap när det ändå inte används?
 
