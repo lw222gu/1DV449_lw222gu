@@ -186,20 +186,20 @@ Som utvecklare bär man ett stort ansvar gentemot användaren av en applikation.
 
 ## Referenser
 
-[#] S. Souders, _High Performance Web Sites_. Sebastopol: O’Reilly Media, Inc., 2007.
+[1] "SQL Injection," _Microsoft_, november 2015 [Online] Tillgänglig: https://technet.microsoft.com/en-us/library/ms161953(v=SQL.105).aspx. [Hämtad: 2 december, 2015].
 
-[#] "SQL Injection," _Microsoft_, november 2015 [Online] Tillgänglig: https://technet.microsoft.com/en-us/library/ms161953(v=SQL.105).aspx. [Hämtad: 2 december, 2015].
+[2] "SQL Injection," _Wikipedia_, december 2015 [Online] Tillgänglig: https://en.wikipedia.org/wiki/SQL_injection. [Hämtad: 2 december, 2015].
 
-[#] "SQL Injection," _Wikipedia_, december 2015 [Online] Tillgänglig: https://en.wikipedia.org/wiki/SQL_injection. [Hämtad: 2 december, 2015].
+[3] "OWASP Top 10 - 2013: The Ten Most Critical Web Application Security Risks," _OWASP The Open Web Application Security Project_, juni 2013 [Pdf] Tillgänglig: http://owasptop10.googlecode.com/files/OWASP%20Top%2010%20-%202013.pdf. [Hämtad: 23 november, 2015].
 
-[#] "OWASP Top 10 - 2013: The Ten Most Critical Web Application Security Risks," _OWASP The Open Web Application Security Project_, juni 2013 [Pdf] Tillgänglig: http://owasptop10.googlecode.com/files/OWASP%20Top%2010%20-%202013.pdf. [Hämtad: 23 november, 2015].
+[4] W. Jackson, "Why salted hash is as good for passwords as for breakfast," _GCN_, december 2013 [Online] Tillgänglig: https://gcn.com/articles/2013/12/02/hashing-vs-encryption.aspx. [Hämtad: 2 december, 2015].
 
-[#] W. Jackson, "Why salted hash is as good for passwords as for breakfast," _GCN_, december 2013 [Online] Tillgänglig: https://gcn.com/articles/2013/12/02/hashing-vs-encryption.aspx. [Hämtad: 2 december, 2015].
+[5] "Cross-site scripting," _Google_ [Online] Tillgänglig:  https://www.google.com/about/appsecurity/learning/xss/. [Hämtad: 2 december, 2015].
 
-[#] "Cross-site scripting," _Google_ [Online] Tillgänglig:  https://www.google.com/about/appsecurity/learning/xss/. [Hämtad: 2 december, 2015].
+[6] "Cross-Site Request Forgery (CSRF) Prevention Cheat Sheet," _OWASP The Open Web Application Security Project_, november 2015 [Online] Tillgänglig: https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet. [Hämtad: 3 december, 2015].
 
-[#] "Cross-Site Request Forgery (CSRF) Prevention Cheat Sheet," _OWASP The Open Web Application Security Project_, november 2015 [Online] Tillgänglig: https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet. [Hämtad: 3 december, 2015].
+[7] S. Souders, _High Performance Web Sites_. Sebastopol: O’Reilly Media, Inc., 2007.
 
-[#] "HTTP/2," _Wikipedia_, december 2015 [Online] Tillgänglig: https://en.wikipedia.org/wiki/HTTP/2. [Hämtad: 3 december, 2015].
+[8] "HTTP/2," _Wikipedia_, december 2015 [Online] Tillgänglig: https://en.wikipedia.org/wiki/HTTP/2. [Hämtad: 3 december, 2015].
 
-[#] "Favicon," _Wikipedia_, november 2015 [Online] Tillgänglig: https://en.wikipedia.org/wiki/Favicon. [Hämtad: 3 december, 2015].
+[9] "Favicon," _Wikipedia_, november 2015 [Online] Tillgänglig: https://en.wikipedia.org/wiki/Favicon. [Hämtad: 3 december, 2015].
