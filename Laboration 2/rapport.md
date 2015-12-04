@@ -111,7 +111,7 @@ Den generella rekommendationen för att förhindra CSRF-attacker är att använd
 
 ## Prestandaproblem
 
-### Problem 8: Många Http-requests ökar svarstiden
+### Problem 7: Många Http-requests ökar svarstiden
 När applikationen laddas görs en rad olika Http-requests. Det görs åtta requests direkt i head-elementet, vilka läser in fonter, css, och JavaScript.
 
 #### Problem med många Http-requests, och hur det kan förbättras
@@ -119,7 +119,7 @@ Enbart 10-20 procent av svarstiden för att ladda en applikation utgörs av att 
 
 Trots att extern JavaScript och css ökar antalet requests är de bättre ur prestandasynpunkt än vad inbäddad eller rentav inline JavaScript och css är. Men, väljer man att följa de rekommendationer som finns om att dela in olika moduler i olika filer så ökar antalet anrop och svarstiden försämras [7, s. 15]. Idealt bör inte mer än en JavaScript-fil och en css-fil anropas [7, s. 16]. Detta kan dock ifrågasattas i och med HTTP/2 där multiplexing introduceras. Multiplexing innebär att klienten ska kunna använda samma TCP-anslutning för att hantera parallella förfrågningar och svar [8].
 
-### Problem 9: Komponenter cachas inte
+### Problem 8: Komponenter cachas inte
 När applikationen laddas in görs ingen cachening. Expires-headern är satt till -1, och Cache-Control är satt till private, no-cache, no-store, must-revalidate.
 
 #### Om cachening och hur svarstiden kan förkortas
@@ -129,7 +129,7 @@ Idealt skulle alla komponenter på en webbapplikation cachas, men vanligtvis cac
 
 Om komponenter uppdateras under tiden Expires-headern eller Cache-Control-headern fortfarande är giltig kommer inte användare som tidigare besökt sidan få ta del av ändringarna, eftersom filerna redan finns i deras cache. Ett sätt att komma runt detta är att döpa om filerna vid nya versioner, och därmed också förändra sökvägarna till dem - då kommer applikationen genomföra nya Http-requests nästa gång användaren besöker sidan [7, s. 27].
 
-### Problem 10: Ingen komprimering sker
+### Problem 9: Ingen komprimering sker
 Inget i applikationen komprimeras i samband med att den skickas till webbläsaren. Detta kan ses genom att Http-requesten saknar en header i stil med Content-Encoding: gzip. Flera av textfilerna är så pass stora att en komprimering är värdefull ur prestandasynpunkt.
 
 #### Om att komprimera och hur det påverkar prestandan
@@ -137,7 +137,7 @@ Den vanligaste metoden för att komprimera är gzip. Med gzip är det möjligt a
 
 I den här applikationen finns det dock flertalet textfiler som applikationen skulle tjäna på att de komprimerades. Att gzip:a filer reducerar nämligen oftast storleken med omkring 70 procent [7, s. 31].
 
-### Problem 11: Dålig placering, hantering och inläsning av statiska resurser
+### Problem 10: Dålig placering, hantering och inläsning av statiska resurser
 Applikationen läser in resurser på alla möjliga olika sätt. Ibland finns css och JavaScript inbäddat i html-dokumenten, och ibland läses de in från externa filer via Http-requests. JavaScript läses flertalet gånger in i head-elementet, utan attribut som talar om att filerna ska laddas först när sidan är laddad, vilket gör att sidan tar onödigt lång tid att ladda.
 
 #### Om att placera, hantera och läsa in statiska resurser - hur det bör göras
@@ -147,7 +147,7 @@ När det gäller scripter är det tvärtom. Dessa ska laddas så sent som möjli
 
 Css och JavaScript bör dessutom placeras i externa filer, då det innebär att de kan cachas och därmed inte behöva laddas in för varje sida användaren besöker [7, s. 57].
 
-### Problem 12: Ominifierade filer
+### Problem 11: Ominifierade filer
 JavaScript-filerna är inte minifierade i applikationen, vilket gör att de är onödigt stora. Onödigt stora filer tar onödigt lång tid att ladda.
 
 #### Om minifiering
@@ -155,7 +155,7 @@ Minifiering handlar om att ta bort icke nödvändiga tecken från en fil. Dessa 
 
 Att minifiera css tjänar en applikation sällan lika mycket på som att minifiera JavaScript. Detta beror på att css oftast har färre kommentarer och whitespaces än vad JavaScript-kod har [7, s. 75]. För att tjäna i filstorlek på stilmallar är det därför viktigare att optimera css:en, genom att slå ihop identiska klasser, ta bort dubbletter och oanvända klasser. Det finns också optimeringsmöjligheter när det kommer till css som att korta ner onödigt långa strängar som t.ex. `0px`, som lika gärna kan skrivas som `0` [7, s. 75].
 
-### Problem 13: Övrigt
+### Problem 12: Övrigt
 Överlag finns ytterligare en del att önska av applikationen, vilket listas i korthet under rubrikerna nedan.
 
 #### Hantering av bilder
