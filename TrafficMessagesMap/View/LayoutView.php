@@ -33,16 +33,15 @@ class LayoutView {
 
   private function renderMessages(){
     $ret = "";
-    $dal = new \Model\GetJsonDAL();
-    $json = $dal->getJson("http://api.sr.se/api/v2/traffic/messages?format=json&indent=true");
-    $messages = $json["messages"];
+    $dal = new \Model\TrafficMessageDAL();
+    $messages = $dal->getMessages("http://api.sr.se/api/v2/traffic/messages?format=json&indent=true");
 
     foreach($messages as $message){
       $ret .= '<li>
-                <h3>' . $message["title"] . '</h3>
-                <p class="date">' . $message["createddate"] . '</p>
-                <p class="category">' . $message["category"] . '</p>
-                <p>' . $message["description"] . '</p>
+                <h3>' . $message->getTitle() . '</h3>
+                <p class="date">' . $message->getDate() . '</p>
+                <p class="category">' . $message->getCategory() . '</p>
+                <p>' . $message->getDescription() . '</p>
               </li>';
     }
     return $ret;

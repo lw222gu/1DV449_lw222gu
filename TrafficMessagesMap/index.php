@@ -1,5 +1,5 @@
 <?php
-require_once 'Model\GetJsonDAL.php';
+require_once 'Model\TrafficMessageDAL.php';
 require_once 'Model\TrafficMessage.php';
 require_once 'View\LayoutView.php';
 
@@ -9,7 +9,3 @@ ini_set('display_errors', 'On');
 
 $lv = new View\LayoutView();
 $lv->renderPage();
-
-
-
-$SRurl = "http://api.sr.se/api/v2/traffic/messages?format=json&indent=true";
