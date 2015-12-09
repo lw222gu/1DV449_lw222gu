@@ -20,8 +20,31 @@ class LayoutView {
                         <h1>Välkommen till trafikkartan</h1>
                     </div>
                 </div>
+                <div class="row">
+                  <div class="large-4 medium-6 small-12 columns">
+                    <h2>Trafikmeddelanden</h2>
+                    <ul>' . $this->renderMessages() . '</ul>
+                  </div>
+                </div>
             </body>
         </html>
         ';
+  }
+
+  private function renderMessages(){
+    $ret = "";
+    $dal = new \Model\GetJsonDAL();
+    $json = $dal->getJson("http://api.sr.se/api/v2/traffic/messages?format=json&indent=true");
+    $messages = $json["messages"];
+
+    foreach($messages as $message){
+      $ret .= '<li>
+                <h3>' . $message["title"] . '</h3>
+                <p class="date">' . $message["createddate"] . '</p>
+                <p class="category">' . $message["category"] . '</p>
+                <p>' . $message["description"] . '</p>
+              </li>';
+    }
+    return $ret;
   }
 }
