@@ -51,6 +51,16 @@ h1 {
   border-color:rgb(220, 220, 200);
 }
 
+.message-anchor {
+  color: #000;
+  text-decoration: none;
+  display:block;
+}
+
+.message-anchor:hover, .message-anchor:focus {
+  background-color: rgb(250, 250, 240);
+}
+
 .messages-list li p {
   font-size: 0.8em;
   margin-top: 0;
@@ -104,4 +114,10 @@ select {
 
 .ovrigt {
   background-image: url("images/ovrigt-08.svg");
+}
+
+
+/* Map css */
+#map {
+  height: 600px; 
 }

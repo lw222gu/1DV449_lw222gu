@@ -22,7 +22,7 @@
       "description": "10/12 kl 22:00-05:00 Södergående tunnelrör avstängt i natt på grund av underhållsarbete.",
       "latitude": 57.720375061035156,
       "longitude": 11.989446640014648,
-      "category": 2,
+      "category": 0,
       "subcategory": "Vägarbete"
     },
     {
@@ -470,18 +470,6 @@
       "subcategory": "Vatten"
     },
     {
-      "id": 1567040,
-      "priority": 3,
-      "createddate": "\/Date(1449778241497+0100)\/",
-      "title": "Rv 44/47 Trollhättan-Grästorp",
-      "exactlocation": "",
-      "description": "Människor längs vägen.",
-      "latitude": 58.290082868639345,
-      "longitude": 12.484191435146659,
-      "category": 0,
-      "subcategory": "Trafikstörning"
-    },
-    {
       "id": 1566037,
       "priority": 3,
       "createddate": "\/Date(1449671272970+0100)\/",
@@ -516,6 +504,18 @@
       "longitude": 12.354942321777344,
       "category": 0,
       "subcategory": "Vägarbete"
+    },
+    {
+      "id": 1567049,
+      "priority": 3,
+      "createddate": "\/Date(1449781407267+0100)\/",
+      "title": "E10 Morjärv-Hedensbyn",
+      "exactlocation": "V Svartbyn - Hällan ",
+      "description": "Renar vistas på eller nära vägen i höjd med Vippabacken.",
+      "latitude": 66.296951293945313,
+      "longitude": 22.815608978271484,
+      "category": 0,
+      "subcategory": "Trafikstörning"
     },
     {
       "id": 1511539,
@@ -566,18 +566,6 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1567006,
-      "priority": 3,
-      "createddate": "\/Date(1449776944643+0100)\/",
-      "title": "Rv 70 Mora–Älvdalen",
-      "exactlocation": "avfarten Oxberg",
-      "description": "Singelolycka. Växelvis trafik. Mycket halt på platsen.",
-      "latitude": 61.134949099377131,
-      "longitude": 14.173587062517438,
-      "category": 0,
-      "subcategory": "Trafikolycka"
-    },
-    {
       "id": 1552991,
       "priority": 4,
       "createddate": "\/Date(1449722410500+0100)\/",
@@ -590,14 +578,50 @@
       "subcategory": "Buller"
     },
     {
-      "id": 1562255,
+      "id": 1567052,
       "priority": 3,
-      "createddate": "\/Date(1449758204693+0100)\/",
-      "title": "Västra Götalands län, Bohuslän och Halland",
-      "exactlocation": "Sjuhäradsbygden, Göta älv, sydväst om Vänern, norra Halland",
-      "description": "SMHI Klass 1-varning: Höga flöden i nedre delen av Säveån. I nedre delen av Viskan har flödet kulminerat och fortsätter att sjunka, men är fortfarande över gränsen för klass 1.\n",
-      "latitude": 58.497090816083038,
-      "longitude": 13.170494797925643,
+      "createddate": "\/Date(1449780257900+0100)\/",
+      "title": "Jämtlands län\n",
+      "exactlocation": "Jämtlandsfjällen",
+      "description": "SMHI-varning klass 1, hård vind med snödrev. På kalfjället i norra Jämtland, från fredag eftermiddag, sydväst ca 15 m/s i kombination med snöfall.",
+      "latitude": 63.593687628856792,
+      "longitude": 12.859188688758536,
+      "category": 3,
+      "subcategory": "Väder"
+    },
+    {
+      "id": 1567051,
+      "priority": 3,
+      "createddate": "\/Date(1449780271973+0100)\/",
+      "title": "Västerbottens län",
+      "exactlocation": "Södra Lapplandsfjällen",
+      "description": "SMHI-varning klass 1, hård vind med snödrev. På kalfjället, från fredag lunch, syd eller sydväst 14-18 m/s i kombination med snöfall.\n",
+      "latitude": 65.618401440524337,
+      "longitude": 15.364939149450354,
+      "category": 3,
+      "subcategory": "Väder"
+    },
+    {
+      "id": 1567057,
+      "priority": 3,
+      "createddate": "\/Date(1449780935933+0100)\/",
+      "title": "Hallands län",
+      "exactlocation": "",
+      "description": "SMHI-varning klass 1, höga flöden. Viskan, nedre delen.\n",
+      "latitude": 57.241512444606819,
+      "longitude": 12.320616048443155,
+      "category": 3,
+      "subcategory": "Väder"
+    },
+    {
+      "id": 1567054,
+      "priority": 3,
+      "createddate": "\/Date(1449780451700+0100)\/",
+      "title": "Vänern",
+      "exactlocation": "",
+      "description": "SMHI-varning klass 1, kuling. Sydväst 14-17 m/s. Fredag morgon avtagande.\n\n\n",
+      "latitude": 58.802243109543248,
+      "longitude": 13.282285206299393,
       "category": 3,
       "subcategory": "Väder"
     },
@@ -614,6 +638,18 @@
       "subcategory": "Vägarbete"
     },
     {
+      "id": 1567055,
+      "priority": 3,
+      "createddate": "\/Date(1449781473100+0100)\/",
+      "title": "E18 Norrtäljevägen  ",
+      "exactlocation": "Gillingebanan - Trafikplats Rosenkälla (187) i riktning mot Stockholm ",
+      "description": "Stillastående, nersläckt personbil.",
+      "latitude": 59.510467529296875,
+      "longitude": 18.175594329833984,
+      "category": 0,
+      "subcategory": "Trafikstörning"
+    },
+    {
       "id": 1481993,
       "priority": 3,
       "createddate": "\/Date(1443014816513+0200)\/",
@@ -624,18 +660,6 @@
       "longitude": 14.73924732208252,
       "category": 0,
       "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1567032,
-      "priority": 3,
-      "createddate": "\/Date(1449777689110+0100)\/",
-      "title": "E20 Skara–Vara",
-      "exactlocation": "Gerum till Rosenskog ",
-      "description": "Södergående stopp.",
-      "latitude": 58.349262237548828,
-      "longitude": 13.28931713104248,
-      "category": 0,
-      "subcategory": "Trafikolycka"
     },
     {
       "id": 1515180,
@@ -658,7 +682,7 @@
       "description": "Södra länken mot E4/E20 avstängd för underhållsarbeten.",
       "latitude": 59.309074401855469,
       "longitude": 18.122003555297852,
-      "category": 2,
+      "category": 0,
       "subcategory": "Vägarbete"
     },
     {
@@ -866,6 +890,18 @@
       "subcategory": "Vägarbete"
     },
     {
+      "id": 1567032,
+      "priority": 2,
+      "createddate": "\/Date(1449779167097+0100)\/",
+      "title": "E20 Skara–Vara",
+      "exactlocation": "Ardala-Gerum ",
+      "description": "Vägen stängd i södergående.",
+      "latitude": 58.349262237548828,
+      "longitude": 13.28931713104248,
+      "category": 0,
+      "subcategory": "Trafikolycka"
+    },
+    {
       "id": 1537497,
       "priority": 5,
       "createddate": "\/Date(1448822506417+0100)\/",
@@ -916,7 +952,7 @@
     {
       "id": 1566368,
       "priority": 3,
-      "createddate": "\/Date(1449723671670+0100)\/",
+      "createddate": "\/Date(1449781147240+0100)\/",
       "title": "Södra Sverige",
       "exactlocation": "",
       "description": "Efter stormen Helga uppmanas allmänheten att vara uppmärksam och undvika elledningar och stolpar som ligger på marken. ",

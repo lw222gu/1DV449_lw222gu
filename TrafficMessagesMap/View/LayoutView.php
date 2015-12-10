@@ -15,6 +15,8 @@ class LayoutView {
                 <link rel="stylesheet" href="content/css/foundation.css" />
                 <link rel="stylesheet" href="content/css/app.css" />
                 <link rel="stylesheet" href="content/css/main.css" />
+                <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+                <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
             </head>
             <body>
                 <div id="topbar">
@@ -26,13 +28,15 @@ class LayoutView {
                     </div>
                 </div>
                 <div class="row">
-                  <div class="large-4 medium-6 small-12 columns">
+                  <div class="large-8 medium-8 small-12 columns" id="map"></div>
+                  <div class="large-4 medium-4 small-12 columns">
                     <h2>Trafikmeddelanden</h2>
                     <label for="select-category">Filtrera på kategori:</label>
                     <select id="select-category">' . $this->renderCategoryOptions() . '</select>
                     ' . $this->renderMessages() . '
                   </div>
                 </div>
+                <script src="Content/js/app.js"></script>
             </body>
         </html>
         ';
@@ -57,12 +61,12 @@ class LayoutView {
           $description = "Beskrivning saknas.";
         }
 
-        $ret .= '<li class="' . \Settings::CSS_TRAFFIC_MESSAGE_CLASSES[$message->getCategory()] . '">
+        $ret .= '<a href="" class="message-anchor"><li class="' . \Settings::CSS_TRAFFIC_MESSAGE_CLASSES[$message->getCategory()] . '">
                   <h3>' . $message->getTitle() . '</h3>
                   <p class="date">' . date('Y-m-d H.i.s', $message->getDate()) . ' | </p>
                   <p class="category">' . $message->getCategory() . '</p>
                   <p>' . $description . '</p>
-                </li>';
+                </li></a>';
       }
       $ret .= '</ul>';
     }
