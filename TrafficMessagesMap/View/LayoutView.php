@@ -3,6 +3,7 @@
 namespace View;
 
 class LayoutView {
+
   public function renderPage(){
     echo'<!DOCTYPE html>
         <html>

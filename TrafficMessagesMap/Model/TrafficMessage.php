@@ -14,6 +14,8 @@ class TrafficMessage {
     $this->date = $date;
     $this->category = $category;
     $this->description = $description;
+
+    $this->setDate($date);
   }
 
   public function getTitle(){
@@ -23,6 +25,14 @@ class TrafficMessage {
   public function getDate(){
     return $this->date;
   }
+
+  public function setDate($date){
+    $dateTime = str_replace("/Date(", "", $date);
+    $dateTime = str_replace(")/", "", $dateTime);
+    $dateTime = substr($dateTime, 0, -5);
+    $this->date = $dateTime;
+  }
+
 
   public function getCategory(){
     return $this->category;
