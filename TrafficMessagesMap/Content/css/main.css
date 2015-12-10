@@ -18,9 +18,12 @@ body {
   padding-top: 12px;
 }
 
-h1 {
+h1, h2 {
   font-family: Georgia, serif;
   font-weight: normal;
+}
+
+h1 {
   font-style: italic;
 }
 
@@ -32,12 +35,20 @@ h1 {
 .messages-list li h3 {
   font-size: 0.9em;
   margin-top: 10px;
-  margin-bottom: 12.8px;
+  margin-bottom: 5px;
 }
 
 .messages-list li {
   padding:15px;
-  margin-bottom: 5px;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  background-repeat: no-repeat;
+  background-size: 15px;
+  background-position: top left;
+  border:solid;
+  border-width: 0;
+  border-bottom-width: 1px;
+  border-color:rgb(220, 220, 200);
 }
 
 .messages-list li p {
@@ -60,18 +71,22 @@ h1 {
 
 /* Message category classes */
 
+.vagtrafik, .kollektivtrafik, .planerad-storning, .ovrigt {
+
+}
+
 .vagtrafik {
-  background-color: rgb(255, 240, 240);
+  background-image: url("images/vagtrafik.svg");
 }
 
 .kollektivtrafik {
-  background-color: rgb(240, 255, 240);
+  background-image: url("images/kollektivtrafik.svg");
 }
 
 .planerad-storning {
-  background-color: rgb(240, 240, 255);
+  background-image: url("images/planerad-storning.svg");
 }
 
 .ovrigt {
-  background-color: rgb(240, 248, 248);
+  background-image: url("images/ovrigt.svg");
 }
