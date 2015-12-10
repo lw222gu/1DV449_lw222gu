@@ -21,7 +21,14 @@ class TrafficMessageDAL {
     $messages = array();
 
     foreach($jsonMessages as $jsonMessage){
-        $message = new TrafficMessage($jsonMessage["title"], $jsonMessage["createddate"], $jsonMessage["category"], $jsonMessage["description"]);
+        $message = new TrafficMessage(
+                                      $jsonMessage["title"],
+                                      $jsonMessage["createddate"],
+                                      $jsonMessage["category"],
+                                      $jsonMessage["description"],
+                                      $jsonMessage["latitude"],
+                                      $jsonMessage["longitude"]
+                                    );
         array_push($messages, $message);
     }
 

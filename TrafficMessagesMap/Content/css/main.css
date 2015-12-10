@@ -1,0 +1,77 @@
+body {
+  margin-top:0;
+  font-size: 1em;
+}
+
+#topbar {
+  background-color: rgb(25, 25, 25);
+  height:50px;
+  display:block;
+  margin-bottom: 50px;
+}
+
+#topbar h1 {
+  font-size: 16px;
+  color: rgb(220, 220, 220);
+  margin-top:0;
+  margin-left: 15px;
+  padding-top: 12px;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.messages-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.messages-list li h3 {
+  font-size: 0.9em;
+  margin-top: 10px;
+  margin-bottom: 12.8px;
+}
+
+.messages-list li {
+  padding:15px;
+  margin-bottom: 5px;
+}
+
+.messages-list li p {
+  font-size: 0.8em;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.date, .category {
+  font-size: 0.8em;
+  display:inline-block;
+  font-style: italic;
+  margin:0;
+}
+
+.category {
+  font-weight: bold;
+}
+
+
+/* Message category classes */
+
+.vagtrafik {
+  background-color: rgb(255, 240, 240);
+}
+
+.kollektivtrafik {
+  background-color: rgb(240, 255, 240);
+}
+
+.planerad-storning {
+  background-color: rgb(240, 240, 255);
+}
+
+.ovrigt {
+  background-color: rgb(240, 248, 248);
+}

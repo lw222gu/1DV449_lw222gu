@@ -14,8 +14,12 @@ class LayoutView {
                 <title>Trafikkartan</title>
                 <link rel="stylesheet" href="content/css/foundation.css" />
                 <link rel="stylesheet" href="content/css/app.css" />
+                <link rel="stylesheet" href="content/css/main.css" />
             </head>
             <body>
+                <div id="topbar">
+                  <h1>Trafikkartan</h1>
+                </div>
                 <div class="row">
                     <div class="large-12 columns">
                         <h1>Välkommen till trafikkartan</h1>
@@ -24,7 +28,7 @@ class LayoutView {
                 <div class="row">
                   <div class="large-4 medium-6 small-12 columns">
                     <h2>Trafikmeddelanden</h2>
-                    <ul>' . $this->renderMessages() . '</ul>
+                    <ul class="messages-list">' . $this->renderMessages() . '</ul>
                   </div>
                 </div>
             </body>
@@ -38,13 +42,18 @@ class LayoutView {
     $messages = $dal->getMessages("http://api.sr.se/api/v2/traffic/messages?format=json&indent=true");
 
     foreach($messages as $message){
-      $ret .= '<li>
+      $description = $message->getDescription();
+      if($description == ""){
+        $description = "Beskrivning saknas.";
+      }
+      $ret .= '<li class="' . \Settings::CSS_TRAFFIC_MESSAGE_CLASSES[$message->getCategory()] . '">
                 <h3>' . $message->getTitle() . '</h3>
-                <p class="date">' . $message->getDate() . '</p>
+                <p class="date">' . $message->getDate() . ' | </p>
                 <p class="category">' . $message->getCategory() . '</p>
-                <p>' . $message->getDescription() . '</p>
+                <p>' . $description . '</p>
               </li>';
     }
+
     return $ret;
   }
 }
