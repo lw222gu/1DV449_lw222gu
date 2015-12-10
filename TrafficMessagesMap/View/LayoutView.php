@@ -41,7 +41,7 @@ class LayoutView {
   private function renderMessages(){
     $ret = "";
     $dal = new \Model\TrafficMessageDAL();
-    $messages = $dal->getMessages("http://api.sr.se/api/v2/traffic/messages?format=json&indent=true");
+    $messages = $dal->getMessages("http://api.sr.se/api/v2/traffic/messages?format=json&pagination=false&indent=true");
 
     foreach($messages as $message){
       $description = $message->getDescription();
