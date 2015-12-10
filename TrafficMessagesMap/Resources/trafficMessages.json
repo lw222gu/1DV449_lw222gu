@@ -2,18 +2,6 @@
   "copyright": "Copyright Sveriges Radio 2015. All rights reserved.",
   "messages": [
     {
-      "id": 1487662,
-      "priority": 5,
-      "createddate": "\/Date(1449660075717+0100)\/",
-      "title": "Dalarnas län",
-      "exactlocation": "  ",
-      "description": "",
-      "latitude": 60.7344055,
-      "longitude": 14.7284212,
-      "category": 0,
-      "subcategory": "Halkvarning"
-    },
-    {
       "id": 1539416,
       "priority": 5,
       "createddate": "\/Date(1447764180897+0100)\/",
@@ -206,21 +194,9 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1566847,
-      "priority": 3,
-      "createddate": "\/Date(1449760614447+0100)\/",
-      "title": "Lv 392 Korpilombolo-Liminkajärvi",
-      "exactlocation": "Vid Teurajärvi",
-      "description": "Bärgning av lastbil.",
-      "latitude": 66.7817770417619,
-      "longitude": 22.9099190587985,
-      "category": 0,
-      "subcategory": "Trafikstörning"
-    },
-    {
       "id": 1566998,
       "priority": 4,
-      "createddate": "\/Date(1449772383843+0100)\/",
+      "createddate": "\/Date(1449776902883+0100)\/",
       "title": "Bollnäs, Arbro",
       "exactlocation": "",
       "description": "Ca 600 abonnenter utan el. Felsökning pågår.",
@@ -228,30 +204,6 @@
       "longitude": 16.394074775098652,
       "category": 3,
       "subcategory": "El"
-    },
-    {
-      "id": 1566974,
-      "priority": 3,
-      "createddate": "\/Date(1449770739147+0100)\/",
-      "title": "Göteborg - Uddevalla  ",
-      "exactlocation": "",
-      "description": "Det är förseningar upp till 20 minuter i tågtrafiken på sträckan i båda riktningar på grund av ett signalfel.",
-      "latitude": 57.732319055639245,
-      "longitude": 12.941197550153344,
-      "category": 1,
-      "subcategory": "Tåg"
-    },
-    {
-      "id": 1566724,
-      "priority": 3,
-      "createddate": "\/Date(1449763818467+0100)\/",
-      "title": "Kiruna",
-      "exactlocation": "",
-      "description": "Det är störningar i tågtrafiken på sträckan Narvik-Gällivare.",
-      "latitude": 68.251154483228973,
-      "longitude": 18.990078110910147,
-      "category": 1,
-      "subcategory": "Tåg"
     },
     {
       "id": 1544476,
@@ -312,18 +264,6 @@
       "longitude": 12.270511627197266,
       "category": 0,
       "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1566945,
-      "priority": 3,
-      "createddate": "\/Date(1449772087250+0100)\/",
-      "title": "E65 Skurup-Svedala",
-      "exactlocation": "Häckebergaavfarten",
-      "description": "Ett körfält öppet mot Svedala. Ingen prognos.",
-      "latitude": 55.4959443467334,
-      "longitude": 13.442787781257543,
-      "category": 0,
-      "subcategory": "Trafikolycka"
     },
     {
       "id": 1560822,
@@ -394,18 +334,6 @@
       "description": "Hårda vindar. Vindkänsliga fordon rekommenderas att inte köra över bron. Hastighet 70 km/h.",
       "latitude": 55.5789680480957,
       "longitude": 12.810151100158691,
-      "category": 0,
-      "subcategory": "Trafikstörning"
-    },
-    {
-      "id": 1566879,
-      "priority": 3,
-      "createddate": "\/Date(1449772446493+0100)\/",
-      "title": "E6 Svinesundsbron",
-      "exactlocation": "",
-      "description": "Hårda vindar. Vindkänsliga fordon varnas.",
-      "latitude": 59.085792541503906,
-      "longitude": 11.250428199768066,
       "category": 0,
       "subcategory": "Trafikstörning"
     },
@@ -482,18 +410,6 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1566976,
-      "priority": 3,
-      "createddate": "\/Date(1449771932697+0100)\/",
-      "title": "E6 Kungsbackaleden",
-      "exactlocation": "Mellan Ullevimotet (73) och tpl Olskroksmotet (74) i riktning mot Tingstadstunneln",
-      "description": "Köer efter tidigare olycka. Inväntar bärgare.",
-      "latitude": 57.706619262695313,
-      "longitude": 11.995940208435059,
-      "category": 0,
-      "subcategory": "Trafikolycka"
-    },
-    {
       "id": 1442001,
       "priority": 3,
       "createddate": "\/Date(1447822581000+0100)\/",
@@ -504,30 +420,6 @@
       "longitude": 12.646737098693848,
       "category": 0,
       "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1566767,
-      "priority": 3,
-      "createddate": "\/Date(1449768811640+0100)\/",
-      "title": "Rv 50 Örebro",
-      "exactlocation": "Rejmesrondellen",
-      "description": "Lastbil blockerar rondellen. Södergående trafikanter leds om till E18/E20. Trafikanter från Örebro kan bara åka norrut. Prognosen är att lastbilen är bärgad ca kl 19.30.",
-      "latitude": 59.296817779541016,
-      "longitude": 15.228734016418457,
-      "category": 0,
-      "subcategory": "Trafikolycka"
-    },
-    {
-      "id": 1566819,
-      "priority": 3,
-      "createddate": "\/Date(1449767902487+0100)\/",
-      "title": "Rv 26 Bäckhammar-Kristinehamn",
-      "exactlocation": "Björneborg",
-      "description": "Lastbil i diket, bärgningsarbete väntas under kvällen.",
-      "latitude": 59.269504547119141,
-      "longitude": 14.162534713745117,
-      "category": 0,
-      "subcategory": "Trafikstörning"
     },
     {
       "id": 1557011,
@@ -542,6 +434,18 @@
       "subcategory": "Färja"
     },
     {
+      "id": 1505778,
+      "priority": 4,
+      "createddate": "\/Date(1449777373870+0100)\/",
+      "title": "Jämtlands län",
+      "exactlocation": "  ",
+      "description": "Lokal nederbörd i form av regn elller snöblandat regn berör främst mellersta och norra delarna av länet under kvällen vilket ger risk för lokal ishalka. I övrigt risk för lokal frosthalka.",
+      "latitude": 63.4809952,
+      "longitude": 14.326333,
+      "category": 0,
+      "subcategory": "Halkvarning"
+    },
+    {
       "id": 1557082,
       "priority": 3,
       "createddate": "\/Date(1448892369050+0100)\/",
@@ -552,18 +456,6 @@
       "longitude": 16.647851943969727,
       "category": 0,
       "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1505778,
-      "priority": 4,
-      "createddate": "\/Date(1449607650717+0100)\/",
-      "title": "Jämtlands län",
-      "exactlocation": "  ",
-      "description": "Mycket halt väglag i hela länet",
-      "latitude": 63.4809952,
-      "longitude": 14.326333,
-      "category": 0,
-      "subcategory": "Halkvarning"
     },
     {
       "id": 1565195,
@@ -614,26 +506,26 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1566848,
-      "priority": 3,
-      "createddate": "\/Date(1449772391267+0100)\/",
-      "title": "Lv 195 Habo",
-      "exactlocation": "Mellan norra och södra infarten, mot Hjo",
-      "description": "Risk för halka pga tidigare dieselutsläpp.   ",
-      "latitude": 57.898857116699219,
-      "longitude": 14.105861663818359,
+      "id": 1511539,
+      "priority": 4,
+      "createddate": "\/Date(1449777267523+0100)\/",
+      "title": "Västmanlands län",
+      "exactlocation": "",
+      "description": "Risk för halka när våta eller fuktiga vägbanor fryser, främst i de norra delarna av länet. \n",
+      "latitude": 59.946888,
+      "longitude": 16.2786083,
       "category": 0,
       "subcategory": "Halkvarning"
     },
     {
-      "id": 1511539,
-      "priority": 3,
-      "createddate": "\/Date(1449685304260+0100)\/",
-      "title": "Västmanlands län",
+      "id": 1511540,
+      "priority": 4,
+      "createddate": "\/Date(1449777261393+0100)\/",
+      "title": "Uppsala län",
       "exactlocation": "",
-      "description": "Risk för halt väglag under kvällen och natten",
-      "latitude": 59.946888,
-      "longitude": 16.2786083,
+      "description": "Risk för halka när våta eller fuktiga vägbanor fryser, främst i de norra delarna av länet. \n\n",
+      "latitude": 59.96126,
+      "longitude": 17.78068,
       "category": 0,
       "subcategory": "Halkvarning"
     },
@@ -662,26 +554,26 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1566986,
+      "id": 1566979,
       "priority": 3,
-      "createddate": "\/Date(1449771446827+0100)\/",
-      "title": "E6 Kungsbackaleden",
-      "exactlocation": "Melan Åbromotet och tpl Torekullamotet i riktning mot Kållered",
-      "description": "Singelolycka.",
-      "latitude": 57.6396222575617,
-      "longitude": 12.028756086962627,
+      "createddate": "\/Date(1449772862240+0100)\/",
+      "title": "Rv 21 Perstorp-Västra Torup",
+      "exactlocation": "Mellan Tussjöholm - Västar Torup",
+      "description": "Singelolycka. Människor i området.",
+      "latitude": 56.141422922074412,
+      "longitude": 13.459038804633138,
       "category": 0,
       "subcategory": "Trafikolycka"
     },
     {
-      "id": 1566979,
+      "id": 1567006,
       "priority": 3,
-      "createddate": "\/Date(1449772121337+0100)\/",
-      "title": "Rv 21 Perstorp-Västra Torup",
-      "exactlocation": "Mellan Tussjöholm och Västar Torup",
-      "description": "Singelolycka.",
-      "latitude": 56.141422922074412,
-      "longitude": 13.459038804633138,
+      "createddate": "\/Date(1449776944643+0100)\/",
+      "title": "Rv 70 Mora–Älvdalen",
+      "exactlocation": "avfarten Oxberg",
+      "description": "Singelolycka. Växelvis trafik. Mycket halt på platsen.",
+      "latitude": 61.134949099377131,
+      "longitude": 14.173587062517438,
       "category": 0,
       "subcategory": "Trafikolycka"
     },
@@ -804,18 +696,6 @@
       "longitude": 17.490695953369141,
       "category": 0,
       "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1566993,
-      "priority": 3,
-      "createddate": "\/Date(1449771814867+0100)\/",
-      "title": "Rv 9 Trelleborg",
-      "exactlocation": "Trelleborg V - Trafikplats Öster Jär ",
-      "description": "Trafikolycka.",
-      "latitude": 55.372173309326172,
-      "longitude": 13.159890174865723,
-      "category": 0,
-      "subcategory": "Trafikstörning"
     },
     {
       "id": 1563338,
@@ -972,18 +852,6 @@
       "longitude": 13.1493564394966,
       "category": 0,
       "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1566861,
-      "priority": 3,
-      "createddate": "\/Date(1449772377027+0100)\/",
-      "title": "Rv 23 Älmhult-Hässleholm",
-      "exactlocation": "I höjd med Killeberg",
-      "description": "Vägen stängd i riktning mot Hässleholm. Trafiken leds om efter trafikolycka. Ingen prognos.",
-      "latitude": 56.498447418212891,
-      "longitude": 14.121387481689453,
-      "category": 0,
-      "subcategory": "Trafikolycka"
     },
     {
       "id": 1537497,

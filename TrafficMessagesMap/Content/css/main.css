@@ -57,7 +57,7 @@ h1 {
   margin-bottom: 5px;
 }
 
-label, select {
+label, select, .timestamp {
   font-size: 0.8em;
 }
 
@@ -68,6 +68,12 @@ label {
 select {
   margin-top: 5px;
   margin-bottom: 25px;
+}
+
+.timestamp {
+  color: rgb(255, 130, 130);
+  font-weight: bold;
+  margin-bottom: 35px;
 }
 
 .date, .category {

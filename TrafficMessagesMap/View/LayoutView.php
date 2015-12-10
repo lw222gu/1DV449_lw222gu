@@ -30,7 +30,7 @@ class LayoutView {
                     <h2>Trafikmeddelanden</h2>
                     <label for="select-category">Filtrera på kategori:</label>
                     <select id="select-category">' . $this->renderCategoryOptions() . '</select>
-                    <ul class="messages-list">' . $this->renderMessages() . '</ul>
+                    ' . $this->renderMessages() . '
                   </div>
                 </div>
             </body>
@@ -41,19 +41,30 @@ class LayoutView {
   private function renderMessages(){
     $ret = "";
     $dal = new \Model\TrafficMessageDAL();
-    $messages = $dal->getMessages("http://api.sr.se/api/v2/traffic/messages?format=json&pagination=false&indent=true");
 
-    foreach($messages as $message){
-      $description = $message->getDescription();
-      if($description == ""){
-        $description = "Beskrivning saknas.";
+    $messages = $dal->getMessages();
+
+    date_default_timezone_set('Europe/Stockholm');
+    $timeStamp = date('Y-m-d H:i:s', filemtime(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE));
+
+    if($messages != null){
+      $ret .= '<p class="timestamp">Informationen hämtades senast: <br />' . $timeStamp . '</p><ul class="messages-list">';
+
+      foreach($messages as $message){
+        $description = $message->getDescription();
+
+        if($description == ""){
+          $description = "Beskrivning saknas.";
+        }
+
+        $ret .= '<li class="' . \Settings::CSS_TRAFFIC_MESSAGE_CLASSES[$message->getCategory()] . '">
+                  <h3>' . $message->getTitle() . '</h3>
+                  <p class="date">' . date('Y-m-d H:i:s', $message->getDate()) . ' | </p>
+                  <p class="category">' . $message->getCategory() . '</p>
+                  <p>' . $description . '</p>
+                </li>';
       }
-      $ret .= '<li class="' . \Settings::CSS_TRAFFIC_MESSAGE_CLASSES[$message->getCategory()] . '">
-                <h3>' . $message->getTitle() . '</h3>
-                <p class="date">' . $message->getDate() . ' | </p>
-                <p class="category">' . $message->getCategory() . '</p>
-                <p>' . $description . '</p>
-              </li>';
+      $ret .= '</ul>';
     }
 
     return $ret;

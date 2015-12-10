@@ -4,9 +4,9 @@ namespace Model;
 
 class TrafficMessageDAL {
 
-  public function getJson($url){
+  public function getJson(){
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_URL, \Settings::APP_REQUEST_URL_SR);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     $data = curl_exec($ch);
     curl_close($ch);
@@ -16,13 +16,13 @@ class TrafficMessageDAL {
     fclose($doc);
   }
 
-  public function getMessages($url){
+  public function getMessages(){
 
     /*Check if file has been updated over the last minute,
      *otherwise fetch new data from API
      */
     if(time() - filemtime(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE) > 60){
-      $this->getJson($url);
+      $this->getJson();
     }
 
     $str = file_get_contents(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE);
