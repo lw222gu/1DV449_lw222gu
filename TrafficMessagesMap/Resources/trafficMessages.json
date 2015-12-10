@@ -470,6 +470,18 @@
       "subcategory": "Vatten"
     },
     {
+      "id": 1567040,
+      "priority": 3,
+      "createddate": "\/Date(1449778241497+0100)\/",
+      "title": "Rv 44/47 Trollhättan-Grästorp",
+      "exactlocation": "",
+      "description": "Människor längs vägen.",
+      "latitude": 58.290082868639345,
+      "longitude": 12.484191435146659,
+      "category": 0,
+      "subcategory": "Trafikstörning"
+    },
+    {
       "id": 1566037,
       "priority": 3,
       "createddate": "\/Date(1449671272970+0100)\/",
@@ -554,18 +566,6 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1566979,
-      "priority": 3,
-      "createddate": "\/Date(1449772862240+0100)\/",
-      "title": "Rv 21 Perstorp-Västra Torup",
-      "exactlocation": "Mellan Tussjöholm - Västar Torup",
-      "description": "Singelolycka. Människor i området.",
-      "latitude": 56.141422922074412,
-      "longitude": 13.459038804633138,
-      "category": 0,
-      "subcategory": "Trafikolycka"
-    },
-    {
       "id": 1567006,
       "priority": 3,
       "createddate": "\/Date(1449776944643+0100)\/",
@@ -624,6 +624,18 @@
       "longitude": 14.73924732208252,
       "category": 0,
       "subcategory": "Vägarbete"
+    },
+    {
+      "id": 1567032,
+      "priority": 3,
+      "createddate": "\/Date(1449777689110+0100)\/",
+      "title": "E20 Skara–Vara",
+      "exactlocation": "Gerum till Rosenskog ",
+      "description": "Södergående stopp.",
+      "latitude": 58.349262237548828,
+      "longitude": 13.28931713104248,
+      "category": 0,
+      "subcategory": "Trafikolycka"
     },
     {
       "id": 1515180,

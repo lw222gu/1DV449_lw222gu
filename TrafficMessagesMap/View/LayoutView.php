@@ -45,7 +45,7 @@ class LayoutView {
     $messages = $dal->getMessages();
 
     date_default_timezone_set('Europe/Stockholm');
-    $timeStamp = date('Y-m-d H:i:s', filemtime(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE));
+    $timeStamp = date('Y-m-d, H.i.s', filemtime(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE));
 
     if($messages != null){
       $ret .= '<p class="timestamp">Informationen hämtades senast: <br />' . $timeStamp . '</p><ul class="messages-list">';
@@ -59,7 +59,7 @@ class LayoutView {
 
         $ret .= '<li class="' . \Settings::CSS_TRAFFIC_MESSAGE_CLASSES[$message->getCategory()] . '">
                   <h3>' . $message->getTitle() . '</h3>
-                  <p class="date">' . date('Y-m-d H:i:s', $message->getDate()) . ' | </p>
+                  <p class="date">' . date('Y-m-d H.i.s', $message->getDate()) . ' | </p>
                   <p class="category">' . $message->getCategory() . '</p>
                   <p>' . $description . '</p>
                 </li>';
