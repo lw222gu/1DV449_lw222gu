@@ -28,6 +28,8 @@ class LayoutView {
                 <div class="row">
                   <div class="large-4 medium-6 small-12 columns">
                     <h2>Trafikmeddelanden</h2>
+                    <label for="select-category">Filtrera på kategori:</label>
+                    <select id="select-category">' . $this->renderCategoryOptions() . '</select>
                     <ul class="messages-list">' . $this->renderMessages() . '</ul>
                   </div>
                 </div>
@@ -52,6 +54,16 @@ class LayoutView {
                 <p class="category">' . $message->getCategory() . '</p>
                 <p>' . $description . '</p>
               </li>';
+    }
+
+    return $ret;
+  }
+
+  private function renderCategoryOptions(){
+    $ret = '<option value="Visa alla kategorier">Visa alla kategorier</option>';
+
+    foreach (\Settings::APP_TRAFFIC_MESSAGE_CATEGORIES as $key => $category) {
+      $ret .= '<option value="' . \Settings::APP_TRAFFIC_MESSAGE_CATEGORIES[$key] . '">' . \Settings::APP_TRAFFIC_MESSAGE_CATEGORIES[$key] . '</option>';
     }
 
     return $ret;

@@ -43,7 +43,7 @@ h1 {
   padding-bottom: 25px;
   margin-bottom: 25px;
   background-repeat: no-repeat;
-  background-size: 15px;
+  background-size: 25px;
   background-position: top left;
   border:solid;
   border-width: 0;
@@ -55,6 +55,19 @@ h1 {
   font-size: 0.8em;
   margin-top: 0;
   margin-bottom: 5px;
+}
+
+label, select {
+  font-size: 0.8em;
+}
+
+label {
+  font-weight: bold;
+}
+
+select {
+  margin-top: 5px;
+  margin-bottom: 25px;
 }
 
 .date, .category {
@@ -69,24 +82,20 @@ h1 {
 }
 
 
-/* Message category classes */
-
-.vagtrafik, .kollektivtrafik, .planerad-storning, .ovrigt {
-
-}
+/* Message category classes: Background images */
 
 .vagtrafik {
-  background-image: url("images/vagtrafik.svg");
+  background-image: url("images/vagtrafik-05.svg");
 }
 
 .kollektivtrafik {
-  background-image: url("images/kollektivtrafik.svg");
+  background-image: url("images/kollektivtrafik-06.svg");
 }
 
 .planerad-storning {
-  background-image: url("images/planerad-storning.svg");
+  background-image: url("images/planerad-storning-07.svg");
 }
 
 .ovrigt {
-  background-image: url("images/ovrigt.svg");
+  background-image: url("images/ovrigt-08.svg");
 }
