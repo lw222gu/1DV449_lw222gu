@@ -14,6 +14,18 @@
       "subcategory": "Vägarbete"
     },
     {
+      "id": 1567075,
+      "priority": 3,
+      "createddate": "\/Date(1449783129740+0100)\/",
+      "title": "Rv 97 Harads-Vuollerim",
+      "exactlocation": "Forsnäs - Nybruket ",
+      "description": " Viltolycka.",
+      "latitude": 66.192550659179687,
+      "longitude": 20.884843826293945,
+      "category": 0,
+      "subcategory": "Trafikolycka"
+    },
+    {
       "id": 1566535,
       "priority": 3,
       "createddate": "\/Date(1449752200830+0100)\/",
@@ -182,6 +194,18 @@
       "subcategory": "Vägarbete"
     },
     {
+      "id": 1567028,
+      "priority": 3,
+      "createddate": "\/Date(1449783396453+0100)\/",
+      "title": "E4 Södertälje",
+      "exactlocation": "Motorvägsbron",
+      "description": "Broöppning mellan kl. kl 03.00-03.20.",
+      "latitude": 59.185005187988281,
+      "longitude": 17.643075942993164,
+      "category": 2,
+      "subcategory": "Trafikstörning"
+    },
+    {
       "id": 1559533,
       "priority": 3,
       "createddate": "\/Date(1449135552837+0100)\/",
@@ -194,16 +218,16 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1566998,
-      "priority": 4,
-      "createddate": "\/Date(1449776902883+0100)\/",
-      "title": "Bollnäs, Arbro",
-      "exactlocation": "",
-      "description": "Ca 600 abonnenter utan el. Felsökning pågår.",
-      "latitude": 61.354367831536777,
-      "longitude": 16.394074775098652,
-      "category": 3,
-      "subcategory": "El"
+      "id": 1567076,
+      "priority": 3,
+      "createddate": "\/Date(1449783196353+0100)\/",
+      "title": "E4 Uppsalavägen",
+      "exactlocation": "Trafikplats Stora Wäsby (177) i riktning mot Stockholm ",
+      "description": "Bärgning av lastbil.",
+      "latitude": 59.553504943847656,
+      "longitude": 17.898904800415039,
+      "category": 0,
+      "subcategory": "Trafikstörning"
     },
     {
       "id": 1544476,
@@ -264,6 +288,18 @@
       "longitude": 12.270511627197266,
       "category": 0,
       "subcategory": "Vägarbete"
+    },
+    {
+      "id": 1505782,
+      "priority": 4,
+      "createddate": "\/Date(1449782371973+0100)\/",
+      "title": "Västerbottens län",
+      "exactlocation": "",
+      "description": "Ett nederbördsområde med mest regn eller snöblandat regn berör inland och kust under kvällen vilket ger risk för lokal ishalka. I övrigt risk för lokal frosthalka.\n",
+      "latitude": 64.9181442,
+      "longitude": 18.94519,
+      "category": 0,
+      "subcategory": "Halkvarning"
     },
     {
       "id": 1560822,
@@ -372,18 +408,6 @@
       "longitude": 18.434225082397461,
       "category": 0,
       "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1505782,
-      "priority": 4,
-      "createddate": "\/Date(1449727905023+0100)\/",
-      "title": "Västerbottens län",
-      "exactlocation": "",
-      "description": "Ishalka på grund av nederbörd på kalla vägbanor samt påfrysning av våta vägytor under dagen.",
-      "latitude": 64.9181442,
-      "longitude": 18.94519,
-      "category": 0,
-      "subcategory": "Halkvarning"
     },
     {
       "id": 1565829,
@@ -530,18 +554,6 @@
       "subcategory": "Halkvarning"
     },
     {
-      "id": 1511540,
-      "priority": 4,
-      "createddate": "\/Date(1449777261393+0100)\/",
-      "title": "Uppsala län",
-      "exactlocation": "",
-      "description": "Risk för halka när våta eller fuktiga vägbanor fryser, främst i de norra delarna av länet. \n\n",
-      "latitude": 59.96126,
-      "longitude": 17.78068,
-      "category": 0,
-      "subcategory": "Halkvarning"
-    },
-    {
       "id": 1487657,
       "priority": 4,
       "createddate": "\/Date(1449519681937+0100)\/",
@@ -603,8 +615,8 @@
     },
     {
       "id": 1567057,
-      "priority": 3,
-      "createddate": "\/Date(1449780935933+0100)\/",
+      "priority": 4,
+      "createddate": "\/Date(1449783478370+0100)\/",
       "title": "Hallands län",
       "exactlocation": "",
       "description": "SMHI-varning klass 1, höga flöden. Viskan, nedre delen.\n",
@@ -638,18 +650,6 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1567055,
-      "priority": 3,
-      "createddate": "\/Date(1449781473100+0100)\/",
-      "title": "E18 Norrtäljevägen  ",
-      "exactlocation": "Gillingebanan - Trafikplats Rosenkälla (187) i riktning mot Stockholm ",
-      "description": "Stillastående, nersläckt personbil.",
-      "latitude": 59.510467529296875,
-      "longitude": 18.175594329833984,
-      "category": 0,
-      "subcategory": "Trafikstörning"
-    },
-    {
       "id": 1481993,
       "priority": 3,
       "createddate": "\/Date(1443014816513+0200)\/",
@@ -676,10 +676,10 @@
     {
       "id": 1566362,
       "priority": 3,
-      "createddate": "\/Date(1449720849150+0100)\/",
+      "createddate": "\/Date(1449782448553+0100)\/",
       "title": "Rv 75 Södra länken",
       "exactlocation": "Riktning mot Årsta",
-      "description": "Södra länken mot E4/E20 avstängd för underhållsarbeten.",
+      "description": "Södra länken mot E4/E20 avstängd för underhållsarbeten under natten.",
       "latitude": 59.309074401855469,
       "longitude": 18.122003555297852,
       "category": 0,
@@ -780,6 +780,18 @@
       "longitude": 12.586764594825903,
       "category": 1,
       "subcategory": "Tåg"
+    },
+    {
+      "id": 1511540,
+      "priority": 4,
+      "createddate": "\/Date(1449782415217+0100)\/",
+      "title": "Uppsala län",
+      "exactlocation": "",
+      "description": "Under kvällen och natten sjunkande temperaturer. Risk för halka när våta eller fuktiga vägbanor fryser, främst i de norra delarna av länet. \n\n",
+      "latitude": 59.96126,
+      "longitude": 17.78068,
+      "category": 0,
+      "subcategory": "Halkvarning"
     },
     {
       "id": 1557080,
@@ -892,10 +904,10 @@
     {
       "id": 1567032,
       "priority": 2,
-      "createddate": "\/Date(1449779167097+0100)\/",
+      "createddate": "\/Date(1449786368477+0100)\/",
       "title": "E20 Skara–Vara",
-      "exactlocation": "Ardala-Gerum ",
-      "description": "Vägen stängd i södergående.",
+      "exactlocation": "söder om Ardala",
+      "description": "Vägen stängd i södergående. Lastbilsolycka.",
       "latitude": 58.349262237548828,
       "longitude": 13.28931713104248,
       "category": 0,
@@ -974,18 +986,6 @@
       "subcategory": "Trafikstörning"
     },
     {
-      "id": 1563915,
-      "priority": 3,
-      "createddate": "\/Date(1449761516067+0100)\/",
-      "title": "Innerstan",
-      "exactlocation": "Bussar linje: 1, 3, 50 och 57.",
-      "description": "Nobelfestligheterna medför förändringar för bussarna 10/12 ca kl 13-18. Linje 57 berörs redan från den 6 dec. Bussarna kan inte trafikera Kungsgatan mellan Vasagatan och Sveavägen.Välj gärna t-banan.",
-      "latitude": 59.334652315616182,
-      "longitude": 18.060606138346508,
-      "category": 1,
-      "subcategory": "Buss"
-    },
-    {
       "id": 1552649,
       "priority": 5,
       "createddate": "\/Date(1449255662420+0100)\/",
@@ -1056,18 +1056,6 @@
       "longitude": 11.981105082125636,
       "category": 0,
       "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1565792,
-      "priority": 3,
-      "createddate": "\/Date(1449745142600+0100)\/",
-      "title": "Innerstaden",
-      "exactlocation": "Kungsgatan mellan Sveavägen och Vasagatan, Sveavägen mellan Kungsgatan och Sergels Torg, och området runt Stadshuset.",
-      "description": "Avstängningar under torsdagen p.g.a. Nobelfest och prisutdelning. Ingen torghandel på Hötorget under torsdagen, Kungsgatan stängs av från kl 14 för biltrafik. ",
-      "latitude": 59.3336801426036,
-      "longitude": 18.060924304150948,
-      "category": 0,
-      "subcategory": "Trafikstörning"
     },
     {
       "id": 1542532,
