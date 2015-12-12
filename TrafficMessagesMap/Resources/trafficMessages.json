@@ -2,6 +2,30 @@
   "copyright": "Copyright Sveriges Radio 2015. All rights reserved.",
   "messages": [
     {
+      "id": 1568339,
+      "priority": 3,
+      "createddate": "\/Date(1449951902497+0100)\/",
+      "title": "E18 Norrtäljevägen",
+      "exactlocation": "Vid Riala mot Norrtälje",
+      "description": "",
+      "latitude": 59.700860350774576,
+      "longitude": 18.485216350882496,
+      "category": 0,
+      "subcategory": "Trafikolycka"
+    },
+    {
+      "id": 1568341,
+      "priority": 3,
+      "createddate": "\/Date(1449952002197+0100)\/",
+      "title": "E65 Skurup-Ystad",
+      "exactlocation": "Rydsgård",
+      "description": "",
+      "latitude": 55.482967097924934,
+      "longitude": 13.591526901900954,
+      "category": 0,
+      "subcategory": "Trafikolycka"
+    },
+    {
       "id": 1539416,
       "priority": 5,
       "createddate": "\/Date(1447764180897+0100)\/",
@@ -14,16 +38,16 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1568322,
+      "id": 1568332,
       "priority": 3,
-      "createddate": "\/Date(1449947795840+0100)\/",
-      "title": "Västerås - Arboga ",
-      "exactlocation": "Kolbäck",
-      "description": " Det är stopp för tågtrafiken på sträckorna Västerås - Arboga samt Västerås - Fagersta och omvänt på grund av ett signalfel vid Kolbäck. Reparation av felet pågår men det finns i nuläget ingen prognos om när trafiken kan återupptas.\n",
-      "latitude": 59.622285038512693,
-      "longitude": 16.205153656443311,
-      "category": 1,
-      "subcategory": "Tåg"
+      "createddate": "\/Date(1449950418843+0100)\/",
+      "title": "E4 tpl Lagan (81) -tpl Ljungby N (80)",
+      "exactlocation": "",
+      "description": " En stillastående bil som står där det är enfiligt",
+      "latitude": 56.873077392578125,
+      "longitude": 13.95354175567627,
+      "category": 0,
+      "subcategory": "Trafikstörning"
     },
     {
       "id": 1263776,
@@ -182,18 +206,6 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1568299,
-      "priority": 3,
-      "createddate": "\/Date(1449946032663+0100)\/",
-      "title": "E4 Ödeshög- Gränna",
-      "exactlocation": "Mellan Brahe hus och Vida vättern ",
-      "description": "Bilbrand",
-      "latitude": 58.092999975358708,
-      "longitude": 14.548991827189607,
-      "category": 0,
-      "subcategory": "Trafikstörning"
-    },
-    {
       "id": 1534135,
       "priority": 3,
       "createddate": "\/Date(1449551664123+0100)\/",
@@ -252,6 +264,18 @@
       "longitude": 16.547788619995117,
       "category": 0,
       "subcategory": "Vägarbete"
+    },
+    {
+      "id": 1568343,
+      "priority": 3,
+      "createddate": "\/Date(1449953069070+0100)\/",
+      "title": "Lv 195 Bankeryd-Fagerhult",
+      "exactlocation": "Vid Habo",
+      "description": "Flera älgar vid vägen",
+      "latitude": 57.920063018798828,
+      "longitude": 14.096907615661621,
+      "category": 0,
+      "subcategory": "Trafikstörning"
     },
     {
       "id": 1521191,
@@ -494,18 +518,6 @@
       "subcategory": "Halkvarning"
     },
     {
-      "id": 1511540,
-      "priority": 4,
-      "createddate": "\/Date(1449795218643+0100)\/",
-      "title": "Uppsala län",
-      "exactlocation": "",
-      "description": "Risk för halka när våta eller fuktiga vägbanor fryser, främst i de norra delarna av länet. \n\n",
-      "latitude": 59.96126,
-      "longitude": 17.78068,
-      "category": 0,
-      "subcategory": "Halkvarning"
-    },
-    {
       "id": 1487662,
       "priority": 4,
       "createddate": "\/Date(1449851514780+0100)\/",
@@ -612,6 +624,18 @@
       "longitude": 14.630246761853261,
       "category": 0,
       "subcategory": "Trafikstörning"
+    },
+    {
+      "id": 1511540,
+      "priority": 4,
+      "createddate": "\/Date(1449952815040+0100)\/",
+      "title": "Uppsala län",
+      "exactlocation": "",
+      "description": "Torra till fuktiga vägar med någon minusgrad i vägytorna.\nRisk för lokalt halt väglag i samband med återfrysning och frost.\n",
+      "latitude": 59.96126,
+      "longitude": 17.78068,
+      "category": 0,
+      "subcategory": "Halkvarning"
     },
     {
       "id": 1562926,

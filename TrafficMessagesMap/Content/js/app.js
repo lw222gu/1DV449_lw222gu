@@ -7,7 +7,6 @@ var TrafficMap = {
   lat: 59.0,
   long: 15.0,
   icons: {},
-//  selection: document.getElementById("select-category").value,
   selection: "4",
   markers: [],
   markersGroup: L.layerGroup(this.markers),
@@ -36,8 +35,6 @@ var TrafficMap = {
       subdomains: ['otile1','otile2','otile3','otile4']
     }).addTo(TrafficMap.map);
 
-    //TrafficMap.setOnclicks();
-
     var select = document.getElementById("select-category");
     select.onchange = function(){
       TrafficMap.selection = this.value;
@@ -65,11 +62,6 @@ var TrafficMap = {
     TrafficMap.markers.forEach(function(mark){
       TrafficMap.map.removeLayer(mark);
     });
-
-    //Requests JSON if not requested
-    //if(TrafficMap.json == undefined){
-    //  TrafficMap.getJson();
-    //}
 
     var messages = TrafficMap.json["messages"];
 
@@ -115,9 +107,12 @@ var TrafficMap = {
 
   setOnclicks: function(){
     var anchors = document.getElementsByClassName("message-anchor");
-    /*for(var i = 0; i < anchors.length; i++){
-      set onclick...
-    }*/
+    for(var i = 0; i < anchors.length; i++){
+      anchors[i].onclick = function(){
+        console.log("popup!");
+        return false;
+      }
+    }
   },
 
   renderSelect: function(){
@@ -176,7 +171,7 @@ var TrafficMap = {
 
         var pDate = document.createElement("p");
         pDate.setAttribute("class", "date");
-        pDate.innerHTML = messages[mess]["createddate"];
+        pDate.innerHTML = TrafficMap.formatDate(messages[mess]["createddate"]);
 
         var pCategory = document.createElement("p");
         pCategory.setAttribute("class", "category");
@@ -200,14 +195,39 @@ var TrafficMap = {
     }
     messageListDiv.appendChild(ul);
     messagesDiv.appendChild(messageListDiv);
+
+    TrafficMap.setOnclicks();
   },
+
+  formatDate: function(date){
+    date = date.replace("/Date(", "");
+    date = date.replace(")/", "");
+    date = parseInt(date, 10);
+    date = new Date(date);
+
+    var y = date.getFullYear();
+    var m = TrafficMap.addZeroToDate(date.getMonth() + 1);
+    var d = TrafficMap.addZeroToDate(date.getDate());
+    var h = TrafficMap.addZeroToDate(date.getHours());
+    var min = TrafficMap.addZeroToDate(date.getMinutes());
+    var s = TrafficMap.addZeroToDate(date.getSeconds());
+    var dateText = y + "-" + m + "-" + d + ", " + h + "." + min + "." + s + " ";
+    return dateText;
+  },
+
+  addZeroToDate: function (i){
+      if (i < 10){
+          i = "0" + i;
+      }
+      return i;
+  },
+
 
   getPosition: function(position){
     TrafficMap.lat = position.coords.latitude;
     TrafficMap.long = position.coords.longitude;
     TrafficMap.map.setView([TrafficMap.lat, TrafficMap.long], 7);
   }
-
 };
 
 window.onload = TrafficMap.init;
