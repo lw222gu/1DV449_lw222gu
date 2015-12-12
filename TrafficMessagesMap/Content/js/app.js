@@ -22,7 +22,7 @@ var TrafficMap = {
     TrafficMap.map =  L.map('map', {
       center: [TrafficMap.lat, TrafficMap.long], //standard latitude and longitude
       minZoom: 2,
-      zoom: 5
+      zoom: 6
     });
 
     //If user grants access to location, reset map-view
@@ -68,16 +68,10 @@ var TrafficMap = {
     for(var i = 0; i < messages.length; i++){
       var category = messages[i]["category"];
 
-      if(TrafficMap.selection === "4"){
+      if(TrafficMap.selection == category || TrafficMap.selection == "4"){
         var marker = L.marker([messages[i].latitude, messages[i].longitude], {icon: TrafficMap.icons[category]}).addTo(TrafficMap.map);
+        marker.bindPopup(TrafficMap.renderListItemContent(messages[i]));
         TrafficMap.markers.push(marker);
-      }
-
-      else {
-        if(messages[i].category == TrafficMap.selection){
-          var marker = L.marker([messages[i].latitude, messages[i].longitude], {icon: TrafficMap.icons[category]}).addTo(TrafficMap.map);
-          TrafficMap.markers.push(marker);
-        }
       }
     }
   },
@@ -87,7 +81,7 @@ var TrafficMap = {
       options: {
         iconSize:     [25, 24],
         iconAnchor:   [8, 23],
-        popupAnchor:  [-3, -76]
+        popupAnchor:  [0, -25]
       }
     });
 
@@ -166,29 +160,9 @@ var TrafficMap = {
         var li = document.createElement("li");
         li.setAttribute("class", classes[messages[mess]["category"]]);
 
-        var h3 = document.createElement("h3");
-        h3.innerHTML = messages[mess]["title"];
+        var liContent = TrafficMap.renderListItemContent(messages[mess]);
 
-        var pDate = document.createElement("p");
-        pDate.setAttribute("class", "date");
-        pDate.innerHTML = TrafficMap.formatDate(messages[mess]["createddate"]);
-
-        var pCategory = document.createElement("p");
-        pCategory.setAttribute("class", "category");
-        pCategory.innerHTML = TrafficMap.options[messages[mess]["category"]];
-
-        var pDescription = document.createElement("p");
-        if(messages[mess]["description"] != ""){
-          pDescription.innerHTML = messages[mess]["description"];
-        }
-        else {
-          pDescription.innerHTML = "Beskrivning saknas.";
-        }
-
-        li.appendChild(h3);
-        li.appendChild(pDate);
-        li.appendChild(pCategory);
-        li.appendChild(pDescription);
+        li.appendChild(liContent);
         a.appendChild(li);
         ul.appendChild(a);
       }
@@ -197,6 +171,37 @@ var TrafficMap = {
     messagesDiv.appendChild(messageListDiv);
 
     TrafficMap.setOnclicks();
+  },
+
+  renderListItemContent: function(message){
+
+    var liContent = document.createElement("div");
+
+    var h3 = document.createElement("h3");
+    h3.innerHTML = message["title"];
+
+    var pDate = document.createElement("p");
+    pDate.setAttribute("class", "date");
+    pDate.innerHTML = TrafficMap.formatDate(message["createddate"]);
+
+    var pCategory = document.createElement("p");
+    pCategory.setAttribute("class", "category");
+    pCategory.innerHTML = TrafficMap.options[message["category"]];
+
+    var pDescription = document.createElement("p");
+    if(message["description"] != ""){
+      pDescription.innerHTML = message["description"];
+    }
+    else {
+      pDescription.innerHTML = "Beskrivning saknas.";
+    }
+
+    liContent.appendChild(h3);
+    liContent.appendChild(pDate);
+    liContent.appendChild(pCategory);
+    liContent.appendChild(pDescription);
+
+    return liContent;
   },
 
   formatDate: function(date){
@@ -224,7 +229,7 @@ var TrafficMap = {
   getPosition: function(position){
     TrafficMap.lat = position.coords.latitude;
     TrafficMap.long = position.coords.longitude;
-    TrafficMap.map.setView([TrafficMap.lat, TrafficMap.long], 7);
+    TrafficMap.map.setView([TrafficMap.lat, TrafficMap.long], 10);
   }
 };
 
