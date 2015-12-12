@@ -2,18 +2,6 @@
   "copyright": "Copyright Sveriges Radio 2015. All rights reserved.",
   "messages": [
     {
-      "id": 1568164,
-      "priority": 3,
-      "createddate": "\/Date(1449927673017+0100)\/",
-      "title": "E4 Norrköping",
-      "exactlocation": "Ingelsta avf 121 mot Klinga ",
-      "description": "",
-      "latitude": 58.618175629723687,
-      "longitude": 16.14702751724861,
-      "category": 0,
-      "subcategory": "Trafikolycka"
-    },
-    {
       "id": 1539416,
       "priority": 5,
       "createddate": "\/Date(1447764180897+0100)\/",
@@ -76,7 +64,7 @@
     {
       "id": 1568183,
       "priority": 3,
-      "createddate": "\/Date(1449931168950+0100)\/",
+      "createddate": "\/Date(1449940772540+0100)\/",
       "title": "Pajala",
       "exactlocation": "Junosuando och Kangos",
       "description": "Avbrottet berör ca 500 kunder. Felsökning pågår.",
@@ -110,6 +98,30 @@
       "subcategory": "Vägarbete"
     },
     {
+      "id": 1568269,
+      "priority": 3,
+      "createddate": "\/Date(1449942287470+0100)\/",
+      "title": "E22 Valdemarsvik-Ringarum",
+      "exactlocation": "Avfart Gusum",
+      "description": "Avstängt i norrgående. Flerbils krock",
+      "latitude": 58.285404683662321,
+      "longitude": 16.502957393062982,
+      "category": 0,
+      "subcategory": "Trafikolycka"
+    },
+    {
+      "id": 1568267,
+      "priority": 3,
+      "createddate": "\/Date(1449940213793+0100)\/",
+      "title": "Rv 27 Bor-Värnamo",
+      "exactlocation": "",
+      "description": "Begränsad framkomlighet",
+      "latitude": 57.13677700109411,
+      "longitude": 14.114981779649755,
+      "category": 0,
+      "subcategory": "Trafikolycka"
+    },
+    {
       "id": 1497351,
       "priority": 3,
       "createddate": "\/Date(1449668783383+0100)\/",
@@ -120,18 +132,6 @@
       "longitude": 14.026314735412598,
       "category": 0,
       "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1568184,
-      "priority": 3,
-      "createddate": "\/Date(1449931561413+0100)\/",
-      "title": "E4 Bjästa-Örnsköldsvik",
-      "exactlocation": "Ett par hundra meter före Överhörnäs",
-      "description": "Begränsad framkomlighet. Bilist kört i diket. Räddningstjänst på plats.",
-      "latitude": 63.284360102536489,
-      "longitude": 18.557489341645667,
-      "category": 0,
-      "subcategory": "Trafikolycka"
     },
     {
       "id": 1439931,
@@ -168,18 +168,6 @@
       "longitude": 13.683475494384766,
       "category": 0,
       "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1568203,
-      "priority": 3,
-      "createddate": "\/Date(1449933040837+0100)\/",
-      "title": "E6 Göteborg",
-      "exactlocation": "Tingstadstunneln, riktning från Hisingen mot City",
-      "description": "Begränsad framkomlighet. Kollision.",
-      "latitude": 57.725759618907922,
-      "longitude": 11.981034228012147,
-      "category": 0,
-      "subcategory": "Trafikolycka"
     },
     {
       "id": 1513371,
@@ -230,18 +218,6 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1568170,
-      "priority": 3,
-      "createddate": "\/Date(1449932155177+0100)\/",
-      "title": "Lv 392 Pajala-Korpilompolo",
-      "exactlocation": "Sattajärvi",
-      "description": "Bärgning av lastbil. trångt att passera",
-      "latitude": 67.074790954589844,
-      "longitude": 23.347177505493164,
-      "category": 0,
-      "subcategory": "Trafikstörning"
-    },
-    {
       "id": 1544476,
       "priority": 3,
       "createddate": "\/Date(1447668545113+0100)\/",
@@ -276,30 +252,6 @@
       "longitude": 16.547788619995117,
       "category": 0,
       "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1568197,
-      "priority": 3,
-      "createddate": "\/Date(1449933152190+0100)\/",
-      "title": "E22 Kalmar-Mönsterås",
-      "exactlocation": "Mellan Lindsdal och Rockneby, norrgående",
-      "description": "Fordonsbrand.",
-      "latitude": 56.76500303576298,
-      "longitude": 16.320991143556778,
-      "category": 0,
-      "subcategory": "Trafikolycka"
-    },
-    {
-      "id": 1568116,
-      "priority": 3,
-      "createddate": "\/Date(1449928790933+0100)\/",
-      "title": "E18 Hallstahammar-Köping",
-      "exactlocation": "Munktorps avfarten",
-      "description": "Fritt och framkomligt efter tidigare avstängning. Restköer",
-      "latitude": 59.570612202309469,
-      "longitude": 16.0903477627471,
-      "category": 0,
-      "subcategory": "Trafikolycka"
     },
     {
       "id": 1521191,
@@ -602,54 +554,6 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1568207,
-      "priority": 3,
-      "createddate": "\/Date(1449933450590+0100)\/",
-      "title": "Rv 27 Anderstorp-Bredaryd",
-      "exactlocation": "Strax söder om Anderstorp",
-      "description": "Singelolycka.",
-      "latitude": 57.257709035801859,
-      "longitude": 13.634199997031589,
-      "category": 0,
-      "subcategory": "Trafikolycka"
-    },
-    {
-      "id": 1568211,
-      "priority": 3,
-      "createddate": "\/Date(1449933842637+0100)\/",
-      "title": "E16 Mockfjärd - Dala-Floda",
-      "exactlocation": "",
-      "description": "Singelolycka. Bilist kört in i ett träd.",
-      "latitude": 60.507126262454626,
-      "longitude": 14.837216711317014,
-      "category": 0,
-      "subcategory": "Trafikolycka"
-    },
-    {
-      "id": 1568212,
-      "priority": 3,
-      "createddate": "\/Date(1449933968823+0100)\/",
-      "title": "Lv 215 Finspång-Skärblacka",
-      "exactlocation": "Vid Eliantorps motorbana",
-      "description": "Singelolycka. Bilist kört in i ett träd.",
-      "latitude": 58.6617546081543,
-      "longitude": 15.781174659729004,
-      "category": 0,
-      "subcategory": "Trafikolycka"
-    },
-    {
-      "id": 1568193,
-      "priority": 3,
-      "createddate": "\/Date(1449932073353+0100)\/",
-      "title": "E20 Örebro-Vretstorp",
-      "exactlocation": "mellan tpl Brändåsen och tpl Vallby",
-      "description": "Stillastående bil",
-      "latitude": 59.047855383647295,
-      "longitude": 14.939827430254475,
-      "category": 0,
-      "subcategory": "Trafikstörning"
-    },
-    {
       "id": 1563801,
       "priority": 2,
       "createddate": "\/Date(1449824938100+0100)\/",
@@ -878,16 +782,16 @@
       "subcategory": "Trafikstörning"
     },
     {
-      "id": 1568191,
-      "priority": 3,
-      "createddate": "\/Date(1449931852110+0100)\/",
-      "title": "E14 Östersund",
-      "exactlocation": "Vid tpl Lugnvik",
-      "description": "Älgar vid vägen",
-      "latitude": 63.21448346575913,
-      "longitude": 14.637150151616868,
+      "id": 1568211,
+      "priority": 2,
+      "createddate": "\/Date(1449942172137+0100)\/",
+      "title": "E16 Dala-Floda - Björbo",
+      "exactlocation": "Bäckbyn",
+      "description": "Växelvis trafik efter tidigare olycka och avstängning",
+      "latitude": 60.493649407422545,
+      "longitude": 14.782526942777958,
       "category": 0,
-      "subcategory": "Trafikstörning"
+      "subcategory": "Trafikolycka"
     },
     {
       "id": 1545140,
