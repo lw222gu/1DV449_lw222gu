@@ -34,22 +34,23 @@ class LayoutView {
                         <h1>Välkommen till trafikkartan</h1>
                     </div>
                 </div>
-                <div class="row">
-                  <div class="large-12 medium-12 small-12 columns" id="map"></div>
-                </div>
-                <div class="row">
-                  <div id="traffic-messages" class="large-12 medium-12 small-12 columns">
-                  </div>
-
-                  <noscript>
+                <noscript>
+                  <div class="row">
                     <div id="noscript-traffic-messages" class="large-12 medium-12 small-12 columns">
                         <h2>Trafikmeddelanden</h2>
                         <label for="select-category">Filtrera på kategori:</label>
                         <select id="select-category">' . $this->renderCategoryOptions() . '</select>
                         ' . $this->renderMessages() . '
                     </div>
-                  </noscript>
+                  <div>
+                </noscript>
 
+                <div class="row">
+                  <div class="large-12 medium-12 small-12 columns" id="map"></div>
+                </div>
+                <div class="row">
+                  <div id="traffic-messages" class="large-12 medium-12 small-12 columns">
+                  </div>
                 </div>
                 <script src="Content/js/app.js"></script>
             </body>
@@ -78,7 +79,7 @@ class LayoutView {
 
         $ret .= '<li class="' . \Settings::CSS_TRAFFIC_MESSAGE_CLASSES[$message->getCategory()] . '">
                   <h3>' . $message->getTitle() . '</h3>
-                  <p class="date">' . date('Y-m-d H.i.s', $message->getDate()) . ' | </p>
+                  <p class="date">' . date('Y-m-d H.i.s', $message->getDate()) . '</p>
                   <p class="category">' . $message->getCategory() . '</p>
                   <p>' . $description . '</p>
                 </li>';

@@ -78,6 +78,7 @@ label {
 select {
   margin-top: 5px;
   margin-bottom: 25px;
+  width:250px;
 }
 
 .timestamp {
@@ -95,6 +96,7 @@ select {
 
 .category {
   font-weight: bold;
+  margin-left: 5px;
 }
 
 
@@ -119,5 +121,5 @@ select {
 
 /* Map css */
 #map {
-  height: 350px; 
+  height: 350px;
 }

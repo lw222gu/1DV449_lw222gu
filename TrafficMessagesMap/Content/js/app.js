@@ -200,8 +200,8 @@ var TrafficMap = {
   },
 
   formatDate: function(date){
-    date = date.replace("/Date(", "");
-    date = date.replace(")/", "");
+    //date = date.replace("/Date(", "");
+    //date = date.replace(")/", "");
     date = parseInt(date, 10);
     date = new Date(date);
 
@@ -211,8 +211,7 @@ var TrafficMap = {
     var h = TrafficMap.addZeroToDate(date.getHours());
     var min = TrafficMap.addZeroToDate(date.getMinutes());
     var s = TrafficMap.addZeroToDate(date.getSeconds());
-    var dateText = y + "-" + m + "-" + d + ", " + h + "." + min + "." + s + " ";
-    return dateText;
+    return y + "-" + m + "-" + d + ", " + h + "." + min + "." + s + " ";
   },
 
   addZeroToDate: function (i){
@@ -221,7 +220,6 @@ var TrafficMap = {
       }
       return i;
   },
-
 
   getPosition: function(position){
     TrafficMap.lat = position.coords.latitude;

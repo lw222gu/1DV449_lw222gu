@@ -29,8 +29,7 @@ class TrafficMessage {
   }
 
   public function setDate($date){
-    $dateTime = str_replace("/Date(", "", $date);
-    $dateTime = substr($dateTime, 0, 10);
+    $dateTime = substr($date, 0, 10);
     $this->date = $dateTime;
   }
 
