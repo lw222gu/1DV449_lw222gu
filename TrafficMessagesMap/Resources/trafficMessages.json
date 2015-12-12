@@ -98,6 +98,18 @@
       "subcategory": "Vägarbete"
     },
     {
+      "id": 1568101,
+      "priority": 3,
+      "createddate": "\/Date(1449919656643+0100)\/",
+      "title": "Lv 392 Pajala-Korpilompolo",
+      "exactlocation": "Vid Sattajärvi",
+      "description": "Begränsad framkomlighet pga stillastående lastbil",
+      "latitude": 67.074790954589844,
+      "longitude": 23.347177505493164,
+      "category": 0,
+      "subcategory": "Trafikstörning"
+    },
+    {
       "id": 1439931,
       "priority": 3,
       "createddate": "\/Date(1449044498187+0100)\/",
@@ -134,6 +146,18 @@
       "subcategory": "Vägarbete"
     },
     {
+      "id": 1568131,
+      "priority": 3,
+      "createddate": "\/Date(1449922662370+0100)\/",
+      "title": "Rv 44 Grästorp",
+      "exactlocation": "Mellan infarterna",
+      "description": "Begränsad framkomlighet. Kollision.",
+      "latitude": 58.353167013576055,
+      "longitude": 12.661002568423577,
+      "category": 0,
+      "subcategory": "Trafikolycka"
+    },
+    {
       "id": 1513371,
       "priority": 3,
       "createddate": "\/Date(1448533660523+0100)\/",
@@ -146,18 +170,6 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1568078,
-      "priority": 3,
-      "createddate": "\/Date(1449917507337+0100)\/",
-      "title": "Rv 55 Strängnäs-Malmköping",
-      "exactlocation": "Strax söder om Merlänna",
-      "description": "Begränsad framkomlighet. Singelolycka.",
-      "latitude": 59.26016431218325,
-      "longitude": 16.944330015341173,
-      "category": 0,
-      "subcategory": "Trafikolycka"
-    },
-    {
       "id": 1508092,
       "priority": 5,
       "createddate": "\/Date(1444103600370+0200)\/",
@@ -168,6 +180,18 @@
       "longitude": 13.188547134399414,
       "category": 0,
       "subcategory": "Vägarbete"
+    },
+    {
+      "id": 1568116,
+      "priority": 3,
+      "createddate": "\/Date(1449922547683+0100)\/",
+      "title": "E18 Hallstahammar-Köping",
+      "exactlocation": "Munktorps avfarten",
+      "description": "Bil har voltat. Köer kör via Sörstafors och Kolbäck",
+      "latitude": 59.570612202309469,
+      "longitude": 16.0903477627471,
+      "category": 0,
+      "subcategory": "Trafikolycka"
     },
     {
       "id": 1534135,
@@ -530,18 +554,6 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1568089,
-      "priority": 3,
-      "createddate": "\/Date(1449918733510+0100)\/",
-      "title": "E4 Jönåker-Nyköping",
-      "exactlocation": "I höjd med Nyköpingsbro",
-      "description": "Singelolycka. Halt.",
-      "latitude": 58.748343379771661,
-      "longitude": 16.922188019206946,
-      "category": 0,
-      "subcategory": "Trafikolycka"
-    },
-    {
       "id": 1563801,
       "priority": 2,
       "createddate": "\/Date(1449824938100+0100)\/",
@@ -636,6 +648,18 @@
       "longitude": 15.439994573446493,
       "category": 0,
       "subcategory": "Trafikstörning"
+    },
+    {
+      "id": 1568124,
+      "priority": 3,
+      "createddate": "\/Date(1449921633257+0100)\/",
+      "title": "E22 Norrköping-Söderköping",
+      "exactlocation": "Vid Navestad",
+      "description": "Två bilar har kolliderat",
+      "latitude": 58.5573491914388,
+      "longitude": 16.232245328415839,
+      "category": 0,
+      "subcategory": "Trafikolycka"
     },
     {
       "id": 1548340,
@@ -960,6 +984,18 @@
       "longitude": 14.175168991088867,
       "category": 0,
       "subcategory": "Vägarbete"
+    },
+    {
+      "id": 1568121,
+      "priority": 2,
+      "createddate": "\/Date(1449922431043+0100)\/",
+      "title": "Lv 265 Täby-tpl Rosenkälla",
+      "exactlocation": "Strax före Löttingetunneln",
+      "description": "Tunneln tillfälligt avstängd i riktning mot Åkersberga. Olycka.",
+      "latitude": 59.482280268624763,
+      "longitude": 18.091813282354966,
+      "category": 0,
+      "subcategory": "Trafikolycka"
     },
     {
       "id": 1552066,
