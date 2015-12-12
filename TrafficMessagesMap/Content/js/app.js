@@ -2,23 +2,31 @@
 
 var TrafficMap = {
 
-  json: {},
+  json: undefined,
   map: {},
   lat: 59.0,
   long: 15.0,
   icons: {},
-  selection: document.getElementById("select-category").value,
+//  selection: document.getElementById("select-category").value,
+  selection: "4",
   markers: [],
   markersGroup: L.layerGroup(this.markers),
-  //options: ["Vägtrafik": "0", "Kollektivtrafik": "1", "Planerad störning":"2", "Övrigt": "3", "Visa alla kategorier": null],
+  options: ["Vägtrafik", "Kollektivtrafik", "Planerad störning", "Övrigt", "Visa alla kategorier"],
+  //options: ["Vägtrafik": "0", "Kollektivtrafik": "1", "Planerad störning":"2", "Övrigt": "3", "Visa alla kategorier": null] ,
 
   init: function(){
+
+    TrafficMap.getJson();
+    TrafficMap.renderSelect();
+    TrafficMap.renderList();
+
     TrafficMap.map =  L.map('map', {
       center: [TrafficMap.lat, TrafficMap.long], //standard latitude and longitude
       minZoom: 2,
       zoom: 5
     });
 
+    //If user grants access to location, reset map-view
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(TrafficMap.getPosition);
     }
@@ -28,10 +36,13 @@ var TrafficMap = {
       subdomains: ['otile1','otile2','otile3','otile4']
     }).addTo(TrafficMap.map);
 
+    //TrafficMap.setOnclicks();
+
     var select = document.getElementById("select-category");
     select.onchange = function(){
       TrafficMap.selection = this.value;
       TrafficMap.renderMarkers();
+      TrafficMap.renderList();
     };
 
     TrafficMap.createMarkerIcons();
@@ -50,12 +61,16 @@ var TrafficMap = {
   },
 
   renderMarkers: function(){
-
+    //Clears map from markers
     TrafficMap.markers.forEach(function(mark){
       TrafficMap.map.removeLayer(mark);
     });
 
-    TrafficMap.getJson();
+    //Requests JSON if not requested
+    //if(TrafficMap.json == undefined){
+    //  TrafficMap.getJson();
+    //}
+
     var messages = TrafficMap.json["messages"];
 
     for(var i = 0; i < messages.length; i++){
@@ -76,7 +91,6 @@ var TrafficMap = {
   },
 
   createMarkerIcons: function(){
-
     var Icon = L.Icon.extend({
       options: {
         iconSize:     [25, 24],
@@ -85,6 +99,7 @@ var TrafficMap = {
       }
     });
 
+    //Creates new Icon objects for custom icons
     var kollektivtrafikIcon = new Icon({iconUrl: 'Content/css/images/kollektivtrafik-06.svg'}),
     ovrigtIcon = new Icon({iconUrl: 'Content/css/images/ovrigt-08.svg'}),
     planeradStorningIcon = new Icon({iconUrl: 'Content/css/images/planerad-storning-07.svg'}),
@@ -96,6 +111,95 @@ var TrafficMap = {
       "2": planeradStorningIcon,
       "3": ovrigtIcon
     };
+  },
+
+  setOnclicks: function(){
+    var anchors = document.getElementsByClassName("message-anchor");
+    /*for(var i = 0; i < anchors.length; i++){
+      set onclick...
+    }*/
+  },
+
+  renderSelect: function(){
+    var messagesDiv = document.getElementById("traffic-messages");
+    var h2 = document.createElement("h2");
+    h2.innerHTML = "Trafikmeddelanden";
+    messagesDiv.appendChild(h2);
+
+    //Create select element
+    var select = document.createElement("select");
+    select.setAttribute("id", "select-category");
+
+    for(var index = 0; index < TrafficMap.options.length; index++){
+      var option = document.createElement("option");
+      option.setAttribute("value", index);
+      option.innerHTML = TrafficMap.options[index];
+      if(index == 4){
+        option.setAttribute("selected", "selected");
+      }
+      select.appendChild(option);
+    }
+    messagesDiv.appendChild(select);
+  },
+
+  renderList: function(){
+    var messagesDiv = document.getElementById("traffic-messages");
+    var messageList = document.getElementById("traffic-messages-list");
+
+    if(messageList === null){
+      messageList = document.createElement("div");
+      messageList.setAttribute("id", "traffic-messages-list");
+    }
+    else {
+      messageList.innerHTML = "";
+    }
+
+    //Create list of messages
+    var ul = document.createElement("ul");
+    ul.setAttribute("class", "messages-list");
+
+    var messages = TrafficMap.json["messages"];
+    var classes = ["vagtrafik", "kollektivtrafik", "planerad-storning", "ovrigt"];
+
+    for(var mess = 0; mess < messages.length; mess++){
+      if(TrafficMap.selection == messages[mess]["category"] || TrafficMap.selection == "4"){
+
+        var a = document.createElement("a");
+        a.setAttribute("class", "message-anchor");
+        a.setAttribute("href", "#");
+
+        var li = document.createElement("li");
+        li.setAttribute("class", classes[messages[mess]["category"]]);
+
+        var h3 = document.createElement("h3");
+        h3.innerHTML = messages[mess]["title"];
+
+        var pDate = document.createElement("p");
+        pDate.setAttribute("class", "date");
+        pDate.innerHTML = messages[mess]["createddate"];
+
+        var pCategory = document.createElement("p");
+        pCategory.setAttribute("class", "category");
+        pCategory.innerHTML = TrafficMap.options[messages[mess]["category"]];
+
+        var pDescription = document.createElement("p");
+        if(messages[mess]["description"] != ""){
+          pDescription.innerHTML = messages[mess]["description"];
+        }
+        else {
+          pDescription.innerHTML = "Beskrivning saknas.";
+        }
+
+        li.appendChild(h3);
+        li.appendChild(pDate);
+        li.appendChild(pCategory);
+        li.appendChild(pDescription);
+        a.appendChild(li);
+        ul.appendChild(a);
+      }
+    }
+    messageList.appendChild(ul);
+    messagesDiv.appendChild(messageList);
   },
 
   getPosition: function(position){

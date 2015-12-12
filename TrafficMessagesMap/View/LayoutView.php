@@ -28,13 +28,21 @@ class LayoutView {
                     </div>
                 </div>
                 <div class="row">
-                  <div class="large-8 medium-8 small-12 columns" id="map"></div>
-                  <div class="large-4 medium-4 small-12 columns">
-                    <h2>Trafikmeddelanden</h2>
-                    <label for="select-category">Filtrera på kategori:</label>
-                    <select id="select-category">' . $this->renderCategoryOptions() . '</select>
-                    ' . $this->renderMessages() . '
+                  <div class="large-12 medium-12 small-12 columns" id="map"></div>
+                </div>
+                <div class="row">
+                  <div id="traffic-messages" class="large-12 medium-12 small-12 columns">
                   </div>
+
+                  <noscript>
+                  <div id="noscript-traffic-messages" class="large-12 medium-12 small-12 columns">
+                      <h2>Trafikmeddelanden</h2>
+                      <label for="select-category">Filtrera på kategori:</label>
+                      <select id="select-category">' . $this->renderCategoryOptions() . '</select>
+                      ' . $this->renderMessages() . '
+                  </div>
+                  </noscript>
+
                 </div>
                 <script src="Content/js/app.js"></script>
             </body>
@@ -53,7 +61,7 @@ class LayoutView {
 
     if($messages != null){
       //Ska nog inte använda timestampet så här, utan bara ha det med när det inte går att läsa in data.
-      $ret .= '<p class="timestamp">Informationen hämtades senast: <br />' . $timeStamp . '</p><ul class="messages-list">';
+      $ret .= '<p class="timestamp">Informationen hämtades senast: ' . $timeStamp . '</p><ul class="messages-list">';
 
       foreach($messages as $message){
         $description = $message->getDescription();

@@ -14,6 +14,18 @@
       "subcategory": "Vägarbete"
     },
     {
+      "id": 1568322,
+      "priority": 3,
+      "createddate": "\/Date(1449947795840+0100)\/",
+      "title": "Västerås - Arboga ",
+      "exactlocation": "Kolbäck",
+      "description": " Det är stopp för tågtrafiken på sträckorna Västerås - Arboga samt Västerås - Fagersta och omvänt på grund av ett signalfel vid Kolbäck. Reparation av felet pågår men det finns i nuläget ingen prognos om när trafiken kan återupptas.\n",
+      "latitude": 59.622285038512693,
+      "longitude": 16.205153656443311,
+      "category": 1,
+      "subcategory": "Tåg"
+    },
+    {
       "id": 1263776,
       "priority": 3,
       "createddate": "\/Date(1449851342583+0100)\/",
@@ -24,6 +36,18 @@
       "longitude": 14.7333231,
       "category": 0,
       "subcategory": "Halkvarning"
+    },
+    {
+      "id": 1568323,
+      "priority": 3,
+      "createddate": "\/Date(1449948256627+0100)\/",
+      "title": "E14  Åre",
+      "exactlocation": "",
+      "description": " World cup Åre pågår under helgen 12-13 december. Ökad trafik i området.",
+      "latitude": 63.399909973144531,
+      "longitude": 13.082370758056641,
+      "category": 0,
+      "subcategory": "Trafikstörning"
     },
     {
       "id": 1407249,
@@ -62,18 +86,6 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1568183,
-      "priority": 3,
-      "createddate": "\/Date(1449940772540+0100)\/",
-      "title": "Pajala",
-      "exactlocation": "Junosuando och Kangos",
-      "description": "Avbrottet berör ca 500 kunder. Felsökning pågår.",
-      "latitude": 67.576356594530225,
-      "longitude": 22.648100470861113,
-      "category": 3,
-      "subcategory": "El"
-    },
-    {
       "id": 1553125,
       "priority": 4,
       "createddate": "\/Date(1448547814650+0100)\/",
@@ -96,30 +108,6 @@
       "longitude": 15.79430103302002,
       "category": 0,
       "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1568269,
-      "priority": 3,
-      "createddate": "\/Date(1449942287470+0100)\/",
-      "title": "E22 Valdemarsvik-Ringarum",
-      "exactlocation": "Avfart Gusum",
-      "description": "Avstängt i norrgående. Flerbils krock",
-      "latitude": 58.285404683662321,
-      "longitude": 16.502957393062982,
-      "category": 0,
-      "subcategory": "Trafikolycka"
-    },
-    {
-      "id": 1568267,
-      "priority": 3,
-      "createddate": "\/Date(1449940213793+0100)\/",
-      "title": "Rv 27 Bor-Värnamo",
-      "exactlocation": "",
-      "description": "Begränsad framkomlighet",
-      "latitude": 57.13677700109411,
-      "longitude": 14.114981779649755,
-      "category": 0,
-      "subcategory": "Trafikolycka"
     },
     {
       "id": 1497351,
@@ -192,6 +180,18 @@
       "longitude": 13.188547134399414,
       "category": 0,
       "subcategory": "Vägarbete"
+    },
+    {
+      "id": 1568299,
+      "priority": 3,
+      "createddate": "\/Date(1449946032663+0100)\/",
+      "title": "E4 Ödeshög- Gränna",
+      "exactlocation": "Mellan Brahe hus och Vida vättern ",
+      "description": "Bilbrand",
+      "latitude": 58.092999975358708,
+      "longitude": 14.548991827189607,
+      "category": 0,
+      "subcategory": "Trafikstörning"
     },
     {
       "id": 1534135,
@@ -780,18 +780,6 @@
       "longitude": 12.765754699707031,
       "category": 0,
       "subcategory": "Trafikstörning"
-    },
-    {
-      "id": 1568211,
-      "priority": 2,
-      "createddate": "\/Date(1449942172137+0100)\/",
-      "title": "E16 Dala-Floda - Björbo",
-      "exactlocation": "Bäckbyn",
-      "description": "Växelvis trafik efter tidigare olycka och avstängning",
-      "latitude": 60.493649407422545,
-      "longitude": 14.782526942777958,
-      "category": 0,
-      "subcategory": "Trafikolycka"
     },
     {
       "id": 1545140,
