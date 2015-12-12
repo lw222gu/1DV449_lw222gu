@@ -9,18 +9,24 @@ var TrafficMap = {
       zoom: 5
   }),
   icons: {},
+  selection: "4",
+  markers: [],
+  markersGroup: L.layerGroup(this.markers),
+  //options: ["Vägtrafik": "0", "Kollektivtrafik": "1", "Planerad störning":"2", "Övrigt": "3", "Visa alla kategorier": null],
 
   init: function(){
-    /*var map = L.map('map', {
-        center: [63.0, 14.0], //latitude and longitude for Östersund, the middle of Sweden
-        minZoom: 2,
-        zoom: 5
-    });*/
 
     L.tileLayer( 'http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright" title="OpenStreetMap" target="_blank">OpenStreetMap</a> contributors | Tiles Courtesy of <a href="http://www.mapquest.com/" title="MapQuest" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png" width="16" height="16">',
         subdomains: ['otile1','otile2','otile3','otile4']
     }).addTo( TrafficMap.map );
+
+    var select = document.getElementById("select-category");
+    select.onchange = function(){
+      TrafficMap.selection = select[select.selectedIndex].value;
+      TrafficMap.map.removeLayer("markersGroup");
+      TrafficMap.renderPointers();
+    };
 
     TrafficMap.createPointerIcons();
     TrafficMap.renderPointers();
@@ -38,11 +44,28 @@ var TrafficMap = {
   },
 
   renderPointers: function(){
+
+    TrafficMap.markers.forEach(function (mark) {
+        TrafficMap.map.removeLayer(mark);
+    });
+
     TrafficMap.getJson();
     var messages = TrafficMap.json["messages"];
+
     for(var i = 0; i < messages.length; i++){
       var category = messages[i]["category"];
-      var marker = L.marker([messages[i].latitude, messages[i].longitude], {icon: TrafficMap.icons[category]}).addTo(TrafficMap.map);
+
+      if(TrafficMap.selection === "4"){
+        var marker = L.marker([messages[i].latitude, messages[i].longitude], {icon: TrafficMap.icons[category]}).addTo(TrafficMap.map);
+        TrafficMap.markers.push(marker);
+      }
+
+      else {
+        if(messages[i].category == TrafficMap.selection){
+          var marker = L.marker([messages[i].latitude, messages[i].longitude], {icon: TrafficMap.icons[category]}).addTo(TrafficMap.map);
+          TrafficMap.markers.push(marker);
+        }
+      }
     }
   },
 

@@ -76,10 +76,10 @@ class LayoutView {
   }
 
   private function renderCategoryOptions(){
-    $ret = '<option value="Visa alla kategorier">Visa alla kategorier</option>';
+    $ret = '<option value="4">Visa alla kategorier</option>';
 
     foreach (\Settings::APP_TRAFFIC_MESSAGE_CATEGORIES as $key => $category) {
-      $ret .= '<option value="' . \Settings::APP_TRAFFIC_MESSAGE_CATEGORIES[$key] . '">' . \Settings::APP_TRAFFIC_MESSAGE_CATEGORIES[$key] . '</option>';
+      $ret .= '<option value="' . $key . '">' . \Settings::APP_TRAFFIC_MESSAGE_CATEGORIES[$key] . '</option>';
     }
 
     return $ret;
