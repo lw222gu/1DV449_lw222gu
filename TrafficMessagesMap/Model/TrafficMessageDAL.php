@@ -21,7 +21,7 @@ class TrafficMessageDAL {
     /*Check if file has been updated over the last minute, (last hour while developing)
      *otherwise fetch new data from API
      */
-    if(time() - filemtime(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE) > 5){
+    if(time() - filemtime(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE) > 3600){
       $this->getJson();
     }
 

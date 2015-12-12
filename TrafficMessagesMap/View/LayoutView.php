@@ -52,6 +52,7 @@ class LayoutView {
     $timeStamp = date('Y-m-d, H.i.s', filemtime(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE));
 
     if($messages != null){
+      //Ska nog inte använda timestampet så här, utan bara ha det med när det inte går att läsa in data.
       $ret .= '<p class="timestamp">Informationen hämtades senast: <br />' . $timeStamp . '</p><ul class="messages-list">';
 
       foreach($messages as $message){

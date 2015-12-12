@@ -14,40 +14,16 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1567075,
+      "id": 1263776,
       "priority": 3,
-      "createddate": "\/Date(1449783129740+0100)\/",
-      "title": "Rv 97 Harads-Vuollerim",
-      "exactlocation": "Forsnäs - Nybruket ",
-      "description": " Viltolycka.",
-      "latitude": 66.192550659179687,
-      "longitude": 20.884843826293945,
-      "category": 0,
-      "subcategory": "Trafikolycka"
-    },
-    {
-      "id": 1566535,
-      "priority": 3,
-      "createddate": "\/Date(1449752200830+0100)\/",
-      "title": "E6 Göteborg",
-      "exactlocation": "Tingstadstunneln",
-      "description": "10/12 kl 22:00-05:00 Södergående tunnelrör avstängt i natt på grund av underhållsarbete.",
-      "latitude": 57.720375061035156,
-      "longitude": 11.989446640014648,
-      "category": 0,
-      "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1566811,
-      "priority": 3,
-      "createddate": "\/Date(1449758528903+0100)\/",
-      "title": "Marks kommun",
+      "createddate": "\/Date(1449851342583+0100)\/",
+      "title": "Örebro län ",
       "exactlocation": "",
-      "description": "Alla boende i Mark kan nu använda vattnet som vanligt.",
-      "latitude": 57.464096394056085,
-      "longitude": 12.606908925946655,
-      "category": 3,
-      "subcategory": "Vatten"
+      "description": " Risk för lokal frosthalka under kväll och natt. ",
+      "latitude": 59.4352722,
+      "longitude": 14.7333231,
+      "category": 0,
+      "subcategory": "Halkvarning"
     },
     {
       "id": 1407249,
@@ -100,10 +76,10 @@
     {
       "id": 1551339,
       "priority": 3,
-      "createddate": "\/Date(1448453693177+0100)\/",
+      "createddate": "\/Date(1449823361427+0100)\/",
       "title": "Lv 864 Danholn-Sundborn",
       "exactlocation": "Överbackavägen",
-      "description": "Avstängt från 26/11 ca kl. 11:00 till början av februari 2016. Pga arbeten med vatten och avlopp.",
+      "description": "Avstängt från 26/11 ca kl. 11:00. Pga arbeten med vatten och avlopp.",
       "latitude": 60.623680114746094,
       "longitude": 15.79430103302002,
       "category": 0,
@@ -118,18 +94,6 @@
       "description": "Begränsad framkomlighet förbi arbetet. Endast ett körfält öppet förbi så trafiken får köra växelvis. Risk för långa köer. ",
       "latitude": 56.549530029296875,
       "longitude": 14.026314735412598,
-      "category": 0,
-      "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1548008,
-      "priority": 3,
-      "createddate": "\/Date(1448013299320+0100)\/",
-      "title": "Lv 528 Hemse",
-      "exactlocation": "Ängsgatan",
-      "description": "Begränsad framkomlighet pga beläggningsarbete",
-      "latitude": 57.239925384521484,
-      "longitude": 18.37828254699707,
       "category": 0,
       "subcategory": "Vägarbete"
     },
@@ -158,6 +122,18 @@
       "subcategory": "Vägarbete"
     },
     {
+      "id": 1557116,
+      "priority": 3,
+      "createddate": "\/Date(1449850438837+0100)\/",
+      "title": "Lv 240 Molkom-Hagfors",
+      "exactlocation": "Fösked-Älvsbacka",
+      "description": "Begränsad framkomlighet. Diknings- och dräneringsarbete.",
+      "latitude": 59.676589965820313,
+      "longitude": 13.683475494384766,
+      "category": 0,
+      "subcategory": "Vägarbete"
+    },
+    {
       "id": 1513371,
       "priority": 3,
       "createddate": "\/Date(1448533660523+0100)\/",
@@ -168,6 +144,18 @@
       "longitude": 16.222171783447266,
       "category": 0,
       "subcategory": "Vägarbete"
+    },
+    {
+      "id": 1568078,
+      "priority": 3,
+      "createddate": "\/Date(1449917507337+0100)\/",
+      "title": "Rv 55 Strängnäs-Malmköping",
+      "exactlocation": "Strax söder om Merlänna",
+      "description": "Begränsad framkomlighet. Singelolycka.",
+      "latitude": 59.26016431218325,
+      "longitude": 16.944330015341173,
+      "category": 0,
+      "subcategory": "Trafikolycka"
     },
     {
       "id": 1508092,
@@ -194,18 +182,6 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1567028,
-      "priority": 3,
-      "createddate": "\/Date(1449783396453+0100)\/",
-      "title": "E4 Södertälje",
-      "exactlocation": "Motorvägsbron",
-      "description": "Broöppning mellan kl. kl 03.00-03.20.",
-      "latitude": 59.185005187988281,
-      "longitude": 17.643075942993164,
-      "category": 2,
-      "subcategory": "Trafikstörning"
-    },
-    {
       "id": 1559533,
       "priority": 3,
       "createddate": "\/Date(1449135552837+0100)\/",
@@ -218,18 +194,6 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1567076,
-      "priority": 3,
-      "createddate": "\/Date(1449783196353+0100)\/",
-      "title": "E4 Uppsalavägen",
-      "exactlocation": "Trafikplats Stora Wäsby (177) i riktning mot Stockholm ",
-      "description": "Bärgning av lastbil.",
-      "latitude": 59.553504943847656,
-      "longitude": 17.898904800415039,
-      "category": 0,
-      "subcategory": "Trafikstörning"
-    },
-    {
       "id": 1544476,
       "priority": 3,
       "createddate": "\/Date(1447668545113+0100)\/",
@@ -238,18 +202,6 @@
       "description": "Dikning. Rörligt arbete.",
       "latitude": 59.518310546875,
       "longitude": 17.004179000854492,
-      "category": 0,
-      "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1557116,
-      "priority": 3,
-      "createddate": "\/Date(1448892267787+0100)\/",
-      "title": "Lv 240 Molkom-Hagfors",
-      "exactlocation": "Fösked-Älvsbacka",
-      "description": "Diknings- och dräneringsarbete. Kan orsaka begränsad framkomlighet.",
-      "latitude": 59.676589965820313,
-      "longitude": 13.683475494384766,
       "category": 0,
       "subcategory": "Vägarbete"
     },
@@ -278,54 +230,6 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1566471,
-      "priority": 3,
-      "createddate": "\/Date(1449732357387+0100)\/",
-      "title": "Landvetter–Härrydavägen",
-      "exactlocation": "",
-      "description": "Ett körfält begränsat vid nedgrävning av fundament.",
-      "latitude": 57.688316345214844,
-      "longitude": 12.270511627197266,
-      "category": 0,
-      "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1505782,
-      "priority": 4,
-      "createddate": "\/Date(1449782371973+0100)\/",
-      "title": "Västerbottens län",
-      "exactlocation": "",
-      "description": "Ett nederbördsområde med mest regn eller snöblandat regn berör inland och kust under kvällen vilket ger risk för lokal ishalka. I övrigt risk för lokal frosthalka.\n",
-      "latitude": 64.9181442,
-      "longitude": 18.94519,
-      "category": 0,
-      "subcategory": "Halkvarning"
-    },
-    {
-      "id": 1560822,
-      "priority": 3,
-      "createddate": "\/Date(1449638528953+0100)\/",
-      "title": "Norrköping",
-      "exactlocation": "Östra promenaden",
-      "description": "From 7 december är trafikljusen ur funktion pga arbete med styrenheterna.",
-      "latitude": 58.589742505888424,
-      "longitude": 16.198717887933434,
-      "category": 0,
-      "subcategory": "Trafikstörning"
-    },
-    {
-      "id": 1561099,
-      "priority": 3,
-      "createddate": "\/Date(1449767848027+0100)\/",
-      "title": "Lv 862 Stegeborgsfärjan",
-      "exactlocation": "",
-      "description": "Färjan ligger stilla till fredag morgon kl. 06 pga vajerbyte. ",
-      "latitude": 58.442741394042969,
-      "longitude": 16.598560333251953,
-      "category": 1,
-      "subcategory": "Färja"
-    },
-    {
       "id": 1521191,
       "priority": 3,
       "createddate": "\/Date(1447151600150+0100)\/",
@@ -336,18 +240,6 @@
       "longitude": 18.066604614257813,
       "category": 0,
       "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1563801,
-      "priority": 2,
-      "createddate": "\/Date(1449614790990+0100)\/",
-      "title": "Skinnskatteberg–Örebro",
-      "exactlocation": "Frövi",
-      "description": "Godståg har spårat ur. Just nu stopp för tågtrafik mellan Skinnskatteberg och Örebro. Prognos 30/12.",
-      "latitude": 59.465029844507576,
-      "longitude": 15.366200419183267,
-      "category": 1,
-      "subcategory": "Tåg"
     },
     {
       "id": 1554578,
@@ -362,18 +254,6 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1566454,
-      "priority": 3,
-      "createddate": "\/Date(1449743384913+0100)\/",
-      "title": "E20 Öresundsbron  ",
-      "exactlocation": "",
-      "description": "Hårda vindar. Vindkänsliga fordon rekommenderas att inte köra över bron. Hastighet 70 km/h.",
-      "latitude": 55.5789680480957,
-      "longitude": 12.810151100158691,
-      "category": 0,
-      "subcategory": "Trafikstörning"
-    },
-    {
       "id": 1565286,
       "priority": 3,
       "createddate": "\/Date(1449587917697+0100)\/",
@@ -384,18 +264,6 @@
       "longitude": 18.065418243408203,
       "category": 0,
       "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1559410,
-      "priority": 4,
-      "createddate": "\/Date(1449772614400+0100)\/",
-      "title": "Stockholms län",
-      "exactlocation": "",
-      "description": "Inga blodbussar ute fredag 11/12. På lördag 12/12 finns en blodbuss i Mariefred Ruddammsvägen 2 vid brandstationen.",
-      "latitude": 59.321777576813048,
-      "longitude": 17.997000126836259,
-      "category": 3,
-      "subcategory": "Hälsa och sjukvård"
     },
     {
       "id": 1565713,
@@ -410,14 +278,14 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1565829,
+      "id": 1567269,
       "priority": 3,
-      "createddate": "\/Date(1449653930237+0100)\/",
-      "title": "V1960 Surte",
-      "exactlocation": "Tpl Surte S (80) - Tpl Surte N (81) ",
-      "description": "Kabelarbeten",
-      "latitude": 57.823314666748047,
-      "longitude": 12.015987396240234,
+      "createddate": "\/Date(1449817379927+0100)\/",
+      "title": "E22 Oskarshamn",
+      "exactlocation": "",
+      "description": "Kabelarbete i mark",
+      "latitude": 57.249118804931641,
+      "longitude": 16.423765182495117,
       "category": 0,
       "subcategory": "Vägarbete"
     },
@@ -446,6 +314,42 @@
       "subcategory": "Vägarbete"
     },
     {
+      "id": 1567592,
+      "priority": 3,
+      "createddate": "\/Date(1449849180070+0100)\/",
+      "title": "E6 av-/påfart från Bällskärsvägen, E6 (Tpl Tingstadsmotet) till E6.21 (Tpl Ringömotet) i Göteborg kommun",
+      "exactlocation": "Av-/påfart från Bällskärsvägen, Tingstadsmotet, södergående",
+      "description": "Körfält stängs av i samband med schaktningsarbeten.",
+      "latitude": 57.730606079101563,
+      "longitude": 11.983270645141602,
+      "category": 0,
+      "subcategory": "Vägarbete"
+    },
+    {
+      "id": 1406672,
+      "priority": 3,
+      "createddate": "\/Date(1449851288547+0100)\/",
+      "title": "E20 Partille–Lerum",
+      "exactlocation": "Jerikotunneln–Fräntorpsmotet(78)",
+      "description": "Körfält stängs av nattetid på grund av asfalteringsarbete.",
+      "latitude": 57.74127197265625,
+      "longitude": 12.185935974121094,
+      "category": 0,
+      "subcategory": "Vägarbete"
+    },
+    {
+      "id": 1567569,
+      "priority": 3,
+      "createddate": "\/Date(1449849030527+0100)\/",
+      "title": "E6 vid Ringömotet",
+      "exactlocation": "Södergående",
+      "description": "Körfältsavstängning i samband med ombyggnadsarbete.\n",
+      "latitude": 57.729965209960938,
+      "longitude": 11.982913970947266,
+      "category": 0,
+      "subcategory": "Vägarbete"
+    },
+    {
       "id": 1557011,
       "priority": 3,
       "createddate": "\/Date(1449741868593+0100)\/",
@@ -458,16 +362,40 @@
       "subcategory": "Färja"
     },
     {
-      "id": 1505778,
-      "priority": 4,
-      "createddate": "\/Date(1449777373870+0100)\/",
-      "title": "Jämtlands län",
-      "exactlocation": "  ",
-      "description": "Lokal nederbörd i form av regn elller snöblandat regn berör främst mellersta och norra delarna av länet under kvällen vilket ger risk för lokal ishalka. I övrigt risk för lokal frosthalka.",
-      "latitude": 63.4809952,
-      "longitude": 14.326333,
+      "id": 1567268,
+      "priority": 3,
+      "createddate": "\/Date(1449817436943+0100)\/",
+      "title": "Lv 527 Bergkvara",
+      "exactlocation": "Dalsärsvägen, i båda riktningar.",
+      "description": "Lednings- och telearbeten.",
+      "latitude": 56.386150360107422,
+      "longitude": 16.090486526489258,
       "category": 0,
-      "subcategory": "Halkvarning"
+      "subcategory": "Vägarbete"
+    },
+    {
+      "id": 1566765,
+      "priority": 3,
+      "createddate": "\/Date(1449849081740+0100)\/",
+      "title": "Härryda-Bollebyggd",
+      "exactlocation": "Härryda kyrka-Björredsmotet (76)",
+      "description": "Ledningsarbete i riktning mot Göteborg.",
+      "latitude": 57.690269470214844,
+      "longitude": 12.278976440429687,
+      "category": 0,
+      "subcategory": "Vägarbete"
+    },
+    {
+      "id": 1566276,
+      "priority": 4,
+      "createddate": "\/Date(1449822626587+0100)\/",
+      "title": "Eksjö, Aneby, Nässjö, Sävsjö, Vetlanda kommuner",
+      "exactlocation": "",
+      "description": "Lördagen den 12 december kl. 08.00-20.00 kommer ett planerat underhåll att genomföras på höglandskommunernas IT-system. På grund av detta arbete kan det under angiven tid vara vissa störningar i telefoni/fax, vilket innebär att det stundvis kan vara svårt att nå lördagsöppna verksamheter",
+      "latitude": 57.618959728855074,
+      "longitude": 15.209367366788056,
+      "category": 3,
+      "subcategory": "Tele och data"
     },
     {
       "id": 1557082,
@@ -480,18 +408,6 @@
       "longitude": 16.647851943969727,
       "category": 0,
       "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1565195,
-      "priority": 3,
-      "createddate": "\/Date(1449752407077+0100)\/",
-      "title": "Bispgården, Bispfors",
-      "exactlocation": "",
-      "description": "Många hushåll drabbade av vattenläcka. Reparationsarbete sker torsdag 10/12 kl 20:00 och fortsätter under kvällen och natten. Vattnet stängs av under reparationsarbetet.",
-      "latitude": 63.028566773129846,
-      "longitude": 16.628376643553857,
-      "category": 3,
-      "subcategory": "Vatten"
     },
     {
       "id": 1566037,
@@ -530,21 +446,21 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1567049,
-      "priority": 3,
-      "createddate": "\/Date(1449781407267+0100)\/",
-      "title": "E10 Morjärv-Hedensbyn",
-      "exactlocation": "V Svartbyn - Hällan ",
-      "description": "Renar vistas på eller nära vägen i höjd med Vippabacken.",
-      "latitude": 66.296951293945313,
-      "longitude": 22.815608978271484,
-      "category": 0,
-      "subcategory": "Trafikstörning"
+      "id": 1559410,
+      "priority": 4,
+      "createddate": "\/Date(1449863571023+0100)\/",
+      "title": "Stockholms län",
+      "exactlocation": "",
+      "description": "På lördag 12/12 finns en blodbuss i Mariefred Ruddammsvägen 2 vid brandstationen.",
+      "latitude": 59.321777576813048,
+      "longitude": 17.997000126836259,
+      "category": 3,
+      "subcategory": "Hälsa och sjukvård"
     },
     {
       "id": 1511539,
       "priority": 4,
-      "createddate": "\/Date(1449777267523+0100)\/",
+      "createddate": "\/Date(1449874647687+0100)\/",
       "title": "Västmanlands län",
       "exactlocation": "",
       "description": "Risk för halka när våta eller fuktiga vägbanor fryser, främst i de norra delarna av länet. \n",
@@ -554,14 +470,50 @@
       "subcategory": "Halkvarning"
     },
     {
+      "id": 1511540,
+      "priority": 4,
+      "createddate": "\/Date(1449795218643+0100)\/",
+      "title": "Uppsala län",
+      "exactlocation": "",
+      "description": "Risk för halka när våta eller fuktiga vägbanor fryser, främst i de norra delarna av länet. \n\n",
+      "latitude": 59.96126,
+      "longitude": 17.78068,
+      "category": 0,
+      "subcategory": "Halkvarning"
+    },
+    {
+      "id": 1487662,
+      "priority": 4,
+      "createddate": "\/Date(1449851514780+0100)\/",
+      "title": "Dalarnas län",
+      "exactlocation": "  ",
+      "description": "Risk för lokal frosthalka. ",
+      "latitude": 60.7344055,
+      "longitude": 14.7284212,
+      "category": 0,
+      "subcategory": "Halkvarning"
+    },
+    {
       "id": 1487657,
       "priority": 4,
-      "createddate": "\/Date(1449519681937+0100)\/",
+      "createddate": "\/Date(1449851449117+0100)\/",
       "title": "Gävleborgs län",
       "exactlocation": "",
-      "description": "Risk för lokal frosthalka främst i länets norra delar.",
+      "description": "Risk för lokal frosthalka.",
       "latitude": 61.4704742,
       "longitude": 16.70279,
+      "category": 0,
+      "subcategory": "Halkvarning"
+    },
+    {
+      "id": 1505778,
+      "priority": 4,
+      "createddate": "\/Date(1449811874517+0100)\/",
+      "title": "Jämtlands län",
+      "exactlocation": "  ",
+      "description": "Risk för lokal frosthalka.",
+      "latitude": 63.4809952,
+      "longitude": 14.326333,
       "category": 0,
       "subcategory": "Halkvarning"
     },
@@ -578,76 +530,28 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1552991,
-      "priority": 4,
-      "createddate": "\/Date(1449722410500+0100)\/",
-      "title": "Eksjö skjutfält",
-      "exactlocation": "",
-      "description": "Skjutövningar. 10/12 kl 0:00-24:00 och 11/12 kl 0:00-16:30.",
-      "latitude": 57.667484879902958,
-      "longitude": 14.937234008461962,
-      "category": 3,
-      "subcategory": "Buller"
-    },
-    {
-      "id": 1567052,
+      "id": 1568089,
       "priority": 3,
-      "createddate": "\/Date(1449780257900+0100)\/",
-      "title": "Jämtlands län\n",
-      "exactlocation": "Jämtlandsfjällen",
-      "description": "SMHI-varning klass 1, hård vind med snödrev. På kalfjället i norra Jämtland, från fredag eftermiddag, sydväst ca 15 m/s i kombination med snöfall.",
-      "latitude": 63.593687628856792,
-      "longitude": 12.859188688758536,
-      "category": 3,
-      "subcategory": "Väder"
-    },
-    {
-      "id": 1567051,
-      "priority": 3,
-      "createddate": "\/Date(1449780271973+0100)\/",
-      "title": "Västerbottens län",
-      "exactlocation": "Södra Lapplandsfjällen",
-      "description": "SMHI-varning klass 1, hård vind med snödrev. På kalfjället, från fredag lunch, syd eller sydväst 14-18 m/s i kombination med snöfall.\n",
-      "latitude": 65.618401440524337,
-      "longitude": 15.364939149450354,
-      "category": 3,
-      "subcategory": "Väder"
-    },
-    {
-      "id": 1567057,
-      "priority": 4,
-      "createddate": "\/Date(1449783478370+0100)\/",
-      "title": "Hallands län",
-      "exactlocation": "",
-      "description": "SMHI-varning klass 1, höga flöden. Viskan, nedre delen.\n",
-      "latitude": 57.241512444606819,
-      "longitude": 12.320616048443155,
-      "category": 3,
-      "subcategory": "Väder"
-    },
-    {
-      "id": 1567054,
-      "priority": 3,
-      "createddate": "\/Date(1449780451700+0100)\/",
-      "title": "Vänern",
-      "exactlocation": "",
-      "description": "SMHI-varning klass 1, kuling. Sydväst 14-17 m/s. Fredag morgon avtagande.\n\n\n",
-      "latitude": 58.802243109543248,
-      "longitude": 13.282285206299393,
-      "category": 3,
-      "subcategory": "Väder"
-    },
-    {
-      "id": 1551066,
-      "priority": 3,
-      "createddate": "\/Date(1448358993807+0100)\/",
-      "title": "Åbyvägen ",
-      "exactlocation": "Vid Västberga Allé ",
-      "description": "Sprängning kl 10 och 14 på vardagar. ",
-      "latitude": 59.286392211914063,
-      "longitude": 18.020563125610352,
+      "createddate": "\/Date(1449918733510+0100)\/",
+      "title": "E4 Jönåker-Nyköping",
+      "exactlocation": "I höjd med Nyköpingsbro",
+      "description": "Singelolycka. Halt.",
+      "latitude": 58.748343379771661,
+      "longitude": 16.922188019206946,
       "category": 0,
-      "subcategory": "Vägarbete"
+      "subcategory": "Trafikolycka"
+    },
+    {
+      "id": 1563801,
+      "priority": 2,
+      "createddate": "\/Date(1449824938100+0100)\/",
+      "title": "Skinnskatteberg–Örebro",
+      "exactlocation": "Frövi",
+      "description": "Stopp för tågtrafik mellan Skinnskatteberg och Örebro. Godståg spårat ur. Prognos 30/12.",
+      "latitude": 59.465029844507576,
+      "longitude": 15.366200419183267,
+      "category": 1,
+      "subcategory": "Tåg"
     },
     {
       "id": 1481993,
@@ -670,18 +574,6 @@
       "description": "Södergående trafik leds av vid Tenbäcken och kör gamla vägen till Tranås. Norrgående trafik passerar på rv 32 som vanligt, begränsad framkomlighet där. Omledningen beräknas gälla fram till jul. Vägen byggs om till 2+1-väg ",
       "latitude": 58.065387725830078,
       "longitude": 14.95679759979248,
-      "category": 0,
-      "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1566362,
-      "priority": 3,
-      "createddate": "\/Date(1449782448553+0100)\/",
-      "title": "Rv 75 Södra länken",
-      "exactlocation": "Riktning mot Årsta",
-      "description": "Södra länken mot E4/E20 avstängd för underhållsarbeten under natten.",
-      "latitude": 59.309074401855469,
-      "longitude": 18.122003555297852,
       "category": 0,
       "subcategory": "Vägarbete"
     },
@@ -760,7 +652,7 @@
     {
       "id": 1546979,
       "priority": 4,
-      "createddate": "\/Date(1449255570567+0100)\/",
+      "createddate": "\/Date(1449855190090+0100)\/",
       "title": "Nässjö–Vetlanda/ Nässjö–Eksjö",
       "exactlocation": "",
       "description": "Tågen ersätts måndag-fredag, efter kl 9.00 med bussar mellan 9/11 - 11/12",
@@ -768,42 +660,6 @@
       "longitude": 14.685434266461895,
       "category": 1,
       "subcategory": "Tåg"
-    },
-    {
-      "id": 1563251,
-      "priority": 3,
-      "createddate": "\/Date(1449722942320+0100)\/",
-      "title": "Borås-Varberg",
-      "exactlocation": "",
-      "description": "Tågtrafiken står still och ersätts med bussar. Orsaken är underminerad banvall. Beräknas komma igång till fredag 06:00.",
-      "latitude": 57.415315297360863,
-      "longitude": 12.586764594825903,
-      "category": 1,
-      "subcategory": "Tåg"
-    },
-    {
-      "id": 1511540,
-      "priority": 4,
-      "createddate": "\/Date(1449782415217+0100)\/",
-      "title": "Uppsala län",
-      "exactlocation": "",
-      "description": "Under kvällen och natten sjunkande temperaturer. Risk för halka när våta eller fuktiga vägbanor fryser, främst i de norra delarna av länet. \n\n",
-      "latitude": 59.96126,
-      "longitude": 17.78068,
-      "category": 0,
-      "subcategory": "Halkvarning"
-    },
-    {
-      "id": 1557080,
-      "priority": 3,
-      "createddate": "\/Date(1449148100637+0100)\/",
-      "title": "Rv 95 Skellefteå",
-      "exactlocation": "Rampen ned till Klockarbergsvägen",
-      "description": "Underhållsarbete.",
-      "latitude": 64.758537292480469,
-      "longitude": 20.926567077636719,
-      "category": 0,
-      "subcategory": "Vägarbete"
     },
     {
       "id": 1564938,
@@ -842,30 +698,6 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1550415,
-      "priority": 3,
-      "createddate": "\/Date(1449745071557+0100)\/",
-      "title": "Sundbyberg Sturegatan",
-      "exactlocation": "Mellan Esplanaden och Rosengatan",
-      "description": "Vägen avstängd mellan kl 14 och 23.",
-      "latitude": 59.363291966058554,
-      "longitude": 17.96775614734505,
-      "category": 0,
-      "subcategory": "Trafikstörning"
-    },
-    {
-      "id": 1564387,
-      "priority": 3,
-      "createddate": "\/Date(1449496844297+0100)\/",
-      "title": "Lidköping",
-      "exactlocation": "Stenportsgatan, vid järnvägsövergången",
-      "description": "Vägen avstängd måndag till fredag 7-11 dec pga arbete med järnvägsövergången. ",
-      "latitude": 58.507291539738326,
-      "longitude": 13.144206758302078,
-      "category": 0,
-      "subcategory": "Vägarbete"
-    },
-    {
       "id": 1542094,
       "priority": 3,
       "createddate": "\/Date(1448619042497+0100)\/",
@@ -888,30 +720,6 @@
       "longitude": 12.942523002624512,
       "category": 0,
       "subcategory": "Trafikstörning"
-    },
-    {
-      "id": 1564886,
-      "priority": 3,
-      "createddate": "\/Date(1449657279067+0100)\/",
-      "title": "Lv 687 Rydöbruk",
-      "exactlocation": "",
-      "description": "Vägen avstängd vid bron i Rydöbruk. Omledning av trafiken via Nissadalsvägen samt Rydöforsvägen. Kabelstegar monteras under bron.",
-      "latitude": 56.963103605748259,
-      "longitude": 13.1493564394966,
-      "category": 0,
-      "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1567032,
-      "priority": 2,
-      "createddate": "\/Date(1449786368477+0100)\/",
-      "title": "E20 Skara–Vara",
-      "exactlocation": "söder om Ardala",
-      "description": "Vägen stängd i södergående. Lastbilsolycka.",
-      "latitude": 58.349262237548828,
-      "longitude": 13.28931713104248,
-      "category": 0,
-      "subcategory": "Trafikolycka"
     },
     {
       "id": 1537497,
@@ -950,6 +758,30 @@
       "subcategory": "Trafikstörning"
     },
     {
+      "id": 1568075,
+      "priority": 3,
+      "createddate": "\/Date(1449916799613+0100)\/",
+      "title": "Rv 27 Backaryd-Ronneby",
+      "exactlocation": "Strax söder om infarten till Möllenäs",
+      "description": "Älg på vägsidan av viltstängslet.",
+      "latitude": 56.284982775922934,
+      "longitude": 15.219676101787925,
+      "category": 0,
+      "subcategory": "Trafikstörning"
+    },
+    {
+      "id": 1545140,
+      "priority": 4,
+      "createddate": "\/Date(1449852353140+0100)\/",
+      "title": "Köpenhamn–Malmö",
+      "exactlocation": "",
+      "description": "Var uppmärksam på förändringar i tågtrafiken. Justeringar i tågtrafiken görs för att minimera förseningar till följd av Polisens gränskontroller.",
+      "latitude": 55.560997011796715,
+      "longitude": 12.96726502689128,
+      "category": 1,
+      "subcategory": "Tåg"
+    },
+    {
       "id": 1558549,
       "priority": 4,
       "createddate": "\/Date(1449064961027+0100)\/",
@@ -962,9 +794,45 @@
       "subcategory": "Övrigt"
     },
     {
+      "id": 1551498,
+      "priority": 3,
+      "createddate": "\/Date(1449807322783+0100)\/",
+      "title": "Västberga",
+      "exactlocation": "Västberga allé bron över järnvägen ",
+      "description": "Omlagd körväg för linje 165, linje 143 dras in på sträckan Liljeholmen-Älvsjö stn.  Nya linje145 trafikerar sträckan Telefonplan-Västberga-Årstaberg-(Liljeholmen). ",
+      "latitude": 59.288072367712566,
+      "longitude": 18.01951159520339,
+      "category": 1,
+      "subcategory": "Buss"
+    },
+    {
+      "id": 1530105,
+      "priority": 3,
+      "createddate": "\/Date(1449844159377+0100)\/",
+      "title": "Västkustbanan Göteborg–Malmö",
+      "exactlocation": "",
+      "description": "Förändringar i tågtrafiken för alla tåg på sträckan fram till 13/12. Vissa tåg är inställda på hela eller delar av sträckan. Buss ersätter. Även tågen mellan Markaryd och Hässleholm har ändrade tidtabeller. ",
+      "latitude": 56.392201771022869,
+      "longitude": 12.938251318762235,
+      "category": 1,
+      "subcategory": "Tåg"
+    },
+    {
+      "id": 1564995,
+      "priority": 3,
+      "createddate": "\/Date(1449807323750+0100)\/",
+      "title": "Västberga-Älvsjö",
+      "exactlocation": "Västberga allé bron som går över järnvägen och Åbyvägen",
+      "description": "Bron stängs av för renovering 14 december. Kommer att vara avstängd för biltrafik till sommaren 2017. ",
+      "latitude": 59.288883209228516,
+      "longitude": 18.018430709838867,
+      "category": 0,
+      "subcategory": "Vägarbete"
+    },
+    {
       "id": 1566368,
       "priority": 3,
-      "createddate": "\/Date(1449781147240+0100)\/",
+      "createddate": "\/Date(1449820100007+0100)\/",
       "title": "Södra Sverige",
       "exactlocation": "",
       "description": "Efter stormen Helga uppmanas allmänheten att vara uppmärksam och undvika elledningar och stolpar som ligger på marken. ",
@@ -976,7 +844,7 @@
     {
       "id": 1564467,
       "priority": 3,
-      "createddate": "\/Date(1449725138763+0100)\/",
+      "createddate": "\/Date(1449855993837+0100)\/",
       "title": "Ankdammsgatan",
       "exactlocation": "Korsningen Huvudstagatan",
       "description": "Korsningen är enkelriktad, trafiken från Ankdammsgatan får inte köra ut på Huvudstagatan.",
@@ -984,6 +852,30 @@
       "longitude": 17.997326555475574,
       "category": 0,
       "subcategory": "Trafikstörning"
+    },
+    {
+      "id": 1566029,
+      "priority": 3,
+      "createddate": "\/Date(1449848795240+0100)\/",
+      "title": "Västra Götaland",
+      "exactlocation": "",
+      "description": "Från och med söndag får Västtrafik nya tidtabeller. På många håll justeras även körvägar.",
+      "latitude": 58.206364986307584,
+      "longitude": 12.304905291366364,
+      "category": 1,
+      "subcategory": "Buss"
+    },
+    {
+      "id": 1380130,
+      "priority": 3,
+      "createddate": "\/Date(1449850891697+0100)\/",
+      "title": "Lv190 Gråbovägen",
+      "exactlocation": "Bergsjökrysset",
+      "description": "Rondell byggs i korsningen Gråbovägen/Bergsjövägen som en del i den större ombyggnaden av Gråbovägen. ",
+      "latitude": 57.7848526286231,
+      "longitude": 12.088115548634436,
+      "category": 0,
+      "subcategory": "Vägarbete"
     },
     {
       "id": 1552649,
@@ -994,30 +886,6 @@
       "description": "29 nov-18 dec är tågen inställda kvällstid från kl.22:40 t.o.m. trafikdygnets slut fr.o.m. kväll/natt mot måndag t.o.m. kväll/natt mot fredag. ",
       "latitude": 59.348331883632277,
       "longitude": 18.076839632193813,
-      "category": 1,
-      "subcategory": "Tåg"
-    },
-    {
-      "id": 1545140,
-      "priority": 4,
-      "createddate": "\/Date(1449255698987+0100)\/",
-      "title": "Köpenhamn–Malmö",
-      "exactlocation": "",
-      "description": "Var uppmärksam på förändringar i tågtrafiken. Justeringar i tågtrafiken görs för att minimera förseningar till följd av Polisens gränskontroller.",
-      "latitude": 55.560997011796715,
-      "longitude": 12.96726502689128,
-      "category": 1,
-      "subcategory": "Tåg"
-    },
-    {
-      "id": 1555153,
-      "priority": 5,
-      "createddate": "\/Date(1449496238840+0100)\/",
-      "title": "Malmö",
-      "exactlocation": "Hyllie station",
-      "description": "Pga gränskontroller är det risk för förseningar för Öresundstågen. Resenärer uppmanas att vara ute i god tid och om möjligt välja en tidigare avgång.",
-      "latitude": 55.562,
-      "longitude": 12.9746,
       "category": 1,
       "subcategory": "Tåg"
     },
@@ -1034,18 +902,6 @@
       "subcategory": "Buss"
     },
     {
-      "id": 1530105,
-      "priority": 4,
-      "createddate": "\/Date(1449255664090+0100)\/",
-      "title": "Västkustbanan Göteborg–Malmö",
-      "exactlocation": "",
-      "description": "Förändringar i tågtrafiken för alla tåg på sträckan 5/11 till 12/12. Vissa tåg är inställda på hela eller delar av sträckan. Buss ersätter. Även tågen mellan Markaryd och Hässleholm har ändrade tidtabeller. ",
-      "latitude": 56.392201771022869,
-      "longitude": 12.938251318762235,
-      "category": 1,
-      "subcategory": "Tåg"
-    },
-    {
       "id": 1524596,
       "priority": 3,
       "createddate": "\/Date(1447846836343+0100)\/",
@@ -1058,16 +914,40 @@
       "subcategory": "Vägarbete"
     },
     {
-      "id": 1542532,
-      "priority": 3,
-      "createddate": "\/Date(1449738763583+0100)\/",
-      "title": "Lv 668 Uddevalla",
-      "exactlocation": "Hästepallarna",
-      "description": "Vägarbetet avslutas i dag torsdag.",
-      "latitude": 58.337902659524964,
-      "longitude": 11.907992206129306,
-      "category": 0,
-      "subcategory": "Vägarbete"
+      "id": 1559649,
+      "priority": 4,
+      "createddate": "\/Date(1449838831743+0100)\/",
+      "title": "Bollebygd, Borås, Herrljunga, Mark och Vårgårda kommuner",
+      "exactlocation": "",
+      "description": "Från 13 dec ökas utbudet av närtrafik med förbättrade möjligheter att resa kollektivt mellan landsbygd och tätort. Mer information genom Västtrafik.",
+      "latitude": 57.786274626820379,
+      "longitude": 13.037226774985479,
+      "category": 1,
+      "subcategory": "Buss"
+    },
+    {
+      "id": 1559646,
+      "priority": 4,
+      "createddate": "\/Date(1449838832133+0100)\/",
+      "title": "Hjo, Karlsborg, Tibro och Grästorps kommuner",
+      "exactlocation": "",
+      "description": "Från 13 dec ökas utbudet av närtrafik med förbättrade möjligheter att resa kollektivt mellan landsbygd och tätort. Mer information genom Västtrafik.",
+      "latitude": 58.344799941419659,
+      "longitude": 12.765015308517386,
+      "category": 1,
+      "subcategory": "Buss"
+    },
+    {
+      "id": 1559653,
+      "priority": 4,
+      "createddate": "\/Date(1449838831323+0100)\/",
+      "title": "Lilla Edet och Uddevalla kommuner",
+      "exactlocation": "",
+      "description": "Från 13 dec ökas utbudet av närtrafik med förbättrade möjligheter att resa kollektivt mellan landsbygd och tätort. Mer information genom Västtrafik.",
+      "latitude": 58.386448309793359,
+      "longitude": 12.085438430691461,
+      "category": 1,
+      "subcategory": "Buss"
     },
     {
       "id": 1436158,
@@ -1080,18 +960,6 @@
       "longitude": 14.175168991088867,
       "category": 0,
       "subcategory": "Vägarbete"
-    },
-    {
-      "id": 1564425,
-      "priority": 4,
-      "createddate": "\/Date(1449499038947+0100)\/",
-      "title": "Smålandsstenar",
-      "exactlocation": "",
-      "description": "Risk för missfärgat vatten pga ledningsarbeten. Pågår måndag 7 dec till fredag 11 december.",
-      "latitude": 57.162988262334238,
-      "longitude": 13.404747866148258,
-      "category": 3,
-      "subcategory": "Vatten"
     },
     {
       "id": 1552066,
