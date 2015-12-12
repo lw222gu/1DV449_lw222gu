@@ -144,14 +144,14 @@ var TrafficMap = {
 
   renderList: function(){
     var messagesDiv = document.getElementById("traffic-messages");
-    var messageList = document.getElementById("traffic-messages-list");
+    var messageListDiv = document.getElementById("traffic-messages-list");
 
-    if(messageList === null){
-      messageList = document.createElement("div");
-      messageList.setAttribute("id", "traffic-messages-list");
+    if(messageListDiv === null){
+      messageListDiv = document.createElement("div");
+      messageListDiv.setAttribute("id", "traffic-messages-list");
     }
     else {
-      messageList.innerHTML = "";
+      messageListDiv.innerHTML = "";
     }
 
     //Create list of messages
@@ -198,8 +198,8 @@ var TrafficMap = {
         ul.appendChild(a);
       }
     }
-    messageList.appendChild(ul);
-    messagesDiv.appendChild(messageList);
+    messageListDiv.appendChild(ul);
+    messagesDiv.appendChild(messageListDiv);
   },
 
   getPosition: function(position){

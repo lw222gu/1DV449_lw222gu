@@ -5,15 +5,18 @@ namespace Model;
 class TrafficMessageDAL {
 
   public function getJson(){
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, \Settings::APP_REQUEST_URL_SR);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    $data = curl_exec($ch);
-    curl_close($ch);
 
-    $doc = fopen(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE, "w");
-    fwrite($doc, $data);
-    fclose($doc);
+    if(time() - filemtime(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE) > 3600){
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, \Settings::APP_REQUEST_URL_SR);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      $data = curl_exec($ch);
+      curl_close($ch);
+
+      $doc = fopen(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE, "w");
+      fwrite($doc, $data);
+      fclose($doc);
+    }
   }
 
   public function getMessages(){
@@ -21,9 +24,9 @@ class TrafficMessageDAL {
     /*Check if file has been updated over the last minute, (last hour while developing)
      *otherwise fetch new data from API
      */
-    if(time() - filemtime(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE) > 3600){
+    /*if(time() - filemtime(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE) > 3600){
       $this->getJson();
-    }
+    }*/
 
     $str = file_get_contents(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE);
     $json = json_decode($str, true);
