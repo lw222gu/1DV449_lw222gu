@@ -58,7 +58,7 @@ var TrafficMap = {
   },
 
   renderMarkers: function(){
-    //Clears map from markers
+    //Clear map from markers
     TrafficMap.markers.forEach(function(mark){
       TrafficMap.map.removeLayer(mark);
     });
@@ -107,6 +107,7 @@ var TrafficMap = {
         coordinates = coordinates.split(", ", 2);
         TrafficMap.map.setView([coordinates[0], coordinates[1]], 6);
 
+        //Loops through existing markers to find the one that is connected to the messege the user clicked on.
         TrafficMap.markers.forEach(function(mark){
           if(mark.getLatLng()["lat"] == coordinates[0] && mark.getLatLng()["lng"] == coordinates[1]){
             mark.openPopup();
@@ -119,6 +120,8 @@ var TrafficMap = {
   },
 
   renderSelect: function(){
+    //Remove this if I fix noscript version. In that case it can be rendered in php.
+    //Remember to remove call to this function from init.
     var messagesDiv = document.getElementById("traffic-messages");
     var h2 = document.createElement("h2");
     h2.innerHTML = "Trafikmeddelanden";
@@ -183,6 +186,7 @@ var TrafficMap = {
     TrafficMap.setOnclicks();
   },
 
+  //Function is used both by renderList-function and to generate content for popups
   renderListItemContent: function(message){
 
     var liContent = document.createElement("div");
@@ -215,8 +219,6 @@ var TrafficMap = {
   },
 
   formatDate: function(date){
-    //date = date.replace("/Date(", "");
-    //date = date.replace(")/", "");
     date = parseInt(date, 10);
     date = new Date(date);
 
