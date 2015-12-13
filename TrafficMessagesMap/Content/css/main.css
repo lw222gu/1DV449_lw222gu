@@ -73,13 +73,40 @@ label, select, .timestamp {
 
 label {
   font-weight: bold;
+  display: block;
 }
 
 select {
   margin-top: 5px;
   margin-bottom: 25px;
-  width:250px;
+  height:50px;
+  border:solid;
+  border-width: 1px;
+  border-color: rgb(200, 200, 200);
+  border-radius: 3px;
+  font-size: 15px;
+  padding-left: 12px;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent url("images/icons/arrow-down.svg") no-repeat right center;
 }
+
+option {
+  padding:12px;
+  border:none;
+  border-bottom: solid;
+  border-bottom-color: rgb(235, 235, 235);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+select:hover {
+  outline-color: rgb(35, 35, 35);
+}
+
+
 
 .timestamp {
   color: rgb(255, 130, 130);
@@ -166,10 +193,36 @@ select {
   background-image: url("images/icons/5-ovrigt.svg");
 }
 
+/* Markers color definitions */
+
+.color-definitions {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 25px;
+}
+
+.color-definitions li {
+  font-size: 12px;
+  font-weight: bold;
+  color:#FFF;
+  float:left;
+  margin-right: 3px;
+  margin-bottom: 15px;
+  padding:3px;
+  border-radius: 5px;
+}
+
+.prio1 {background-color: rgb(229, 35, 37);}
+.prio2 {background-color: rgb(153, 20, 69);}
+.prio3 {background-color: rgb(238, 113, 35);}
+.prio4 {background-color: rgb(33, 153, 192);}
+.prio5 {background-color: rgb(251, 186, 15);}
+
 
 /* Map css */
 #map {
   height: 350px;
+  margin-bottom: 15px;
 }
 
 .leaflet-popup-content div p{
@@ -183,4 +236,12 @@ select {
 
 .leaflet-popup-content div h3 {
   margin-bottom: 3px;
+}
+
+/* JavaScript disabled styles */
+.no-js {
+  color:rgb(200, 200, 200);
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 150px;
 }

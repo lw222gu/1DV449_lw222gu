@@ -16,7 +16,6 @@ var TrafficMap = {
   init: function(){
 
     TrafficMap.getJson();
-    TrafficMap.renderSelect();
     TrafficMap.renderList();
 
     TrafficMap.map =  L.map('map', {
@@ -80,8 +79,11 @@ var TrafficMap = {
   createMarkerIcons: function(){
     var Icon = L.Icon.extend({
       options: {
-        iconSize:     [25, 24],
-        iconAnchor:   [8, 23],
+        shadowUrl: 'Content/css/images/icons/shadow.svg',
+        iconSize:     [30, 35],
+        shadowSize:   [30, 32],
+        iconAnchor:   [15, 33],
+        shadowAnchor: [10, 30],
         popupAnchor:  [0, -25]
       }
     });
@@ -139,7 +141,7 @@ var TrafficMap = {
       anchors[i].onclick = function(){
         var coordinates = this.getAttribute("value");
         coordinates = coordinates.split(", ", 2);
-        TrafficMap.map.setView([coordinates[0], coordinates[1]], 6);
+        TrafficMap.map.setView([coordinates[0], coordinates[1]], 10);
 
         //Loops through existing markers to find the one that is connected to the messege the user clicked on.
         TrafficMap.markers.forEach(function(mark){
@@ -151,30 +153,6 @@ var TrafficMap = {
         return false;
       }
     }
-  },
-
-  renderSelect: function(){
-    //Remove this if I fix noscript version. In that case it can be rendered in php.
-    //Remember to remove call to this function from init.
-    var messagesDiv = document.getElementById("traffic-messages");
-    var h2 = document.createElement("h2");
-    h2.innerHTML = "Trafikmeddelanden";
-    messagesDiv.appendChild(h2);
-
-    //Create select element
-    var select = document.createElement("select");
-    select.setAttribute("id", "select-category");
-
-    for(var index = 0; index < TrafficMap.options.length; index++){
-      var option = document.createElement("option");
-      option.setAttribute("value", index);
-      option.innerHTML = TrafficMap.options[index];
-      if(index == 4){
-        option.setAttribute("selected", "selected");
-      }
-      select.appendChild(option);
-    }
-    messagesDiv.appendChild(select);
   },
 
   renderList: function(){
@@ -195,10 +173,9 @@ var TrafficMap = {
 
     var messages = TrafficMap.json["messages"];
     var classes = ["vagtrafik", "kollektivtrafik", "planerad-storning", "ovrigt"];
-
+    
     for(var mess = 0; mess < messages.length; mess++){
       if(TrafficMap.selection == messages[mess]["category"] || TrafficMap.selection == "4"){
-
         var a = document.createElement("a");
         a.setAttribute("class", "message-anchor");
         a.setAttribute("href", "#");
