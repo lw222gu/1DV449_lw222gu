@@ -103,7 +103,16 @@ var TrafficMap = {
     var anchors = document.getElementsByClassName("message-anchor");
     for(var i = 0; i < anchors.length; i++){
       anchors[i].onclick = function(){
-        console.log("popup!");
+        var coordinates = this.getAttribute("value");
+        coordinates = coordinates.split(", ", 2);
+        TrafficMap.map.setView([coordinates[0], coordinates[1]], 6);
+
+        TrafficMap.markers.forEach(function(mark){
+          if(mark.getLatLng()["lat"] == coordinates[0] && mark.getLatLng()["lng"] == coordinates[1]){
+            mark.openPopup();
+            document.getElementById("map").scrollIntoView();
+          }
+        });
         return false;
       }
     }
@@ -156,6 +165,7 @@ var TrafficMap = {
         var a = document.createElement("a");
         a.setAttribute("class", "message-anchor");
         a.setAttribute("href", "#");
+        a.setAttribute("value", messages[mess]["latitude"] + ", " + messages[mess]["longitude"]);
 
         var li = document.createElement("li");
         li.setAttribute("class", classes[messages[mess]["category"]]);
