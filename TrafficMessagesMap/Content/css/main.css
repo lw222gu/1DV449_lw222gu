@@ -34,7 +34,7 @@ h1 {
 
 .messages-list li h3 {
   font-size: 0.9em;
-  margin-top: 10px;
+  margin-top: 15px;
   margin-bottom: 5px;
 }
 
@@ -102,20 +102,68 @@ select {
 
 /* Message category classes: Background images */
 
-.vagtrafik {
-  background-image: url("images/vagtrafik-05.svg");
+.vagtrafik1 {
+  background-image: url("images/icons/1-vagtrafik.svg");
+}
+.vagtrafik2 {
+  background-image: url("images/icons/2-vagtrafik.svg");
+}
+.vagtrafik3 {
+  background-image: url("images/icons/3-vagtrafik.svg");
+}
+.vagtrafik4 {
+  background-image: url("images/icons/4-vagtrafik.svg");
+}
+.vagtrafik5 {
+  background-image: url("images/icons/5-vagtrafik.svg");
 }
 
-.kollektivtrafik {
-  background-image: url("images/kollektivtrafik-06.svg");
+.kollektivtrafik1 {
+  background-image: url("images/icons/1-kollektivtrafik.svg");
+}
+.kollektivtrafik2 {
+  background-image: url("images/icons/2-kollektivtrafik.svg");
+}
+.kollektivtrafik3 {
+  background-image: url("images/icons/3-kollektivtrafik.svg");
+}
+.kollektivtrafik4 {
+  background-image: url("images/icons/4-kollektivtrafik.svg");
+}
+.kollektivtrafik5 {
+  background-image: url("images/icons/5-kollektivtrafik.svg");
 }
 
-.planerad-storning {
-  background-image: url("images/planerad-storning-07.svg");
+.planerad-storning1 {
+  background-image: url("images/icons/1-planerad-storning.svg");
+}
+.planerad-storning2 {
+  background-image: url("images/icons/2-planerad-storning.svg");
+}
+.planerad-storning3 {
+  background-image: url("images/icons/3-planerad-storning.svg");
+}
+.planerad-storning4 {
+  background-image: url("images/icons/4-planerad-storning.svg");
+}
+.planerad-storning5 {
+  background-image: url("images/icons/5-planerad-storning.svg");
 }
 
-.ovrigt {
-  background-image: url("images/ovrigt-08.svg");
+.ovrigt1 {
+  background-image: url("images/icons/1-ovrigt.svg");
+}
+.ovrigt2 {
+  background-image: url("images/icons/2-ovrigt.svg");
+}
+.ovrigt3 {
+  background-image: url("images/icons/3-ovrigt.svg");
+}
+.ovrigt4 {
+  background-image: url("images/icons/4-ovrigt.svg");
+}
+.ovrigt5 {
+  background-image: url("images/icons/5-ovrigt.svg");
 }
 
 

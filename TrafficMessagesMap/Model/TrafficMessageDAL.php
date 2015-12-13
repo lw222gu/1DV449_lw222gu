@@ -25,6 +25,8 @@ class TrafficMessageDAL {
         $json["messages"][$i]["createddate"] = $date;
       }
 
+      //Fundera på att ta bort de fält som inte används redan innan filen sparas!
+
       $messages = $json["messages"];
       usort($messages, function($a, $b)
       {

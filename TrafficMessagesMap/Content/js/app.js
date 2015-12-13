@@ -67,9 +67,10 @@ var TrafficMap = {
 
     for(var i = 0; i < messages.length; i++){
       var category = messages[i]["category"];
+      var priority = messages[i]["priority"];
 
       if(TrafficMap.selection == category || TrafficMap.selection == "4"){
-        var marker = L.marker([messages[i].latitude, messages[i].longitude], {icon: TrafficMap.icons[category]}).addTo(TrafficMap.map);
+        var marker = L.marker([messages[i].latitude, messages[i].longitude], {icon: TrafficMap.icons[category + "" + priority]}).addTo(TrafficMap.map);
         marker.bindPopup(TrafficMap.renderListItemContent(messages[i]));
         TrafficMap.markers.push(marker);
       }
@@ -86,16 +87,49 @@ var TrafficMap = {
     });
 
     //Creates new Icon objects for custom icons
-    var kollektivtrafikIcon = new Icon({iconUrl: 'Content/css/images/kollektivtrafik-06.svg'}),
-    ovrigtIcon = new Icon({iconUrl: 'Content/css/images/ovrigt-08.svg'}),
-    planeradStorningIcon = new Icon({iconUrl: 'Content/css/images/planerad-storning-07.svg'}),
-    vagtrafikIcon = new Icon({iconUrl: 'Content/css/images/vagtrafik-05.svg'});
+
+    var vagtrafik1 = new Icon({iconUrl: 'Content/css/images/icons/1-vagtrafik.svg'}),
+        vagtrafik2 = new Icon({iconUrl: 'Content/css/images/icons/2-vagtrafik.svg'}),
+        vagtrafik3 = new Icon({iconUrl: 'Content/css/images/icons/3-vagtrafik.svg'}),
+        vagtrafik4 = new Icon({iconUrl: 'Content/css/images/icons/4-vagtrafik.svg'}),
+        vagtrafik5 = new Icon({iconUrl: 'Content/css/images/icons/5-vagtrafik.svg'}),
+        kollektivtrafik1 = new Icon({iconUrl: 'Content/css/images/icons/1-kollektivtrafik.svg'}),
+        kollektivtrafik2 = new Icon({iconUrl: 'Content/css/images/icons/2-kollektivtrafik.svg'}),
+        kollektivtrafik3 = new Icon({iconUrl: 'Content/css/images/icons/3-kollektivtrafik.svg'}),
+        kollektivtrafik4 = new Icon({iconUrl: 'Content/css/images/icons/4-kollektivtrafik.svg'}),
+        kollektivtrafik5 = new Icon({iconUrl: 'Content/css/images/icons/5-kollektivtrafik.svg'}),
+        planeradStorning1 = new Icon({iconUrl: 'Content/css/images/icons/1-planerad-storning.svg'}),
+        planeradStorning2 = new Icon({iconUrl: 'Content/css/images/icons/2-planerad-storning.svg'}),
+        planeradStorning3 = new Icon({iconUrl: 'Content/css/images/icons/3-planerad-storning.svg'}),
+        planeradStorning4 = new Icon({iconUrl: 'Content/css/images/icons/4-planerad-storning.svg'}),
+        planeradStorning5 = new Icon({iconUrl: 'Content/css/images/icons/5-planerad-storning.svg'}),
+        ovrigt1 = new Icon({iconUrl: 'Content/css/images/icons/1-ovrigt.svg'}),
+        ovrigt2 = new Icon({iconUrl: 'Content/css/images/icons/2-ovrigt.svg'}),
+        ovrigt3 = new Icon({iconUrl: 'Content/css/images/icons/3-ovrigt.svg'}),
+        ovrigt4 = new Icon({iconUrl: 'Content/css/images/icons/4-ovrigt.svg'}),
+        ovrigt5 = new Icon({iconUrl: 'Content/css/images/icons/5-ovrigt.svg'});
 
     TrafficMap.icons = {
-      "0": vagtrafikIcon,
-      "1": kollektivtrafikIcon,
-      "2": planeradStorningIcon,
-      "3": ovrigtIcon
+      "01": vagtrafik1,
+      "02": vagtrafik2,
+      "03": vagtrafik3,
+      "04": vagtrafik4,
+      "05": vagtrafik5,
+      "11": kollektivtrafik1,
+      "12": kollektivtrafik2,
+      "13": kollektivtrafik3,
+      "14": kollektivtrafik4,
+      "15": kollektivtrafik5,
+      "21": planeradStorning1,
+      "22": planeradStorning2,
+      "23": planeradStorning3,
+      "24": planeradStorning4,
+      "25": planeradStorning5,
+      "31": ovrigt1,
+      "32": ovrigt2,
+      "33": ovrigt3,
+      "34": ovrigt4,
+      "35": ovrigt5
     };
   },
 
@@ -171,7 +205,7 @@ var TrafficMap = {
         a.setAttribute("value", messages[mess]["latitude"] + ", " + messages[mess]["longitude"]);
 
         var li = document.createElement("li");
-        li.setAttribute("class", classes[messages[mess]["category"]]);
+        li.setAttribute("class", classes[messages[mess]["category"]]+messages[mess]["priority"]);
 
         var liContent = TrafficMap.renderListItemContent(messages[mess]);
 
