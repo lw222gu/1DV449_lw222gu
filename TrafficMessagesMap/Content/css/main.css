@@ -103,7 +103,7 @@ option {
 }
 
 select:hover {
-  outline-color: rgb(35, 35, 35);
+  cursor:pointer;
 }
 
 

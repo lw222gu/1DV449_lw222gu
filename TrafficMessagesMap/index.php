@@ -1,8 +1,8 @@
 <?php
-require_once 'Model\TrafficMessageDAL.php';
-require_once 'Model\TrafficMessage.php';
-require_once 'View\LayoutView.php';
-require_once 'settings.php';
+require_once('Model/TrafficMessageDAL.php');
+//require_once('Model/TrafficMessage.php');
+require_once('View/LayoutView.php');
+//require_once('settings.php');
 
 //MAKE SURE ERRORS ARE SHOWN
 error_reporting(E_ALL);

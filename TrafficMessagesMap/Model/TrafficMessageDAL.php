@@ -4,14 +4,18 @@ namespace Model;
 
 class TrafficMessageDAL {
 
+  private $url = "http://api.sr.se/api/v2/traffic/messages?format=json&pagination=false&indent=true";
+  private $jsonUrl = "Resources\TrafficMessages.json";
+
+
   public function getJson(){
 
     /*Check if file has been updated over the last minute, (last hour while developing)
      *otherwise fetch new data from API
      */
-    if(time() - filemtime(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE) > 3600){
+    if(time() - filemtime($this->jsonUrl) > 3600){
       $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL, \Settings::APP_REQUEST_URL_SR);
+      curl_setopt($ch, CURLOPT_URL, $this->url);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
       $data = curl_exec($ch);
       curl_close($ch);
@@ -34,12 +38,12 @@ class TrafficMessageDAL {
       });
       $json["messages"] = array_reverse($messages);
 
-      $doc = fopen(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE, "w");
+      $doc = fopen($this->jsonUrl, "w");
       fwrite($doc, json_encode($json));
       fclose($doc);
     }
   }
-
+/*
   public function getMessages(){
 
     $str = file_get_contents(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE);
@@ -61,5 +65,5 @@ class TrafficMessageDAL {
     }
 
     return $messages;
-  }
+  }*/
 }

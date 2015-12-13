@@ -20,7 +20,7 @@ var TrafficMap = {
 
     TrafficMap.map =  L.map('map', {
       center: [TrafficMap.lat, TrafficMap.long], //standard latitude and longitude
-      minZoom: 2,
+      minZoom: 4,
       zoom: 6
     });
 
@@ -173,7 +173,7 @@ var TrafficMap = {
 
     var messages = TrafficMap.json["messages"];
     var classes = ["vagtrafik", "kollektivtrafik", "planerad-storning", "ovrigt"];
-    
+
     for(var mess = 0; mess < messages.length; mess++){
       if(TrafficMap.selection == messages[mess]["category"] || TrafficMap.selection == "4"){
         var a = document.createElement("a");

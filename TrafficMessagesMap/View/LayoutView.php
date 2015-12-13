@@ -19,9 +19,8 @@ class LayoutView {
                 <meta http-equiv="x-ua-compatible" content="ie=edge">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <title>Trafikkartan</title>
-                <link rel="stylesheet" href="content/css/foundation.css" />
-                <link rel="stylesheet" href="content/css/app.css" />
-                <link rel="stylesheet" href="content/css/main.css" />
+                <link rel="stylesheet" href="Content/css/foundation.css" />
+                <link rel="stylesheet" href="Content/css/main.css" />
                 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
                 <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
             </head>
@@ -70,7 +69,8 @@ class LayoutView {
                 <noscript>
                   <div class="row">
                     <div id="noscript-traffic-messages" class="large-12 medium-12 small-12 columns">
-                        ' . $this->renderMessages() . '
+                        ' . //$this->renderMessages() .
+                        '
                     </div>
                   <div>
                 </noscript>
@@ -84,7 +84,7 @@ class LayoutView {
         </html>
         ';
   }
-
+/*
   private function renderMessages(){
     $ret = "";
 
@@ -116,5 +116,5 @@ class LayoutView {
     }
 
     return $ret;
-  }
+  }*/
 }

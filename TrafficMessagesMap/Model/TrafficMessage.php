@@ -1,6 +1,6 @@
 <?php
 
-namespace Model;
+/*namespace Model;
 
 class TrafficMessage {
 
@@ -52,4 +52,4 @@ class TrafficMessage {
   public function getLongitude(){
     return $this->longitude;
   }
-}
+}*/

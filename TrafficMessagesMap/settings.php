@@ -11,12 +11,12 @@ class Settings {
     );
 
     //TRAFFIC MESSAGE CLASSES
-    const CSS_TRAFFIC_MESSAGE_CLASSES = array(
+    /*const CSS_TRAFFIC_MESSAGE_CLASSES = array(
       "Vägtrafik" => "vagtrafik",
       "Kollektivtrafik" => "kollektivtrafik",
       "Planerad störning" => "planerad-storning",
       "Övrigt" => "ovrigt"
-    );
+    );*/
 
     //PATH TO CACHED FILE WITH TRAFFIC messages
     const APP_TRAFFIC_MESSAGES_JSON_FILE = "Resources\TrafficMessages.json";
