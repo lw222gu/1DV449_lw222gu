@@ -2,25 +2,9 @@
 
 class Settings {
 
-    //TRAFFIC MESSAGE CATEGORIES:
-    const APP_TRAFFIC_MESSAGE_CATEGORIES = array(
-      "0" => "Vägtrafik",
-      "1" => "Kollektivtrafik",
-      "2" => "Planerad störning",
-      "3" => "Övrigt"
-    );
+  //PATH TO CACHED FILE WITH TRAFFIC messages
+  const APP_TRAFFIC_MESSAGES_JSON_FILE = "Resources\TrafficMessages.json";
 
-    //TRAFFIC MESSAGE CLASSES
-    /*const CSS_TRAFFIC_MESSAGE_CLASSES = array(
-      "Vägtrafik" => "vagtrafik",
-      "Kollektivtrafik" => "kollektivtrafik",
-      "Planerad störning" => "planerad-storning",
-      "Övrigt" => "ovrigt"
-    );*/
-
-    //PATH TO CACHED FILE WITH TRAFFIC messages
-    const APP_TRAFFIC_MESSAGES_JSON_FILE = "Resources\TrafficMessages.json";
-
-    //REQUEST URL "SVERIGES RADIO"
-    const APP_REQUEST_URL_SR = "http://api.sr.se/api/v2/traffic/messages?format=json&pagination=false&indent=true";
+  //REQUEST URL "SVERIGES RADIO"
+  const APP_REQUEST_URL_SR = "http://api.sr.se/api/v2/traffic/messages?format=json&pagination=false&indent=true";
 }

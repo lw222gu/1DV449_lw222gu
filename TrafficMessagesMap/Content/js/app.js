@@ -34,12 +34,15 @@ var TrafficMap = {
       subdomains: ['otile1','otile2','otile3','otile4']
     }).addTo(TrafficMap.map);
 
-    var select = document.getElementById("select-category");
-    select.onchange = function(){
-      TrafficMap.selection = this.value;
-      TrafficMap.renderMarkers();
-      TrafficMap.renderList();
-    };
+    var categoryAnchors = document.getElementsByClassName("category-a");
+    for(var i = 0; i < categoryAnchors.length; i++){
+      categoryAnchors[i].onclick = function(){
+        TrafficMap.selection = this.getAttribute("value");
+        TrafficMap.renderMarkers();
+        TrafficMap.renderList();
+        return false;
+      };
+    }
 
     TrafficMap.createMarkerIcons();
     TrafficMap.renderMarkers();
@@ -182,7 +185,6 @@ var TrafficMap = {
         a.setAttribute("value", messages[mess]["latitude"] + ", " + messages[mess]["longitude"]);
 
         var li = document.createElement("li");
-        li.setAttribute("class", classes[messages[mess]["category"]]+messages[mess]["priority"]);
 
         var liContent = TrafficMap.renderListItemContent(messages[mess]);
 

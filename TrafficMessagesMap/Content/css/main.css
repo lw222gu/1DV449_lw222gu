@@ -40,10 +40,6 @@ h1 {
 .messages-list li {
   padding:15px;
   padding-bottom: 25px;
-  margin-bottom: 25px;
-  background-repeat: no-repeat;
-  background-size: 25px 29px;
-  background-position: top left;
   border:solid;
   border-width: 0;
   border-bottom-width: 1px;
@@ -66,13 +62,8 @@ h1 {
   margin-bottom: 5px;
 }
 
-label, select, .timestamp {
+select, .timestamp {
   font-size: 0.8em;
-}
-
-label {
-  font-weight: bold;
-  display: block;
 }
 
 select {
@@ -111,7 +102,24 @@ select:hover {
   cursor:pointer;
 }
 
+.category-img {
+  height:35px;
+  width:30px;
+}
 
+.category-a {
+  display: inline-block;
+  border:solid;
+  border-width: 0;
+  border-bottom-width:1px;
+  border-color: #FFF;
+  padding-bottom: 3px;
+}
+
+
+.category-a:hover {
+  border-color: rgb(30, 30, 30);
+}
 
 .timestamp {
   color: rgb(255, 130, 130);
@@ -131,72 +139,6 @@ select:hover {
   margin-left: 10px;
 }
 
-
-/* Message category classes: Background images */
-
-.vagtrafik1 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 0, 31, 35))");
-}
-.vagtrafik2 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 40, 31, 35))");
-}
-.vagtrafik3 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 80, 31, 35))");
-}
-.vagtrafik4 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 120, 31, 35))");
-}
-.vagtrafik5 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 160, 31, 35))");
-}
-
-.kollektivtrafik1 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 200, 31, 35))");
-}
-.kollektivtrafik2 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 240, 31, 35))");
-}
-.kollektivtrafik3 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 280, 31, 35))");
-}
-.kollektivtrafik4 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 320, 31, 35))");
-}
-.kollektivtrafik5 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 360, 31, 35))");
-}
-
-.planerad-storning1 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 400, 31, 35))");
-}
-.planerad-storning2 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 440, 31, 35))");
-}
-.planerad-storning3 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 480, 31, 35))");
-}
-.planerad-storning4 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 520, 31, 35))");
-}
-.planerad-storning5 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 560, 31, 35))");
-}
-
-.ovrigt1 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 600, 31, 35))");
-}
-.ovrigt2 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 640, 31, 35))");
-}
-.ovrigt3 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 680, 31, 35))");
-}
-.ovrigt4 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 720, 31, 35))");
-}
-.ovrigt5 {
-  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 760, 31, 35))");
-}
 
 /* Markers color definitions */
 
