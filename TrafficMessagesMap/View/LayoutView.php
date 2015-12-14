@@ -4,7 +4,7 @@ namespace View;
 
 class LayoutView {
 
-  public function renderPage(){
+  public function renderPage($timeStamp){
     echo'<!DOCTYPE html>
       <html>
 
@@ -58,8 +58,7 @@ class LayoutView {
 
           <div class="row">
             <div id="traffic-messages" class="large-12 medium-12 small-12 columns">
-              <p>' //. $this->getLastModifiedTime()
-               . '</p>
+              ' . $timeStamp . '
             </div>
           </div>
           <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>

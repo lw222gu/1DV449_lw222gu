@@ -8,14 +8,25 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 
-
-/*Check if file has been updated over the last minute, (last hour while developing)
+/*Check if file has been updated over the last two minutes,
  *otherwise fetch new data from API
  */
+$timeStamp = "";
+
 if(time() - filemtime(Settings::APP_TRAFFIC_MESSAGES_JSON_FILE) > 5){
   $dal = new Model\TrafficMessageDAL();
-  $dal->getJson();
+  $data = $dal->getJson();
+
+  if($data === null){
+    date_default_timezone_set('Europe/Stockholm');
+    $timeStamp = '<p class="timestamp">Ooops! Ingen data kunde hämtas. Informationen som visas hämtades ' .
+                  date('Y-m-d, H:i:s', filemtime(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE)) . '.</p>';
+  }
+
+  else {
+    $dal->saveJson($data);
+  }
 }
 
 $lv = new View\LayoutView();
-$lv->renderPage();
+$lv->renderPage($timeStamp);
