@@ -5,7 +5,7 @@ namespace Model;
 class TrafficMessageDAL {
 
   public function getJson(){
-    
+
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, \Settings::APP_REQUEST_URL_SR);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);

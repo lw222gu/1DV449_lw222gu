@@ -16,12 +16,20 @@ class LayoutView {
           <link rel="stylesheet" href="Content/css/foundation.css" />
           <link rel="stylesheet" href="Content/css/main.css" />
           <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
-          <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
         </head>
 
         <body>
           <div id="topbar">
             <h1>Trafikkartan</h1>
+            <div class="color-definitions">
+              <ul>
+                <li class="prio1">Mycket allvarlig händelse</li>
+                <li class="prio2">Stor händelse</li>
+                <li class="prio3">Störning</li>
+                <li class="prio4">Information</li>
+                <li class="prio5">Mindre störning</li>
+              </ul>
+            </div>
           </div>
 
           <noscript>
@@ -35,21 +43,11 @@ class LayoutView {
             <div class="large-4 medium-12 small-12 columns">
               <h2>Trafikmeddelanden</h2>
             </div>
-            <div class="large-6 medium-12 small-12 columns right">
-              <ul class="color-definitions">
-                <li class="prio1">Mycket allvarlig händelse</li>
-                <li class="prio2">Stor händelse</li>
-                <li class="prio3">Störning</li>
-                <li class="prio4">Information</li>
-                <li class="prio5">Mindre störning</li>
-              </ul>
-            </div>
           </div>
-
 
           <div class="row">
             <div class="large-12 medium-12 small-12 columns">
-              <p>Filtrera på kategori:</p>
+              <p class="filter">Filter:</p>
               <a href="#" class="category-a" value="4"><img src="Content/css/images/markers-sprite.svg#svgView(viewBox(0, 800, 31, 35))" class="category-img" alt="Visa alla kategorier"/></a>
               <a href="#" class="category-a" value="0"><img src="Content/css/images/markers-sprite.svg#svgView(viewBox(0, 840, 31, 35))" class="category-img" alt="Visa vägtrafik"/></a>
               <a href="#" class="category-a" value="1"><img src="Content/css/images/markers-sprite.svg#svgView(viewBox(0, 880, 31, 35))" class="category-img" alt="Visa kollektivtrafik"/></a>
@@ -64,6 +62,7 @@ class LayoutView {
                . '</p>
             </div>
           </div>
+          <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
           <script src="Content/js/app.js"></script>
         </body>
       </html>';

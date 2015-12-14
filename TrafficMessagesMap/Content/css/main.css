@@ -15,6 +15,7 @@ body {
   margin-top:0;
   margin-left: 15px;
   padding-top: 12px;
+  float:left;
 }
 
 h1, h2 {
@@ -24,6 +25,10 @@ h1, h2 {
 
 h1 {
   font-style: italic;
+}
+
+h2 {
+  margin-bottom: 30px;
 }
 
 .messages-list {
@@ -46,6 +51,11 @@ h1 {
   border-color:rgb(220, 220, 200);
 }
 
+.messages-list a:nth-child(1) li{
+  border-top-width: 1px;
+  border-color:rgb(220, 220, 200);
+}
+
 .message-anchor {
   color: #000;
   text-decoration: none;
@@ -62,44 +72,12 @@ h1 {
   margin-bottom: 5px;
 }
 
-select, .timestamp {
+.filter {
   font-size: 0.8em;
-}
-
-select {
-  margin-top: 5px;
-  margin-bottom: 25px;
-  height:50px;
-  border:solid;
-  border-width: 1px;
-  border-color: rgb(200, 200, 200);
-  border-radius: 3px;
-  font-size: 15px;
-  padding-left: 12px;
-
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: transparent url("images/arrow-down.svg") no-repeat;
-  background-size: 45px 45px;
-  background-position: center right;
-}
-
-select::-ms-expand {
-    display: none;
-}
-
-option {
-  padding:12px;
-  border:none;
-  border-bottom: solid;
-  border-bottom-color: rgb(235, 235, 235);
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-}
-
-select:hover {
-  cursor:pointer;
+  float: left;
+  margin-right: 15px;
+  margin-top: 18px;
+  margin-bottom: 0;
 }
 
 .category-img {
@@ -115,7 +93,6 @@ select:hover {
   border-color: #FFF;
   padding-bottom: 3px;
 }
-
 
 .category-a:hover {
   border-color: rgb(30, 30, 30);
@@ -143,18 +120,25 @@ select:hover {
 /* Markers color definitions */
 
 .color-definitions {
-  list-style-type: none;
-  padding-left: 0;
-  margin-top: 25px;
+  display:inline-block;
   float:right;
 }
 
-.color-definitions li {
+.color-definitions ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 15px;
+  margin-top: 12px;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+
+.color-definitions ul li {
   font-size: 12px;
   color:#FFF;
   float:left;
   margin-right: 3px;
-  margin-bottom: 15px;
+  margin-bottom: 3px;
   padding:4px;
   border-radius: 5px;
 }
@@ -164,13 +148,6 @@ select:hover {
 .prio3 {background-color: rgb(238, 113, 35);}
 .prio4 {background-color: rgb(33, 153, 192);}
 .prio5 {background-color: rgb(251, 186, 15);}
-
-
-@media (max-width: 1025px){
-  .color-definitions {
-    float:left;
-  }
-}
 
 /* Map css */
 #map {

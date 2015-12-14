@@ -10,8 +10,7 @@ var TrafficMap = {
   selection: "4",
   markers: [],
   markersGroup: L.layerGroup(this.markers),
-  options: ["Vägtrafik", "Kollektivtrafik", "Planerad störning", "Övrigt", "Visa alla kategorier"],
-  //options: ["Vägtrafik": "0", "Kollektivtrafik": "1", "Planerad störning":"2", "Övrigt": "3", "Visa alla kategorier": null] ,
+  options: ["Vägtrafik", "Kollektivtrafik", "Planerad störning", "Övrigt"],
 
   init: function(){
 
@@ -34,6 +33,7 @@ var TrafficMap = {
       subdomains: ['otile1','otile2','otile3','otile4']
     }).addTo(TrafficMap.map);
 
+    //Set oncliks for category filter anchors
     var categoryAnchors = document.getElementsByClassName("category-a");
     for(var i = 0; i < categoryAnchors.length; i++){
       categoryAnchors[i].onclick = function(){
@@ -72,70 +72,12 @@ var TrafficMap = {
       var priority = messages[i]["priority"];
 
       if(TrafficMap.selection == category || TrafficMap.selection == "4"){
-        var marker = L.marker([messages[i].latitude, messages[i].longitude], {icon: TrafficMap.icons[category + "" + priority]}).addTo(TrafficMap.map);
+        var marker = L.marker([messages[i].latitude, messages[i].longitude],
+          {icon: TrafficMap.icons[category + "" + priority]}).addTo(TrafficMap.map);
         marker.bindPopup(TrafficMap.renderListItemContent(messages[i]));
         TrafficMap.markers.push(marker);
       }
     }
-  },
-
-  createMarkerIcons: function(){
-    var Icon = L.Icon.extend({
-      options: {
-        shadowUrl: 'Content/css/images/shadow.svg',
-        iconSize:     [30, 35],
-        shadowSize:   [30, 32],
-        iconAnchor:   [15, 33],
-        shadowAnchor: [10, 30],
-        popupAnchor:  [0, -25]
-      }
-    });
-
-    //Creates new Icon objects for custom icons
-
-    var vagtrafik1 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 0, 31, 35))'}),
-        vagtrafik2 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 40, 31, 35))'}),
-        vagtrafik3 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 80, 31, 35))'}),
-        vagtrafik4 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 120, 31, 35))'}),
-        vagtrafik5 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 160, 31, 35))'}),
-        kollektivtrafik1 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 200, 31, 35))'}),
-        kollektivtrafik2 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 240, 31, 35))'}),
-        kollektivtrafik3 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 280, 31, 35))'}),
-        kollektivtrafik4 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 320, 31, 35))'}),
-        kollektivtrafik5 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 360, 31, 35))'}),
-        planeradStorning1 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 400, 31, 35))'}),
-        planeradStorning2 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 440, 31, 35))'}),
-        planeradStorning3 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 480, 31, 35))'}),
-        planeradStorning4 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 520, 31, 35))'}),
-        planeradStorning5 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 560, 31, 35))'}),
-        ovrigt1 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 600, 31, 35))'}),
-        ovrigt2 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 640, 31, 35))'}),
-        ovrigt3 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 680, 31, 35))'}),
-        ovrigt4 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 720, 31, 35))'}),
-        ovrigt5 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 760, 31, 35))'});
-
-    TrafficMap.icons = {
-      "01": vagtrafik1,
-      "02": vagtrafik2,
-      "03": vagtrafik3,
-      "04": vagtrafik4,
-      "05": vagtrafik5,
-      "11": kollektivtrafik1,
-      "12": kollektivtrafik2,
-      "13": kollektivtrafik3,
-      "14": kollektivtrafik4,
-      "15": kollektivtrafik5,
-      "21": planeradStorning1,
-      "22": planeradStorning2,
-      "23": planeradStorning3,
-      "24": planeradStorning4,
-      "25": planeradStorning5,
-      "31": ovrigt1,
-      "32": ovrigt2,
-      "33": ovrigt3,
-      "34": ovrigt4,
-      "35": ovrigt5
-    };
   },
 
   setOnclicks: function(){
@@ -255,6 +197,64 @@ var TrafficMap = {
     TrafficMap.lat = position.coords.latitude;
     TrafficMap.long = position.coords.longitude;
     TrafficMap.map.setView([TrafficMap.lat, TrafficMap.long], 10);
+  },
+
+  createMarkerIcons: function(){
+    var Icon = L.Icon.extend({
+      options: {
+        shadowUrl: 'Content/css/images/shadow.svg',
+        iconSize:     [30, 35],
+        shadowSize:   [30, 32],
+        iconAnchor:   [15, 33],
+        shadowAnchor: [10, 30],
+        popupAnchor:  [0, -25]
+      }
+    });
+
+    //Creates new Icon objects for custom icons
+    var vagtrafik1 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 0, 31, 35))'}),
+        vagtrafik2 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 40, 31, 35))'}),
+        vagtrafik3 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 80, 31, 35))'}),
+        vagtrafik4 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 120, 31, 35))'}),
+        vagtrafik5 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 160, 31, 35))'}),
+        kollektivtrafik1 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 200, 31, 35))'}),
+        kollektivtrafik2 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 240, 31, 35))'}),
+        kollektivtrafik3 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 280, 31, 35))'}),
+        kollektivtrafik4 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 320, 31, 35))'}),
+        kollektivtrafik5 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 360, 31, 35))'}),
+        planeradStorning1 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 400, 31, 35))'}),
+        planeradStorning2 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 440, 31, 35))'}),
+        planeradStorning3 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 480, 31, 35))'}),
+        planeradStorning4 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 520, 31, 35))'}),
+        planeradStorning5 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 560, 31, 35))'}),
+        ovrigt1 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 600, 31, 35))'}),
+        ovrigt2 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 640, 31, 35))'}),
+        ovrigt3 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 680, 31, 35))'}),
+        ovrigt4 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 720, 31, 35))'}),
+        ovrigt5 = new Icon({iconUrl: 'Content/css/images/markers-sprite.svg#svgView(viewBox(0, 760, 31, 35))'});
+
+    TrafficMap.icons = {
+      "01": vagtrafik1,
+      "02": vagtrafik2,
+      "03": vagtrafik3,
+      "04": vagtrafik4,
+      "05": vagtrafik5,
+      "11": kollektivtrafik1,
+      "12": kollektivtrafik2,
+      "13": kollektivtrafik3,
+      "14": kollektivtrafik4,
+      "15": kollektivtrafik5,
+      "21": planeradStorning1,
+      "22": planeradStorning2,
+      "23": planeradStorning3,
+      "24": planeradStorning4,
+      "25": planeradStorning5,
+      "31": ovrigt1,
+      "32": ovrigt2,
+      "33": ovrigt3,
+      "34": ovrigt4,
+      "35": ovrigt5
+    };
   }
 };
 
