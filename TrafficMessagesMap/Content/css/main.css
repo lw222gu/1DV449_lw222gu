@@ -43,7 +43,7 @@ h1 {
   padding-bottom: 25px;
   margin-bottom: 25px;
   background-repeat: no-repeat;
-  background-size: 25px;
+  background-size: 25px 29px;
   background-position: top left;
   border:solid;
   border-width: 0;
@@ -90,7 +90,13 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: transparent url("images/icons/arrow-down.svg") no-repeat right center;
+  background: transparent url("images/icons/arrow-down.svg") no-repeat;
+  background-size: 45px 45px;
+  background-position: center right;
+}
+
+select::-ms-expand {
+    display: none;
 }
 
 option {
@@ -130,67 +136,67 @@ select:hover {
 /* Message category classes: Background images */
 
 .vagtrafik1 {
-  background-image: url("images/icons/1-vagtrafik.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 0, 31, 35))");
 }
 .vagtrafik2 {
-  background-image: url("images/icons/2-vagtrafik.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 40, 31, 35))");
 }
 .vagtrafik3 {
-  background-image: url("images/icons/3-vagtrafik.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 80, 31, 35))");
 }
 .vagtrafik4 {
-  background-image: url("images/icons/4-vagtrafik.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 120, 31, 35))");
 }
 .vagtrafik5 {
-  background-image: url("images/icons/5-vagtrafik.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 160, 31, 35))");
 }
 
 .kollektivtrafik1 {
-  background-image: url("images/icons/1-kollektivtrafik.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 200, 31, 35))");
 }
 .kollektivtrafik2 {
-  background-image: url("images/icons/2-kollektivtrafik.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 240, 31, 35))");
 }
 .kollektivtrafik3 {
-  background-image: url("images/icons/3-kollektivtrafik.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 280, 31, 35))");
 }
 .kollektivtrafik4 {
-  background-image: url("images/icons/4-kollektivtrafik.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 320, 31, 35))");
 }
 .kollektivtrafik5 {
-  background-image: url("images/icons/5-kollektivtrafik.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 360, 31, 35))");
 }
 
 .planerad-storning1 {
-  background-image: url("images/icons/1-planerad-storning.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 400, 31, 35))");
 }
 .planerad-storning2 {
-  background-image: url("images/icons/2-planerad-storning.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 440, 31, 35))");
 }
 .planerad-storning3 {
-  background-image: url("images/icons/3-planerad-storning.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 480, 31, 35))");
 }
 .planerad-storning4 {
-  background-image: url("images/icons/4-planerad-storning.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 520, 31, 35))");
 }
 .planerad-storning5 {
-  background-image: url("images/icons/5-planerad-storning.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 560, 31, 35))");
 }
 
 .ovrigt1 {
-  background-image: url("images/icons/1-ovrigt.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 600, 31, 35))");
 }
 .ovrigt2 {
-  background-image: url("images/icons/2-ovrigt.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 640, 31, 35))");
 }
 .ovrigt3 {
-  background-image: url("images/icons/3-ovrigt.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 680, 31, 35))");
 }
 .ovrigt4 {
-  background-image: url("images/icons/4-ovrigt.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 720, 31, 35))");
 }
 .ovrigt5 {
-  background-image: url("images/icons/5-ovrigt.svg");
+  background-image: url("images/markers-sprite.svg#svgView(viewBox(0, 760, 31, 35))");
 }
 
 /* Markers color definitions */
@@ -199,16 +205,16 @@ select:hover {
   list-style-type: none;
   padding-left: 0;
   margin-top: 25px;
+  float:right;
 }
 
 .color-definitions li {
   font-size: 12px;
-  font-weight: bold;
   color:#FFF;
   float:left;
   margin-right: 3px;
   margin-bottom: 15px;
-  padding:3px;
+  padding:4px;
   border-radius: 5px;
 }
 
