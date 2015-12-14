@@ -28,17 +28,18 @@ class LayoutView {
                 <div id="topbar">
                   <h1>Trafikkartan</h1>
                 </div>
-                <div class="row">
+                <!--<div class="row">
                     <div class="large-12 medium-12 small-12 columns">
                         <h1>Välkommen till trafikkartan</h1>
                     </div>
-                </div>
+                </div>-->
 
-                <div class="row">
+                <!--<div class="row">
+                <div class="large-12 medium-12 small-12 columns" id="map">-->
                   <div class="large-12 medium-12 small-12 columns" id="map">
                     <noscript><p class="no-js">Du har javascript avstängt och kan därför inte se kartan. <br/> Slå gärna på javascript i din webbläsare för att ta del av hela sidans innehåll.</p></noscript>
                   </div>
-                </div>
+                <!--</div>-->
                 <div class="row">
                   <div class="large-4 medium-12 small-12 columns">
                     <h2>Trafikmeddelanden</h2>

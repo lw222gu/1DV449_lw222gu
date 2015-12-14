@@ -7,7 +7,6 @@ body {
   background-color: rgb(25, 25, 25);
   height:50px;
   display:block;
-  margin-bottom: 50px;
 }
 
 #topbar h1 {
@@ -224,6 +223,12 @@ select:hover {
 .prio4 {background-color: rgb(33, 153, 192);}
 .prio5 {background-color: rgb(251, 186, 15);}
 
+
+@media (max-width: 1025px){
+  .color-definitions {
+    float:left;
+  }
+}
 
 /* Map css */
 #map {

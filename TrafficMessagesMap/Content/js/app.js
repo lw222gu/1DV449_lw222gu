@@ -4,7 +4,7 @@ var TrafficMap = {
 
   json: undefined,
   map: {},
-  lat: 59.0,
+  lat: 59.3,
   long: 15.0,
   icons: {},
   selection: "4",
@@ -21,7 +21,7 @@ var TrafficMap = {
     TrafficMap.map =  L.map('map', {
       center: [TrafficMap.lat, TrafficMap.long], //standard latitude and longitude
       minZoom: 4,
-      zoom: 6
+      zoom: 7
     });
 
     //If user grants access to location, reset map-view
