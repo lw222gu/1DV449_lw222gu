@@ -89,7 +89,7 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: transparent url("images/icons/arrow-down.svg") no-repeat;
+  background: transparent url("images/arrow-down.svg") no-repeat;
   background-size: 45px 45px;
   background-position: center right;
 }

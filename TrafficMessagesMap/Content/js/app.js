@@ -79,7 +79,7 @@ var TrafficMap = {
   createMarkerIcons: function(){
     var Icon = L.Icon.extend({
       options: {
-        shadowUrl: 'Content/css/images/icons/shadow.svg',
+        shadowUrl: 'Content/css/images/shadow.svg',
         iconSize:     [30, 35],
         shadowSize:   [30, 32],
         iconAnchor:   [15, 33],
