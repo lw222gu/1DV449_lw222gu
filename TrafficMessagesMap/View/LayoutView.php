@@ -14,7 +14,7 @@ class LayoutView {
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <title>Trafikkartan</title>
           <link rel="stylesheet" href="Content/css/foundation.min.css" />
-          <link rel="stylesheet" href="Content/css/main.css" />
+          <link rel="stylesheet" href="Content/css/main.min.css" />
           <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
         </head>
 
