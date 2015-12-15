@@ -13,7 +13,7 @@ class LayoutView {
           <meta http-equiv="x-ua-compatible" content="ie=edge">
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <title>Trafikkartan</title>
-          <link rel="stylesheet" href="Content/css/foundation.css" />
+          <link rel="stylesheet" href="Content/css/foundation.min.css" />
           <link rel="stylesheet" href="Content/css/main.css" />
           <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
         </head>
@@ -62,14 +62,8 @@ class LayoutView {
             </div>
           </div>
           <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-          <script src="Content/js/app.js"></script>
+          <script src="Content/js/app.min.js"></script>
         </body>
       </html>';
-  }
-
-  private function getLastModifiedTime(){
-    date_default_timezone_set('Europe/Stockholm');
-    $timeStamp = date('Y-m-d, H.i.s', filemtime(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE));
-    return 'Informationen uppdaterades senast ' . $timeStamp;
   }
 }
