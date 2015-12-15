@@ -8,12 +8,12 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 
-/*Check if file has been updated over the last two minutes,
+/*Check if file has been updated over the last five minutes,
  *otherwise fetch new data from API
  */
 $timeStamp = "";
 
-if(time() - filemtime(Settings::APP_TRAFFIC_MESSAGES_JSON_FILE) > 5){
+if(time() - filemtime(Settings::APP_TRAFFIC_MESSAGES_JSON_FILE) > 300){
   $dal = new Model\TrafficMessageDAL();
   $data = $dal->getJson();
 

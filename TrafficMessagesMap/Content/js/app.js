@@ -64,6 +64,7 @@ var TrafficMap = {
     TrafficMap.markers.forEach(function(mark){
       TrafficMap.map.removeLayer(mark);
     });
+    TrafficMap.markers = [];
 
     var messages = TrafficMap.json["messages"];
 
@@ -117,10 +118,12 @@ var TrafficMap = {
     ul.setAttribute("class", "messages-list");
 
     var messages = TrafficMap.json["messages"];
-    var classes = ["vagtrafik", "kollektivtrafik", "planerad-storning", "ovrigt"];
+
+    var count = 0;
 
     for(var mess = 0; mess < messages.length; mess++){
       if(TrafficMap.selection == messages[mess]["category"] || TrafficMap.selection == "4"){
+        count++;
         var a = document.createElement("a");
         a.setAttribute("class", "message-anchor");
         a.setAttribute("href", "#");
@@ -135,15 +138,24 @@ var TrafficMap = {
         ul.appendChild(a);
       }
     }
-    messageListDiv.appendChild(ul);
-    messagesDiv.appendChild(messageListDiv);
+
+    if(count == 0){
+      var noMessages = document.createElement("p");
+      noMessages.setAttribute("class", "no-mess");
+      noMessages.innerHTML = "Det finns inga meddelanden att visa."
+      messagesDiv.appendChild(noMessages);
+    }
+
+    else {
+      messageListDiv.appendChild(ul);
+      messagesDiv.appendChild(messageListDiv);
+    }
 
     TrafficMap.setOnclicks();
   },
 
   //Function is used both by renderList-function and to generate content for popups
   renderListItemContent: function(message){
-
     var liContent = document.createElement("div");
 
     var h3 = document.createElement("h3");
