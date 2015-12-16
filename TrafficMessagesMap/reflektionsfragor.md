@@ -21,8 +21,8 @@ Riskerna ligger framför allt i att jag inte har kontroll över API:erna. Går n
 Eftersom applikationen varken hanterar användarinput eller loginfunktionalitet har jag inte tänkt så mycket kring säkerheten. All data som används är öppen data, och det är ingen känslig data som hanteras.
 
 ## Hur har du tänkt kring optimeringen i din applikation?
-* Datan från SR:s API lagras i fem minuter, vilket gör att den finns snabbt tillgänglig för de flesta, och det är bara den användare som först besöker sidan efter att en femminutersperiod avslutats som får vänta på att datan hämtas.
-* Eftersom trafikmeddelandena sorteras efter datum gör jag denna sortering direkt i serversidekoden när jag hämtat datan. På så vis behöver detta bara göras en gång var femte minut, och inte för varje användare som besöker sidan när datan redan finns lagrad.
+* Datan från SR:s API lagras i två minuter, vilket gör att den finns snabbt tillgänglig för de flesta, och det är bara den användare som först besöker sidan efter att en tvåminutersperiod avslutats som får vänta på att datan hämtas.
+* Eftersom trafikmeddelandena sorteras efter datum gör jag denna sortering direkt i serversidekoden när jag hämtat datan. På så vis behöver detta bara göras en gång varannan minut, och inte för varje användare som besöker sidan när datan redan finns lagrad.
 * Applikationen Gzip:as. Storleken minskas med omkring 70 procent enligt test via [GIDNetwork](http://www.gidnetwork.com/tools/gzip-test.php).
 * Jag läser inte in onödiga resurser:
    * Jag använder ramverket Foundation, men enbart för den responsiva gridden. Därför har jag valt att enbart ladda ner css för just gridden, och inte för hela ramverket. Jag använder Foundations minifierade css.
