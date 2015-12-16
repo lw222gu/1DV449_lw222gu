@@ -10,9 +10,9 @@ Sveriges Radios öppna API får inte användas på ett sätt som kan skada Sveri
 OpenStreetMap är licensierat under Creative Commons-licensen CC BY-SA 2.0. Därmed krävs att applikationen talar om copyright-information så som var datan kommer från.
 
 ## Hur och hur länge cachar du ditt data för att slippa anropa API:erna i onödan?
-Den json jag hämtar ut från SR:s API sparar jag till en json-fil på servern. Om en förfrågan görs inom fem minuter från att datan senast hämtades från SR så visas den redan lagrade informationen. Förfrågningar som görs efter fem minuter hämtar ny information.
+Den json jag hämtar ut från SR:s API sparar jag till en json-fil på servern. Om en förfrågan görs inom två minuter från att datan senast hämtades från SR så visas den redan lagrade informationen. Förfrågningar som görs efter två minuter hämtar ny information.
 
-Att jag valt just fem minuter är för att det ändå är relativt viktigt att få denna information så uppdaterad som möjligt, men inom rimlighetens gräns. Är jag på resande fot vill jag kunna se aktuell information för att kunna välja en väg eller en annan.
+Att jag valt just två minuter är för att det ändå är relativt viktigt att få denna information så uppdaterad som möjligt, men inom rimlighetens gräns. Är jag på resande fot vill jag kunna se aktuell information för att kunna välja en väg eller en annan.
 
 ## Vad finns det för risker kring säkerhet och stabilitet i din applikation?
 Riskerna ligger framför allt i att jag inte har kontroll över API:erna. Går något API ner så blir applikationen inte särskilt användbar. Jag har inte heller kontroll över den data som skickas till mig, vilket självklart möjliggör för att jag skulle kunna ta emot skadlig kod via dem. Skulle SR inte returnera någon data visas ett felmeddelande tillsammans med tidigare hämtad data, och tidpunkt för när den hämtades.
