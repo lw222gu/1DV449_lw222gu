@@ -4,7 +4,6 @@ namespace Model;
 
 class TrafficMessageDAL {
 
-
   public function getJson(){
 
       $ch = curl_init();
@@ -16,10 +15,10 @@ class TrafficMessageDAL {
   }
 
   public function saveJson($data){
-    /* Remove unneccesary characters in date string */
     $json = json_decode($data, true);
     $messages = $json["messages"];
 
+    /* Remove unneccesary characters in date string */
     for($i = 0; $i < count($messages); $i++){
       $date = $messages[$i]["createddate"];
       $date = str_replace("/Date(", "", $date);

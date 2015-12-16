@@ -6,13 +6,12 @@ require_once('View/LayoutView.php');
 //error_reporting(E_ALL);
 //ini_set('display_errors', 'On');
 
-
-/*Check if file has been updated over the last five minutes,
- *otherwise fetch new data from API
- */
 $timeStamp = "";
 $jsonUrl = "Resources/trafficMessages.json";
 
+/*Check if file has been updated over the last two minutes,
+ *otherwise fetch new data from API
+ */
 if(time() - filemtime($jsonUrl) > 120){
   $dal = new Model\TrafficMessageDAL();
   $data = $dal->getJson();
