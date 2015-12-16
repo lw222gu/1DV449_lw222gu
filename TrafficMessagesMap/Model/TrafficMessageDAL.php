@@ -4,10 +4,11 @@ namespace Model;
 
 class TrafficMessageDAL {
 
+
   public function getJson(){
 
       $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL, \Settings::APP_REQUEST_URL_SR);
+      curl_setopt($ch, CURLOPT_URL, 'http://api.sr.se/api/v2/traffic/messages?format=json&pagination=false&indent=true');
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
       $data = curl_exec($ch);
       curl_close($ch);
@@ -34,7 +35,7 @@ class TrafficMessageDAL {
     $json["messages"] = array_reverse($messages);
 
     /* Write json to file */
-    $doc = fopen(\Settings::APP_TRAFFIC_MESSAGES_JSON_FILE, "w");
+    $doc = fopen('Resources/trafficMessages.json', "w");
     fwrite($doc, json_encode($json));
     fclose($doc);
   }
